@@ -1,0 +1,66 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <virtualType name="Magenest\AbandonedCart\Model\ResourceModel\Grid\Rule" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_abacar_rule</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\AbandonedCart\Model\ResourceModel\Rule</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Magenest\AbandonedCart\Model\ResourceModel\AbandonedCart\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_abacar_list</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\AbandonedCart\Model\ResourceModel\AbandonedCart</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Magenest\AbandonedCart\Model\ResourceModel\LogContent\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_abacar_log</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\AbandonedCart\Model\ResourceModel\LogContent</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Magenest\AbandonedCart\Model\ResourceModel\BlackList\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_abacar_blacklist</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\AbandonedCart\Model\ResourceModel\BlackList</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Magenest\AbandonedCart\Model\ResourceModel\LogCron\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_abacar_cronlog</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\AbandonedCart\Model\ResourceModel\LogCron</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Magenest\AbandonedCart\Model\ResourceModel\Unsubscribe\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_abacar_unsubscribe</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\AbandonedCart\Model\ResourceModel\Unsubscribe</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magenest_abandonedcart_rule_listing_data_source" xsi:type="string">Magenest\AbandonedCart\Model\ResourceModel\Grid\Rule</item>
+                <item name="magenest_abandonedcart_abandonedcart_listing_data_source" xsi:type="string">Magenest\AbandonedCart\Model\ResourceModel\AbandonedCart\Grid\Collection</item>
+                <item name="magenest_abandonedcart_logcontent_listing_data_source" xsi:type="string">Magenest\AbandonedCart\Model\ResourceModel\LogContent\Grid\Collection</item>
+                <item name="magenest_abandonedcart_blacklist_listing_data_source" xsi:type="string">Magenest\AbandonedCart\Model\ResourceModel\BlackList\Grid\Collection</item>
+                <item name="magenest_abandonedcart_cron_listing_data_source" xsi:type="string">Magenest\AbandonedCart\Model\ResourceModel\LogCron\Grid\Collection</item>
+                <item name="magenest_abandonedcart_unsubscribe_listing_data_source" xsi:type="string">Magenest\AbandonedCart\Model\ResourceModel\Unsubscribe\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Cron\Model\Schedule">
+        <plugin name="save_log_cronjob_run" type="Magenest\AbandonedCart\Plugin\LogCron" sortOrder="0"/>
+    </type>
+    <type name="Magento\Checkout\Controller\Cart\CouponPost">
+        <plugin name="cart_apply_coupon" type="Magenest\AbandonedCart\Plugin\CouponPost" sortOrder="0" disabled="false" />
+    </type>
+    <type name="Magento\Quote\Model\CouponManagement">
+        <plugin name="checkoutpage_apply_coupon" type="Magenest\AbandonedCart\Plugin\CheckoutPageCoupon" sortOrder="0" disabled="false" />
+    </type>
+</config>

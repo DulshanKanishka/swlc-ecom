@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * The admin-specific functionality of the extension.
+ *
+ * @link       https://mopinion.com/author/kees-wolters/
+ * @since      1.0.0
+ *
+ * @package    Mopinion_FeedbackSurvey
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mopinion_FeedbackSurvey::feedbacksurvey" title="Mopinion Feedback Survey" translate="title" module="Mopinion_FeedbackSurvey" sortOrder="99" parent="Magento_Backend::stores_settings" action="mopinion/settings/" resource="Mopinion_FeedbackSurvey::mopinion"/>
+    </menu>
+</config>

@@ -1,0 +1,87 @@
+"Change order status to","Change order status to"
+Comments,Comments
+"Send Email to Customer","Send Email to Customer"
+"Visible on Store Front","Visible on Store Front"
+"Email Copy of Invoice","Email Copy of Invoice"
+"Invoice Comments","Invoice Comments"
+"Append Comments","Append Comments"
+Invoice,Invoice
+Shipment,Shipment
+"Email Copy of Shipment","Email Copy of Shipment"
+"Shipment Comments","Shipment Comments"
+"Add Tracking Number","Add Tracking Number"
+"Custom Value","Custom Value"
+Custom,Custom
+Select,Select
+Action,Action
+Position,Position
+"We can't send the invoice email right now.","We can't send the invoice email right now."
+"We can't send the shipment email right now.","We can't send the shipment email right now."
+"A total of %1 order(s) have been created shipment.","A total of %1 order(s) have been created shipment."
+"A total of %1 order(s) does not allow an shipment to be created.","A total of %1 order(s) does not allow an shipment to be created."
+"A total of %1 order(s) have been updated.","A total of %1 order(s) have been updated."
+"%1 order(s) cannot be changed status and add comment.","%1 order(s) cannot be changed status and add comment."
+"A total of %1 order(s) have been invoiced.","A total of %1 order(s) have been invoiced."
+"%1 order(s) cannot be changed status.","%1 order(s) cannot be changed status."
+"A total of %1 order(s) does not allow an invoice to be created.","A total of %1 order(s) does not allow an invoice to be created."
+"There are no printable documents related to selected orders.","There are no printable documents related to selected orders."
+"There are no shipping labels related to selected orders.","There are no shipping labels related to selected orders."
+"Page not found.","Page not found."
+"Order Status Changed","Order Status Changed"
+"Something went wrong while updating status for Order #%1.","Something went wrong while updating status for Order #%1."
+"You cannot change the status of the order(s).","You cannot change the status of the order(s)."
+"A total of %1 record(s) status have been updated.","A total of %1 record(s) status have been updated."
+"Add Tracking Table","Add Tracking Table"
+Loading...,Loading...
+"Create Invoice","Create Invoice"
+"Create Shipment","Create Shipment"
+"Create Invoice and Shipment","Create Invoice and Shipment"
+"Add Order Comments","Add Order Comments"
+"Change Order Status","Change Order Status"
+"-- Please Select --","-- Please Select --"
+View,View
+Ship,Ship
+"Submit Comment","Submit Comment"
+Process,Process
+"Process & Print","Process & Print"
+"Process & Print Invoices + Shipments","Process & Print Invoices + Shipments"
+"Process & Print Invoices + Shipment","Process & Print Invoices + Shipment"
+"Process & Print Invoices + Shipping Labels","Process & Print Invoices + Shipping Labels"
+"Process & Print PDF Invoices","Process & Print PDF Invoices"
+"Process & Print Shipping Labels","Process & Print Shipping Labels"
+"Process & Print PDF Shipments","Process & Print PDF Shipments"
+ID,ID
+Status,Status
+"Grand Total (Base)","Grand Total (Base)"
+"Tracking Number","Tracking Number"
+"Carrier Code","Carrier Code"
+Title,Title
+Carrier,Carrier
+Number,Number
+"Shipment #%1","Shipment #%1"
+Carrier:,Carrier:
+"Shipment has no tracks.","Shipment has no tracks."
+"There are orders is selected.","There are orders is selected."
+"You need have at least one category","You need have at least one category"
+"Mass Order Actions","Mass Order Actions"
+General,General
+Enable,Enable
+"Select <b>Yes</b> to enable this module.<br> Fully compatible with <a href=""https://www.mageplaza.com/magento-2-delete-orders/"" target=""_blank"">Delete Orders</a> and <a href=""https://www.mageplaza.com/magento-2-order-archive/"" target=""_blank"">Order Archive</a>","Select <b>Yes</b> to enable this module.<br> Fully compatible with <a href=""https://www.mageplaza.com/magento-2-delete-orders/"" target=""_blank"">Delete Orders</a> and <a href=""https://www.mageplaza.com/magento-2-order-archive/"" target=""_blank"">Order Archive</a>"
+"Select Actions","Select Actions"
+"Admins can set the sort order for the position of each action. The smaller the sort order, the upper position of the action in the action grid.","Admins can set the sort order for the position of each action. The smaller the sort order, the upper position of the action in the action grid."
+"Only Change Status with Same-state Orders","Only Change Status with Same-state Orders"
+"If <b>Yes</b>, admin only can change status of the orders which have the same state.","If <b>Yes</b>, admin only can change status of the orders which have the same state."
+"Auto Select Order Status After Invoice","Auto Select Order Status After Invoice"
+"Auto Check Email Copy of Invoice","Auto Check Email Copy of Invoice"
+"Auto Select Order Status After Shipment","Auto Select Order Status After Shipment"
+"Auto Check Email Copy of Shipment","Auto Check Email Copy of Shipment"
+"Auto Load Tracking Number Table","Auto Load Tracking Number Table"
+"The order has a shipment, you can go to the order\'s shipment to create a tracking number.","The order has a shipment, you can go to the order\'s shipment to create a tracking number."
+"The order has been created shipment.","The order has been created shipment."
+"The tracking number of the shipment has been updated.","The tracking number of the shipment has been updated."
+"Shipment ID","Shipment ID"
+"Send Tracking Information","Send Tracking Information"
+"The tracking information of %1 order(s) cannot be sent.","The tracking information of %1 order(s) cannot be sent."
+"You cannot send tracking information.","You cannot send tracking information."
+"The tracking information of %1 order(s) have been sent successfully.","The tracking information of %1 order(s) have been sent successfully."
+"This default Tracking carrier value will be used after selecting a carrier. If you want to change the Tracking carrier you can Add tracking carrier and tracking number manually on the Order grid or Popup Create Shipment","This default Tracking carrier value will be used after selecting a carrier. If you want to change the Tracking carrier you can Add tracking carrier and tracking number manually on the Order grid or Popup Create Shipment"

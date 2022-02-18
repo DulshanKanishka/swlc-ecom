@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<instagramgallery>
+			<general>
+				<isactive>1</isactive>
+				<display_title>1</display_title>
+				<title>SM Instagram Gallery</title>
+				<users_id>2104313612</users_id>
+				<access_token>2104313612.1677ed0.2a631e32ce344b4580477470faa0517c</access_token>
+				<limit_image>8</limit_image>
+				<full_name>1</full_name>
+				<target>simple</target>
+				<type_popup>thumb</type_popup>
+			</general>
+			<other_options>
+				<nb_column1>4</nb_column1>
+				<nb_column2>3</nb_column2>
+				<nb_column3>3</nb_column3>
+				<nb_column4>2</nb_column4>
+				<nb_column5>1</nb_column5>
+				<nb_type_show>slider</nb_type_show>
+				<nb_rows>1</nb_rows>
+			</other_options>
+			<effect_options>
+				<autoplay>1</autoplay>
+				<autoplayHoverPause>1</autoplayHoverPause>
+				<autoplaySpeed>2000</autoplaySpeed>
+				<navSpeed>2000</navSpeed>
+				<intervalTimeout>5000</intervalTimeout>
+				<display_nav>1</display_nav>
+				<display_loop>1</display_loop>
+				<mouseDrag>1</mouseDrag>
+				<touchDrag>1</touchDrag>
+			</effect_options>
+			<advanced>
+				<pretext>Pretext</pretext>
+				<posttext>Posttext</posttext>
+				<use_cache>1</use_cache>
+				<cache_time>3600</cache_time>
+			</advanced>
+		</instagramgallery>
+	</default>
+</config>

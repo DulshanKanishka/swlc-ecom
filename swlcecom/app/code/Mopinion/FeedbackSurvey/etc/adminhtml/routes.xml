@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * The admin-specific functionality of the extension.
+ *
+ * @link       https://mopinion.com/author/kees-wolters/
+ * @since      1.0.0
+ *
+ * @package    Mopinion_FeedbackSurvey
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="mopinion" frontName="mopinion">
+            <module name="Mopinion_FeedbackSurvey" before="Magento_Backend" />
+        </route>
+    </router>
+</config>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Storepickup
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Magestore_Storepickup::css/bootstrap/bootstrap.css"></css>
+        <css src="Magestore_Storepickup::css/bootstrap/glyphicons.css"></css>
+        <css src="Magestore_Storepickup::css/liststore.css"></css>
+        <link src="Magestore_Storepickup::js/makercluster.js"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magestore\Storepickup\Block\Wrapper" name="storepickup.wrapper">
+                <block class="Magestore\Storepickup\Block\ListStore\MapBox" name="storepickup.mapbox"/>
+                <block class="Magestore\Storepickup\Block\ListStore\SearchBox" name="storepickup.searchbox"/>
+                <block class="Magestore\Storepickup\Block\ListStore\ListStoreBox" name="storepickup.liststorebox"/>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="page.main.title" remove="true"/>
+    </body>
+</page>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Storepickup
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="storepickupadmin_orders.grid.container">
+            <block class="Magestore\Storepickup\Block\Adminhtml\Widget\Order\Grid" name="storepickupadmin.orders.grid" as="grid">
+                <arguments>
+                    <argument name="id" xsi:type="string">storepickupadmin_orders_grid</argument>
+                    <argument name="dataSource" xsi:type="object">\Magento\Sales\Model\ResourceModel\Order\Collection</argument>
+                    <argument name="use_ajax" xsi:type="string">true</argument>
+                    <argument name="default_sort" xsi:type="string">entity_id</argument>
+                    <argument name="default_dir" xsi:type="string">ASC</argument>
+                    <argument name="save_parameters_in_session" xsi:type="string">1</argument>
+                    <argument name="grid_url" xsi:type="url" path="*/*/grid">
+                        <param name="_current">1</param>
+                    </argument>
+                </arguments>
+                <block class="Magento\Backend\Block\Widget\Grid\Massaction"
+                       name="storepickupadmin.orders.grid.massaction" as="grid.massaction">
+                    <arguments>
+                        <argument name="massaction_id_field" xsi:type="string">entity_id</argument>
+                        <argument name="form_field_name" xsi:type="string">order_id</argument>
+                        <argument name="use_select_all" xsi:type="string">0</argument>
+                        <argument name="options" xsi:type="array">
+                            <item name="enable" xsi:type="array">
+                                <item name="label" xsi:type="string" translate="true">Update status to Prepare</item>
+                                <item name="url" xsi:type="string">storepickupadmin/order/massPrepare</item>
+                            </item>
+                            <item name="disable" xsi:type="array">
+                                <item name="label" xsi:type="string" translate="true">Update status to Wait for Pickup</item>
+                                <item name="url" xsi:type="string">storepickupadmin/order/massWait</item>
+                            </item>
+                            <item name="delete" xsi:type="array">
+                                <item name="label" xsi:type="string" translate="true">Update status to Received</item>
+                                <item name="url" xsi:type="string">storepickupadmin/order/massReceived</item>
+                            </item>
+                        </argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Backend\Block\Widget\Grid\Export" name="storepickupadmin.orders.grid.export"
+                       as="grid.export">
+                    <arguments>
+                        <argument name="exportTypes" xsi:type="array">
+                            <item name="csv" xsi:type="array">
+                                <item name="urlPath" xsi:type="string">storepickupadmin/*/exportCsv</item>
+                                <item name="label" xsi:type="string" translate="true">CSV</item>
+                            </item>
+                            <item name="excel" xsi:type="array">
+                                <item name="urlPath" xsi:type="string">storepickupadmin/*/exportExcel</item>
+                                <item name="label" xsi:type="string" translate="true">Excel XML</item>
+                            </item>
+                        </argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" as="grid.columnSet"
+                       name="storepickupadmin.orders.grid.columnSet">
+                    <!--<arguments>-->
+                        <!--<argument name="id" xsi:type="string">storepickupadmin_orders_grid</argument>-->
+                        <!--<argument name="rowUrl" xsi:type="array">-->
+                            <!--<item name="path" xsi:type="string">storepickupadmin/orders/edit</item>-->
+                            <!--<item name="extraParamsTemplate" xsi:type="array">-->
+                                <!--<item name="entity_id" xsi:type="string">getId</item>-->
+                            <!--</item>-->
+                        <!--</argument>-->
+                    <!--</arguments>-->
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="entity_id">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">orders ID</argument>
+                            <argument name="type" xsi:type="string">number</argument>
+                            <argument name="index" xsi:type="string">entity_id</argument>
+                            <argument name="id" xsi:type="string">entity_id</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="customer_email">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Customer Email</argument>
+                            <argument name="type" xsi:type="string">text</argument>
+                            <argument name="index" xsi:type="string">customer_email</argument>
+                            <argument name="id" xsi:type="string">customer_email</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="storepickup_time">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Storepickup Time</argument>
+                            <argument name="type" xsi:type="string">date</argument>
+                            <argument name="index" xsi:type="string">storepickup_time</argument>
+                            <argument name="id" xsi:type="string">storepickup_time</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="total_qty_ordered">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Qty Ordered</argument>
+                            <argument name="type" xsi:type="string">number</argument>
+                            <argument name="index" xsi:type="string">total_qty_ordered</argument>
+                            <argument name="id" xsi:type="string">total_qty_ordered</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="base_grand_total">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Grand Total</argument>
+                            <argument name="type" xsi:type="string">price</argument>
+                            <argument name="index" xsi:type="string">base_grand_total</argument>
+                            <argument name="id" xsi:type="string">base_grand_total</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="storepickup_status">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Storepickup Status</argument>
+                            <argument name="type" xsi:type="string">options</argument>
+                            <argument name="index" xsi:type="string">storepickup_status</argument>
+                            <argument name="id" xsi:type="string">storepickup_status</argument>
+                            <argument name="options" xsi:type="options" model="Magestore\Storepickup\Model\ResourceModel\Orders\StorepickupStatus"/>
+                        </arguments>
+                    </block>
+                    <!--<block class="Magento\Backend\Block\Widget\Grid\Column" as="action"-->
+                           <!--acl="Magento_Storepickup::orders_edit">-->
+                        <!--<arguments>-->
+                            <!--<argument name="id" xsi:type="string">action</argument>-->
+                            <!--<argument name="header" xsi:type="string" translate="true">Action</argument>-->
+                            <!--<argument name="type" xsi:type="string">action</argument>-->
+                            <!--<argument name="getter" xsi:type="string">getId</argument>-->
+                            <!--<argument name="filter" xsi:type="string">0</argument>-->
+                            <!--<argument name="sortable" xsi:type="string">0</argument>-->
+                            <!--<argument name="index" xsi:type="string">entity_id</argument>-->
+                            <!--<argument name="is_system" xsi:type="string">1</argument>-->
+                            <!--<argument name="actions" xsi:type="array">-->
+                                <!--<item name="edit" xsi:type="array">-->
+                                    <!--<item name="caption" xsi:type="string" translate="true">Edit</item>-->
+                                    <!--<item name="url" xsi:type="array">-->
+                                        <!--<item name="base" xsi:type="string">storepickupadmin/orders/edit</item>-->
+                                    <!--</item>-->
+                                    <!--<item name="field" xsi:type="string">entity_id</item>-->
+                                <!--</item>-->
+                            <!--</argument>-->
+                            <!--<argument name="header_css_class" xsi:type="string">col-actions</argument>-->
+                            <!--<argument name="column_css_class" xsi:type="string">col-actions</argument>-->
+                        <!--</arguments>-->
+                    <!--</block>-->
+                </block>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

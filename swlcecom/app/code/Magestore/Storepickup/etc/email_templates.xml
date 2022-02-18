@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_OneStepCheckout
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="carriers_storepickup_storeowner_email_template" label="Email to store owner" file="pickuplocation.html"
+              type="html" module="Magestore_Storepickup" area="frontend"/>
+    <template id="carriers_storepickup_shopadmin_email_template" label="Email to web-shop admin" file="delivery.html"
+              type="html" module="Magestore_Storepickup" area="frontend"/>
+    <template id="carriers_storepickup_storeowner_email_customer" label="Email to store owner and web-shopadmin" file="customer.html"
+              type="html" module="Magestore_Storepickup" area="frontend"/>
+    <template id="carriers_storepickup_storeowner_email_change_status" label="Email to store owner" file="statusorder.html"
+              type="html" module="Magestore_Storepickup" area="frontend"/>
+</config>

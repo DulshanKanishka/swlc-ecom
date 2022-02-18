@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Quote\Model\Quote\Config">
+        <plugin name="ProductAttributes" type="Meetanshi\PaymentRestriction\Plugin\ProductAttributes"/>
+    </type>
+    <type name="Magento\Payment\Model\PaymentMethodList">
+        <plugin name="Meetanshi_PaymentRestriction::restrictPaymentMethods"
+                type="Meetanshi\PaymentRestriction\Plugin\RestrictPaymentMethods" sortOrder="1"/>
+    </type>
+</config>

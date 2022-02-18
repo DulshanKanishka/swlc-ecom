@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<body>
+<div id="wrapper">
+    <div class="header">
+        <!--        <div class="header-left">-->
+        <div class="header-left">
+            <div class="info">
+                <p class="info-title" style="font-size: 29px">{{trans "ORDER"}}</p>
+                <br>
+                <br>
+                <br>
+                <!-- BARCODE: Sugest Type: C39/EAN128A -->
+<!--                <p class="mp-invoice-barcode" style="text-align: left;padding: 3px 3px 3px -12px">-->
+<!--                    <barcode code="{{var order.increment_id}}" type="C39"/>-->
+<!--                </p>-->
+                <br>
+                <!-- QRCODE -->
+                <!--                 <p class="mp-invoice-barcode">-->
+                <!--                     <barcode code="{{var order.increment_id}}" type="QR" size="0.8" error="M" disableborder="1"  />-->
+                <!--                 </p>-->
+                <!-- Sugest Type:-->
+
+                <p style="font-size: 24px">#{{var order.increment_id}}</p>
+<!--                {{var order.increment_id}}-->
+<!--                <p style="font-size: 14px">{{var order.created_at}}</p>-->
+                <p style="font-size: 14px">{{var pdfInvoiceCustom.formatDate($order.created_at)}}</p>
+
+
+                <!--                <p>{{trans "Amount : "}}<b>{{var order.formatPrice($order.getGrandTotal())|raw }}</b></p>-->
+
+            </div>
+        </div>
+
+        <div class="header-right">
+            <div class="logo-left">
+                <a class="logo" href="{{store url=""}}">
+                <img width="103px" height="90px" src="{{var logo_url}}" alt="{{var logo_alt}}" border="0" />
+
+                </a>
+                <br>
+                <br>
+            </div>
+            <div class="business-information">
+<!--                <p class="business-name">{{var businessInformation.getCompany()}}</p>-->
+<!--                <p>{{trans "Address"}}: {{var businessInformation.getAddress()}}</p>-->
+<!--                <p>{{trans "Phone"}}: {{var businessInformation.getPhone()}}</p>-->
+                <p style="font-size: 17px;color: darkgray">LEFTFIELD GENERAL TRADING LLC</p>
+                <p><b>Email</b>: customercare@j20sports.com</p>
+                <p><b>{{trans "Tax ID"}} </b>:{{var businessInformation.getVatNumber()}}</p>
+<!--                <p>{{trans "Registered"}}: {{var businessInformation.getRegistered()}}</p>-->
+            </div>
+        </div>
+<!--        <div class="header-right">-->
+    </div>
+    <div class="clr"></div>
+    <div class="content">
+        <div class="address">
+            <div class="billing-address" style="margin-right: 5px">
+                <p class="mp-block-heading" style="margin-left:0px;background-color: white;color: darkgray;font-size: 14px">BILLING ADDRESS</p>
+                <div style="font-style: oblique;border: 1px groove gray;border-top: 4px groove darkgray;padding-left: 5px">
+                    <p>{{var formattedBillingAddress|raw}}</p>
+                    <h6 style="font-size: 5px">&nbsp;</h6>
+                </div>
+            </div>
+            <div class="shipping-address" style="margin-left: 5px">
+                <p class="mp-block-heading"  style="margin-left:0px;background-color: white;color: darkgray;font-size: 14px">SHIPPING ADDRESS</p>
+                <div style="font-style: oblique;border: 1px groove grey;border-top: 4px groove darkgray;padding-left: 5px">
+                    <p>{{var formattedShippingAddress|raw}}</p>
+                    <h6 style="font-size: 5px">&nbsp;</h6>
+                </div>
+            </div>
+        </div>
+        <div class="clr"></div>
+        {{depend order.getIsNotVirtual()}}
+        <div class="address">
+            <div  style="background-color: white;color: darkgray;margin-right: 5px" class="payment-method">
+                <p class="mp-block-heading" style="margin-left:0px;background-color: white;color: darkgray;font-size: 14px">PAYMENT METHOD</p>
+                <div style="border: 1px groove gray;border-top: 4px groove darkgray;padding-left: 5px">
+
+                    <table class="paymentTable">
+                        <tbody>
+                            <tr>
+                                <td style="padding-left:8px;font-size: 13px">{{var payment_html|raw}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h6 style="font-size: 5px">&nbsp;</h6>
+                </div>
+            </div>
+
+            <div style="background-color: white;color: darkgray;margin-left: 5px" class="shipping-method">
+                <p class="mp-block-heading" style="margin-left:0px;background-color: white;color: darkgray;font-size: 14px">SHIPPING METHOD</p>
+                <div style="border: 1px groove gray;border-top: 4px groove darkgray;padding-left: 5px">
+<!--                    <p style="color: black;font-size: 13px;margin-top: 10px">{{var order.getShippingDescription()}}</p>-->
+                    <table class="paymentTable">
+                        <tbody>
+                        <tr>
+                            <td style="padding-left:8px;font-size: 13px">{{var order.getShippingDescription()|raw}}</td>
+<!--                            <td style="padding-left:8px;font-size: 13px">{{var order.getShippingDescription()|raw}}</td>-->
+                        </tr>
+                        </tbody>
+                    </table>
+<!--                    <div style="padding-left:8px;font-size: 13px !important;">{{var order.getShippingDescription()|raw}}</div>-->
+                    <h6 style="font-size: 5px">&nbsp;</h6>
+                </div>
+
+            </div>
+            <br>
+        </div>
+        {{/depend}}
+        <div class="clr"></div>
+
+    </div>
+
+            {{layout area="frontend" handle="pdfinvoice_order_items2" ocheck=$order orderz=$order.increment_id items=$order.items comment=$order.customComment itemBarcode=1 }}
+    <footer>
+<!--        {{depend orderNote}}-->
+<!--        <div class="footer-left">-->
+<!--            <h3 class="mp-note">{{trans "Notes"}}:</h3>-->
+<!--            <span style="font-style: italic;">{{var orderNote|raw}}</span>-->
+<!--        </div>-->
+<!--        {{/depend}}-->
+    </footer>
+</div>
+</body>
+</html>

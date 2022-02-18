@@ -1,0 +1,31 @@
+<script>
+        require([
+            'jquery',
+            'prototype',
+            "mage/mage",
+            'mage/translate'
+
+        ], function(jQuery){
+            function syncronize() {
+                params = {
+                };
+
+                new Ajax.Request('<?php /* @escapeNotVerified */ echo $block->getAjaxSyncUrl() ?>', {
+                    loaderArea:     false,
+                    asynchronous:   true,
+                    parameters:     params,
+                    onSuccess: function(transport) {
+                        var response = JSON.parse(transport.responseText);
+                    }
+                });
+            }
+
+            jQuery('#synchronize_button').click(function () {
+                syncronize();
+                alert('All Products stock update with QuickBooksOnline');
+                location.reload();
+            });
+        });
+    </script>
+
+<?php echo $block->getButtonHtml() ?>

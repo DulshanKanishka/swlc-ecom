@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Storepickup
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+
+ ?>
+<?php
+
+/** @var \Magestore\Storepickup\Block\Adminhtml\Guide $block */
+
+$userGuide = __('
+	Magento Store pickup extension allows locating stores and getting directions with Google Map integrated:<br />
+        1. To add/ import stores with location, time schedule and other information, go to <strong>Store pickup</strong> -> <strong>Manage Stores</strong>.<br />
+        2. To set days off for store(s), go to <strong>Store pickup</strong> -> <strong>Manage Holidays</strong>.<br />
+        3. To set days with special working time for store(s), go to <strong>Store pickup</strong> -> <strong>Manage Special Days</strong>.<br />
+        4. To configure Store pickup extension, go to <strong>Store pickup</strong> -> <strong>Settings</strong>.
+    ');
+?>
+<div class="fieldset ">
+    <?php echo $userGuide ?>
+</div>

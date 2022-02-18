@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Storepickup
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+
+/** @var \Magestore\Storepickup\Block\ListStore\Pagination $block */
+?>
+<ul class="pagination">
+    <li data-first-page="1"
+        class="page-item <?php if($block->currentIsFirstPage()) : ?>disabled<?php endif; ?>"
+    ><span>&laquo;</span></li>
+    <?php if($block->hasPrevPage()) : ?>
+    <li data-page-id="<?php echo $block->getPrevPage() ?>"  class="page-item"><a><?php echo __('Prev') ?></a></li>
+    <?php endif; ?>
+    <?php for($page = $block->getMinPage(); $page <= $block->getMaxPage(); ++$page) : ?>
+        <li class="page-item <?php if($page == $block->getCurPage()) : ?>active<?php endif; ?>"
+            data-page-id="<?php echo $page  ?>"
+        ><a><?php echo $page?></a></li>
+    <?php endfor ?>
+    <?php if($block->hasNextPage()) : ?>
+        <li data-page-id="<?php echo $block->getNextPage() ?>" class="page-item"><a><?php echo __('Next') ?></a></li>
+    <?php endif; ?>
+    <li data-last-page="<?php echo $block->getTotalPage(); ?>"
+        class="page-item <?php if($block->currentIsLastPage()) : ?>disabled<?php endif; ?>"
+    ><a>&raquo;</a></li>
+</ul>

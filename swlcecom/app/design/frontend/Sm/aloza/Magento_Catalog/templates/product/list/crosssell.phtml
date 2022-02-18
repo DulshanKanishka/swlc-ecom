@@ -1,0 +1,191 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/* @var $block \Magento\Catalog\Block\Product\AbstractProduct */
+?>
+
+<?php
+use Magento\Framework\App\Action\Action;
+$_config = $this->helper('Sm\Aloza\Helper\Data');
+$homeStyle = $_config->getThemeLayout('home_style');
+switch ($type = $block->getType()) {
+    case 'crosssell-rule':
+        /** @var \Magento\Catalog\Block\Product\ProductList\Crosssell $block */
+        if ($exist = $block->hasItems()) {
+            $type = 'crosssell';
+            $class = $type;
+
+            $image = 'cart_cross_sell_products';
+            $items = $block->getItemCollection();
+
+            $showWishlist = true;
+            $showCompare = true;
+            $showCart = true;
+            $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+            $description = false;
+            $canItemsAddToCart = false;
+        }
+    break;
+
+    case 'crosssell':
+        /** @var \Magento\Catalog\Block\Product\ProductList\Crosssell $block */
+        if ($exist = $block->getItemCount()) {
+            $type = 'crosssell';
+            $class = $type;
+
+            $image = 'cart_cross_sell_products';
+            $items = $block->getItems();
+
+            $showWishlist = true;
+            $showCompare = true;
+            $showCart = true;
+            $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+            $description = false;
+            $canItemsAddToCart = false;
+        }
+    break;
+
+    case 'other':
+    break;
+}
+?>
+
+<?php if ($exist):?>
+	<div class="crosssell-container block-detail">
+		<div class="title-home">
+			<span><?php echo __('More Choices:')?></span>
+		</div>
+		
+        <div class="crosssell-block products-grid">
+			<div class="row">
+				
+				<?php foreach ($items as $_item): ?>
+				<div class="col-lg-3 col-md-3 col-sm-6 item product product-item">
+					<div class="product-item-info">
+						<div class="item-inner">
+						<div class="product-item-info">
+							<div class="box-image">
+								<a href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($_item) ?>" class="product photo product-item-photo">
+									<?php echo $block->getImage($_item, $image)->toHtml(); ?>
+								</a>
+								
+								<!--LABEL PRODUCT-->
+
+                                <?php
+									$specialprice = $_item->getSpecialPrice();
+									$specialPriceFromDate = $_item->getSpecialFromDate();
+									$specialPriceToDate = $_item->getSpecialToDate();
+									
+									$today = time();
+
+									if ($specialprice && $_config->getAdvanced('show_salelabel')) {
+										if ($today >= strtotime($specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime($specialPriceFromDate) && is_null($specialPriceToDate)) { ?>
+											<div class="label-product label-sale">
+												<span class="sale-product-icon">
+													<?php echo __('Sale'); ?>
+												</span>
+											</div>
+										<?php }
+									}
+								?>
+								
+								<?php
+								$now = date("Y-m-d");
+                                $newsFrom = substr($_item->getNewsFromDate(), 0, 10);
+                                $newsTo = substr($_item->getNewsToDate(), 0, 10);
+								
+								if (($newsTo != '' || $newsFrom != '') && $_config->getAdvanced('show_newlabel')) {
+                                    if (($newsTo != '' && $newsFrom != '' && $now >= $newsFrom && $now <= $newsTo) || ($newsTo == '' && $now >= $newsFrom) || ($newsFrom == '' && $now <= $newsTo)) {?>
+                                            <div class="label-product label-new">
+												<span class="new-product-icon"><?php echo __('New'); ?></span>
+											</div>
+                                    <?php }
+                                } ?>
+								
+								
+								<!--END LABEL PRODUCT-->
+								<div class="product actions product-item-actions bottom-action">
+										<?php if($_config->getAdvanced('show_wishlist_button')){?>
+											<?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow()): ?>
+												<a href="#" data-post='<?php /* @escapeNotVerified */ echo $block->getAddToWishlistParams($_item); ?>'  class="action towishlist btn-action link-wishlist" data-action="add-to-wishlist" title="<?php /* @escapeNotVerified */ echo __('Add to Wish List') ?>">
+													<span><?php /* @escapeNotVerified */ echo __('Add to Wish List') ?></span>
+												</a>
+											<?php endif; ?>
+										<?php } ?>
+										<?php if($_config->getAdvanced('show_addtocart_button')){?>
+											<?php if ($_item->isSaleable()): ?>
+											 <?php $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+											  $listBlock = $objectManager->get('\Magento\Catalog\Block\Product\ListProduct');
+											  $url =  $listBlock->getAddToCartUrl($_item); 
+											  $postParams = [
+													'action' => $url,
+													'data' => [
+														'product' => $_item->getEntityId(),
+														\Magento\Framework\App\ActionInterface::PARAM_NAME_URL_ENCODED =>
+															$objectManager->get('\Magento\Framework\Url\Helper\Data')->getEncodedUrl($url),
+														]
+													];
+											  ?>
+												<form data-role="tocart-form" action="<?php /* @escapeNotVerified */ echo $postParams['action']; ?>" method="post">
+													<input type="hidden" name="product" value="<?php /* @escapeNotVerified */ echo $postParams['data']['product']; ?>">
+													<input type="hidden" name="<?php /* @escapeNotVerified */ echo Action::PARAM_NAME_URL_ENCODED; ?>" value="<?php /* @escapeNotVerified */ echo $postParams['data'][Action::PARAM_NAME_URL_ENCODED]; ?>">
+													<?php echo $block->getBlockHtml('formkey')?>
+													<button type="submit"
+															title="<?php echo $block->escapeHtml(__('Add to Cart')); ?>"
+															class="action tocart primary  btn-cart">
+														<span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+													</button>
+												</form>
+											<?php else: ?>
+												<?php if ($_item->getIsSalable()): ?>
+													<div class="stock action  btn-cart available"><span><?php /* @escapeNotVerified */ echo __('In stock') ?></span></div>
+												<?php else: ?>
+													<div class="stock action  btn-cart unavailable"><span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span></div>
+												<?php endif; ?>
+											<?php endif; ?>
+										<?php } ?>
+									
+									</div>
+								
+							</div>
+							
+							<div class="product details product-item-details box-info">
+								
+								<h2 class="product name product-item-name product-name">
+									<a class="product-item-link" title="<?php echo $block->escapeHtml($_item->getName()) ?>" href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($_item) ?>">
+										<?php echo $block->escapeHtml($_item->getName()) ?>
+									</a>
+								</h2>
+
+								<?php //echo $block->getReviewsSummaryHtml($_item, $templateType,true) ?>
+								<div class="price-compare">
+									<?php /* @escapeNotVerified */ echo $block->getProductPrice($_item); ?>
+									<?php if($_config->getAdvanced('show_compare_button')){?>
+											<?php if ($block->getAddToCompareUrl()): ?>
+												<?php  $compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare'); ?>
+												<a href="#" class="action tocompare btn-action link-compare" data-post='<?php /* @escapeNotVerified */ echo $compareHelper->getPostDataParams($_item);?>' data-role="add-to-links" title="<?php /* @escapeNotVerified */ echo __('Compare'); ?>">
+													<span><?php /* @escapeNotVerified */ echo __('Compare') ?></span>
+												</a>
+											<?php endif; ?>
+										<?php } ?>
+
+								</div>
+								
+							</div>
+							
+							
+						</div>
+					</div>
+					</div>
+				</div>
+				<?php endforeach ?>
+				
+			</div>
+        </div>
+	</div>
+<?php endif;?>

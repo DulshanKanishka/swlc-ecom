@@ -1,0 +1,11 @@
+<?php
+/** @var $block \Magebees\Promotionsnotification\Block\NotificationLink */
+$url = $block->getUrl("promotions", ['_secure' => true]);
+?>
+<?php if ($block->isEnable()) : ?>
+<li class="notification_link">
+    <a href="<?php /* @escapeNotVerified */ echo $url ?>" >
+        <?php echo __($block->escapeHtml($block->getLabel())); ?>
+    </a>
+</li>
+<?php endif; ?>

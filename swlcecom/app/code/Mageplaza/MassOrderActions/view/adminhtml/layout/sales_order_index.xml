@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_MassOrderActions
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Mageplaza_MassOrderActions::css/style.css"/>
+        <link src="Mageplaza_MassOrderActions::js/tracking-information.js"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Backend\Block\Template" name="mpmassorderactions_form_before" template="Mageplaza_MassOrderActions::form/before.phtml" before="-"/>
+            <block class="Magento\Backend\Block\Template" name="mpmassorderactions_comment_popup" template="Mageplaza_MassOrderActions::form/popup/comment.phtml" before="-">
+                <block class="Mageplaza\MassOrderActions\Block\Adminhtml\Comment\Edit" name="mpmassorderactions_comment_form" as="comment_form"/>
+            </block>
+            <block class="Magento\Backend\Block\Template" name="mpmassorderactions_invoice_popup" template="Mageplaza_MassOrderActions::form/popup/invoice.phtml" before="-">
+                <block class="Mageplaza\MassOrderActions\Block\Adminhtml\Invoice\Edit" name="mpmassorderactions_invoice_form" as="invoice_form"/>
+            </block>
+            <block class="Magento\Backend\Block\Template" name="mpmassorderactions_shipment_popup" template="Mageplaza_MassOrderActions::form/popup/shipment.phtml" before="-">
+                <block class="Mageplaza\MassOrderActions\Block\Adminhtml\Shipment\Edit" name="mpmassorderactions_shipment_form" as="shipment_form"/>
+            </block>
+            <block class="Magento\Backend\Block\Template" name="mpmassorderactions_invoice_shipment_popup" template="Mageplaza_MassOrderActions::form/popup/invoice-shipment.phtml" before="-">
+                <block class="Mageplaza\MassOrderActions\Block\Adminhtml\InvoiceShipment\Edit" name="mpmassorderactions_invoice_shipment_form" as="invoice_shipment_form"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,117 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Mageplaza
+ * @package    Mageplaza_PdfInvoice
+ * @copyright   Copyright (c) Mageplaza (http://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php //$_shipment = $block->getShipment() ?>
+<?php //$_order = $block->getOrder() ?>
+<?php
+$_shipment = $block->getShipments() ;
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$incrementId = $_shipment;
+$shipmentInterface = $objectManager->create('Magento\Sales\Api\Data\ShipmentInterface');
+$shipment = $shipmentInterface->loadByIncrementId($incrementId);
+//$invoice = $objectManager->create('sales/order_invoice')->loadByIncrementId($incrementId);
+$block->setInvoice($shipment);
+$_shipment = $shipment;
+?>
+<?php
+//$_order = $block->getOrder()
+$_order_id = $block->getOrderz();
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$incrementId = $_order_id;
+$orderInterface = $objectManager->create('Magento\Sales\Api\Data\OrderInterface');
+$_order = $orderInterface->loadByIncrementId($incrementId);
+$block->setOrder($_order);
+$_order_id = $_order;
+?>
+
+<?php if ($_shipment && $_order): ?>
+    <div class="table">
+        <div style="font-size: 14px;" class="mp-row mp-heading bord-und">
+            <div class="mp-item">
+                <span><?= /* @escapeNotVerified */
+                    __('Items'); ?><span>
+            </div>
+            <div style="width:27%" class="mp-sku">
+                <span>SKU</span>
+            </div>
+            <div class="mp-qty">
+                <span> <?= /* @escapeNotVerified */
+                    __('Qty'); ?></span>
+            </div>
+
+        </div>
+        <?php $i = 0; ?>
+        <?php foreach ($_shipment->getAllItems() as $_item): ?>
+            <?php
+            $block->setItem($_item);
+            $indexKey = $i % 2 == 0 ? "odd" : "even";
+            if ($block->isBundleItem()) {
+                echo $block->renderBundleItem($_item, $_order, $block->getShipmentType(), $indexKey, '', 'bundleitems.phtml');
+                $i++;
+                continue;
+            }
+
+            if ($_item->getOrderItem()->getParentItem()) {
+                continue;
+            }
+            $i++;
+            ?>
+            <div class="mp-row <?php echo $indexKey; ?>" >
+                <div class="mp-item">
+                    <p  style="font-size: 11px;" class="product-name"><?= $block->escapeHtml($_item->getName()) ?></p>
+
+                    <?php if ($block->getItemOptions()): ?>
+                        <p style="font-size: 11px;" >
+                            <?php foreach ($block->getItemOptions() as $option): ?>
+                                <strong><em><?= /* @escapeNotVerified */
+                                    $option['label'] ?>: </em></strong><?= /* @escapeNotVerified */
+                                nl2br($option['value']) ?>;
+                            <?php endforeach; ?>
+                        </p>
+                    <?php endif; ?>
+                    <?php $addInfoBlock = $block->getProductAdditionalInformationBlock(); ?>
+                    <?php if ($addInfoBlock) : ?>
+                        <?= $addInfoBlock->setItem($_item->getOrderItem())->toHtml() ?>
+                    <?php endif; ?>
+                    <?= $block->escapeHtml($_item->getDescription()) ?>
+                    <?php
+                    echo '';
+                    ?>
+                </div>
+                <div style="font-size: 11px;width:27%"  class="mp-sku-bc">
+                    <p style="font-size: 11px;" class="sku"><?= /* @escapeNotVerified */
+                        __('SKU: %1', $block->escapeHtml($block->getSku($_item))); ?></p>
+                </div>
+                <div  style="font-size: 11px;" class="mp-qty-bc">
+                    <span><?= /* @escapeNotVerified */
+                        $_item->getQty() * 1 ?></span>
+                </div>
+
+            </div>
+            <div class="clr"></div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>

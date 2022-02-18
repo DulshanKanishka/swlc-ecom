@@ -1,0 +1,22 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Magento\Theme\Block\Html\Header $block
+ */
+ 
+$_config = $this->helper('Sm\Aloza\Helper\Data');
+$footerStyle = $_config->getThemeLayout('footer_style');
+
+include($block->getTemplateFile("Magento_Theme::html/footer-style/" . $footerStyle . ".phtml"));
+
+?>
+<?php if($_config->getAdvanced('show_gototop')){ ?>
+	<a id="yt-totop" href="javascript:void(0)" title="Go to Top"></a>
+<?php } ?>
+

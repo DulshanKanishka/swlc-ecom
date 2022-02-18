@@ -1,0 +1,233 @@
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Storepickup
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+
+.mage-boder-box {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.views-wrapper{
+    .description {
+        padding-left: 15px;
+    }
+    .mage-boder-box;
+    *, &:before, &:after {
+        .mage-boder-box;
+    }
+    .table-wrap {
+        padding: 0;
+        .info-detail{
+            border: 1px solid #ececec;
+            padding: 0;
+            margin-bottom: 15px;
+            h2{
+                &.title-store {
+                    color: #fff;
+                    font-size: 14px;
+                    text-transform: capitalize;
+                    font-weight: 600;
+                    padding: 8px 15px 8px 40px;
+                    background: #428BCA url('../images/Shop_Info.png') no-repeat 15px center;;
+                    background-size: 18px;
+                    margin: 0 0 15px;
+                }
+                p {
+                    color: #464646;
+                    font-size: 12px;
+                    margin-bottom: 5px;
+                    line-height: 23px;
+                    width: 100%;
+                    padding-left: 15px;
+                }
+            }
+            .get_direction {
+                margin: 10px 0;
+                max-height: 500px;
+                border-top: 1px solid #ececec;
+                padding-top: 10px;
+                button{
+
+                }
+            }
+        }
+        .open_hour{
+            border: 1px solid #cccccc;
+            h2{
+                &.open_hour_title {
+                    color: #fff;
+                    font-size: 14px;
+                    padding: 8px 0 8px;
+                    background-color: #428BCA;
+                    margin-bottom: 0px;
+                    font-weight: 600;
+                    text-transform: none;
+                    margin-top: 0;
+                    span{
+                        &.glyphicon{
+                            padding-left: 15px;
+                            top: 4px;
+                        }
+                    }
+                }
+            }
+            table{
+                margin: 0;
+                .time-label {
+
+                }
+            }
+        }
+        .tab-content {
+            max-height: 300px;
+            overflow: auto;
+            border: 1px solid #ccc;
+            .open_time{
+                h3{
+                    font-size: 15px;
+                    font-weight: 600;
+                    border-bottom: 1px solid #ececec;
+                    padding-bottom: 5px;
+                    margin-bottom: 0;
+                    text-transform: uppercase;
+                }
+                .content1,
+                .content2{
+                    width: 50%;
+                    float: left;
+                }
+            }
+            li{
+                display: block;
+                float: left;
+                width: 100%;
+                padding: 10px 15px;
+                text-align: center;
+                border-bottom: 1px solid #ececec;
+            }
+        }
+        .tab_content{
+            &[class*=col-] {
+                padding: 0px 0px 0px 0px ;
+            }
+            .tabs{
+                padding: 0;
+                ul{
+                    padding: 0;
+                    margin: 0;
+                    li {
+                        display: block;
+                        float: left;
+                        width: 50%;
+                        padding: 10px 15px;
+                        text-align: center;
+                        background: #868686;
+                        cursor: pointer;
+                        margin: 0;
+                        color: #fff;
+                        &.active{
+                            background: #428BCA;
+                            color: #fff;
+                        }
+                        &.full-width{
+                            width: 100%;
+                            background: #428BCA;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+    .form-information {
+        h2 {
+            color: #fff;
+            font-size: 14px;
+            text-transform: capitalize;
+            font-weight: 600;
+            background-color: #428BCA;
+            padding: 7px 15px;
+        }
+        .magestore-map-image{
+            float: left;
+            padding: 7px 7px 6px;
+            border: 1px solid #428BCA;
+            background-color: #F5F5F5;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            img {
+                max-height: 260px;
+                min-height: 260px;
+                width: 100%;
+            }
+        }
+        .more-views{
+            border-top: 5px solid #ccc;
+            padding: 10px 0 0;
+            .slider-imgs
+            {
+                max-height: 260px;
+                min-height: 260px;
+                overflow: auto;
+                ul{
+                    padding: 0;
+                    margin-left: 15px;
+                    li {
+                        float:left;
+                        display: block;
+                        margin-right: 4px;
+                        padding: 4px;
+                        border: 1px solid #0282B7;
+                        border-radius: 3px;
+                        cursor: pointer;
+                        img{
+                            height:50px
+                        }
+                        &:hover{
+                            border: 1px solid darkred;
+                        }
+                    }
+                }
+            }
+        }
+        .store-pickup-img,
+        .small-imgages{
+            text-align: center;
+            clear: both;
+            color: #fff;
+            padding: 2px 0;
+            margin: 0;
+            background-image:-webkit-gradient(linear,left top,left bottom,from(#2e9fd2),to(#21759b));
+            background-image:-webkit-linear-gradient(top,#2e9fd2,#21759b);
+            background-image:-moz-linear-gradient(top,#2e9fd2,#21759b);
+            background-image:-ms-linear-gradient(top,#2e9fd2,#21759b);
+            background-image:-o-linear-gradient(top,#2e9fd2,#21759b);
+        }
+    }
+    .store-pickup-column-right{
+        p > span{
+            border-bottom: 2px solid #428BCA;
+            color: cornflowerblue;
+            font-size: 15px;
+            font-weight: bold;
+        }
+    }
+}
+
+@import "common";

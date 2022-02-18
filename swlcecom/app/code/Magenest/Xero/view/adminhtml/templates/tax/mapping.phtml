@@ -1,0 +1,72 @@
+<?php echo $block->getChildHtml('tax.mapping.switcher'); ?>
+<br />
+<br />
+<br />
+<br />
+<?php
+/** @var Magenest\Xero\Block\Adminhtml\Xero\Tax $block */
+$taxes = $block->getTaxes();
+if (!is_array($taxes)) {
+    echo ("<span class=\"title\" style=\"font-size: 11pt; font-weight: normal; font-style: italic\">");
+    echo __($taxes);
+    echo ("</span>");
+} else {
+    ?>
+    <section class="admin__page-section order-view-billing-shipping">
+
+        <div class="admin__page-section-content" style="width: 100%;">
+            <div class="admin__page-section-item order-payment-method admin__fieldset-wrapper" style="width: 100%;">
+                <div class="admin__page-section-item-title" style="width: 100%;">
+                <span class="title" style="font-size: 11pt; font-weight: normal; font-style: italic"><?php /* @escapeNotVerified */
+                    echo __('(Tax method will be converted to the corresponding Xero tax. Only enabled Tax method will display here.)') ?></span>
+                </div>
+                <div class="admin__page-section-item-content" style="width: 100%;">
+                    <button id="submit_mapping" style="width: 25%; margin-right: 20%;">Save Mapping</button>
+                    <button id="update_tax_rates" style="width: 25%;">Update Tax Rates</button>
+                    <form id="mapping_form">
+                        <table class="admin__table-secondary">
+                            <thead>
+                            <th>ID</th>
+                            <th>Tax Identifier</th>
+                            <th>Country</th>
+                            <th>Xero Tax</th>
+                            </thead>
+                            <tbody>
+                            <input name="form_key" type="hidden" value="<?php echo $block->getFormKey() ?>"/>
+                            <input name="website_id" type="hidden" value="<?php echo $block->getWebsiteId() ?>" />
+                            <?php foreach ($block->getTaxRates() as $code => $tax): ?>
+                                <?php $selectedAcc = $block->getSelectedMapping($code) ?>
+                                <tr>
+                                    <td><?php /* @escapeNotVerified */
+                                        echo isset($tax['tax_calculation_rate_id']) ? $tax['tax_calculation_rate_id'] : $code ?></td>
+                                    <td><?php /* @escapeNotVerified */
+                                        echo $code ?></td>
+                                    <td><?php /* @escapeNotVerified */
+                                        echo $tax['tax_country_id'] ?></td>
+                                    <td><select class="admin__control-select"
+                                                style="width: 400px; height: 30px;"
+                                                name="taxRateMapping<?php echo '['.$code.']'?>"
+                                        >
+                                            <option value="null">Default Tax in Sale Account (in Stores/Configuration)</option>
+                                            <?php foreach ($taxes as $tax): ?>
+                                                <option value="<?php echo $tax['TaxType']?>"
+                                                    <?php echo $tax['TaxType'] == $selectedAcc ? 'selected' : '' ?>>
+                                                    <?php echo isset($tax['TaxType'])
+                                                        ? '['.$tax['TaxType'].'] '
+                                                        : '';
+                                                    echo $tax['Name']?>
+                                                </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+<?php } ?>

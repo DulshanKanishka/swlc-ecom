@@ -1,0 +1,154 @@
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_MassOrderActions
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+.action-menu > li._parent {
+    position: relative;
+}
+
+.data-grid .data-grid-actions-cell .action-menu-item {
+    display: block;
+    cursor: pointer;
+    padding: 0 0 8px;
+}
+
+.page-actions-buttons {
+    display: block;
+}
+
+.mp-massorderactions-action-form {
+    display: none;
+}
+
+.mp-massorderactions-action-form .page-main-actions {
+    margin: 0 0 3rem;
+}
+
+.mp-massorderactions-action-form input[type='checkbox'] {
+    height: 16px;
+    margin: 8px 5px 0 0;
+    width: 16px;
+}
+
+.mp-massorderactions-action-form .mp-load-tracking {
+    position: relative;
+}
+
+.mp-massorderactions-action-form .mp-tracking-loader {
+    display: none;
+    position: absolute;
+    top: 3px;
+    width: 25px;
+    left: 105%;
+}
+
+/** tracking table css */
+#shipment_tracking_fieldset .admin__field-control.control, #invoice-shipment_tracking_fieldset .admin__field-control.control {
+    width: 80%;
+    margin: 0 11%;
+}
+
+#mp-massorderactions-order {
+    width: 100%;
+}
+
+#mp-massorderactions-order th.mp-order-cols {
+    background-color: #514943;
+    color: #fff;
+}
+
+#mp-massorderactions-order tr.mp-order-rows:hover {
+    background-color: #e5f7fe;
+}
+
+#mp-massorderactions-order td.mp-order-records, #mp-massorderactions-order th.mp-order-cols {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+#mp-massorderactions-order th.col-tracking {
+    width: 60%;
+}
+
+#mp-massorderactions-order th.col-id, #mp-massorderactions-order th.col-total {
+    width: 10%;
+}
+
+#mp-massorderactions-tracking {
+    width: 95%;
+    margin: 7px 7px 35px;
+}
+
+#mp-massorderactions-tracking th.col-action {
+    width: 10%;
+}
+
+#mp-massorderactions-tracking th.col-carrier {
+    width: 40%;
+}
+
+#mp-massorderactions-tracking th.col-title, #mp-massorderactions-tracking th.col-number {
+    width: 25%;
+}
+
+/** tracking content css */
+.mp-shipment-id {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.mp-tracking-info {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.mp-tracking-info b {
+    margin-left: 5px;
+}
+
+.mp-tracking-container {
+    margin-left: 7%;
+}
+
+.mp-shipment-container {
+    margin-bottom: 7px;
+}
+
+.action-menu .action-submenu {
+    position: sticky !important;
+    right: 0 !important;
+    margin-top: 20% !important;
+}
+
+#mp_shipment_tracking_info th.col-carrier {
+    padding: 5px;
+    text-align: center;
+    width: 30%;
+}
+
+#mp_shipment_tracking_info .col-shipment-id {
+    vertical-align: middle;
+}
+
+#mp_shipment_tracking_info td {
+    border: 1px solid #ddd;
+}

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magestore
+ * @package     Magestore_Storepickup
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <storepickup>
+            <general>
+                <enable_frontend>1</enable_frontend>
+                <display_toplink>1</display_toplink>
+                <order_type>0</order_type>
+                <page_title>Store Pickup</page_title>
+                <limit_day>30</limit_day>
+                <display_toplink>1</display_toplink>
+                <page_title>Store pickup</page_title>
+                <limit_image_gallery>30</limit_image_gallery>
+                <list_store_page_size>10</list_store_page_size>
+            </general>
+            <service>
+                <country_suggest_specificcountry>us</country_suggest_specificcountry>
+                <allow_facebook_comment>1</allow_facebook_comment>
+                <language_facebook>en_US</language_facebook>
+            </service>
+            <searching>
+                <search_criteria>1,2,3,4,5</search_criteria>
+                <default_radius>100</default_radius>
+                <distance_unit>1</distance_unit>
+            </searching>
+        </storepickup>
+        <carriers>
+            <storepickup>
+                <active>1</active>
+                <title>Store Pickup</title>
+                <name>Store Pickup</name>
+                <price>0</price>
+                <type>Store Pickup</type>
+                <display_pickuptime>1</display_pickuptime>
+                <time_interval>30</time_interval>
+                <sallowspecific>0</sallowspecific>
+                <model>Magestore\Storepickup\Model\Carrier\Method</model>
+                <type>1</type>
+                <specificerrmsg>This shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
+                <handling_type>F</handling_type>
+            </storepickup>
+        </carriers>
+    </default>
+</config>

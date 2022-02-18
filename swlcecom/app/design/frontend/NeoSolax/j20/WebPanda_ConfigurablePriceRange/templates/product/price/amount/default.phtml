@@ -1,0 +1,96 @@
+<?php /** @var \Magento\Framework\Pricing\Render\Amount $block */ ?>
+
+<?php
+$priceRangeHelper = $this->helper('\WebPanda\ConfigurablePriceRange\Helper\Data');
+?>
+<?php if ($priceRangeHelper->isEnabled() && $block->hasData('min_price') && $block->hasData('max_price') && $block->getMinPrice() < $block->getMaxPrice()): ?>
+    <?php if ($priceRangeHelper->displayLabels()): ?>
+        <span class="price-container <?= /* @escapeNotVerified */ $block->getAdjustmentCssClasses() ?>"
+            <?= $block->getSchema() ? ' itemprop="offers" itemscope itemtype="http://schema.org/Offer"' : '' ?>>
+            <div class="price-range-wrapper">
+                <span class="price-label"><?php /* @escapeNotVerified */ echo __(''); ?></span>
+                <span <?php if ($block->getPriceId()): ?> id="<?= /* @escapeNotVerified */ $block->getPriceId() ?>-from"<?php endif;?>
+                    <?= ($block->getPriceDisplayLabel()) ? 'data-label="' . $block->getPriceDisplayLabel() . $block->getPriceDisplayInclExclTaxes() . '"' : '' ?>
+                    data-price-amount="<?= /* @escapeNotVerified */ $block->getMinPrice() ?>"
+                    data-price-type="<?= /* @escapeNotVerified */ $block->getPriceType() ?>-from"
+                    class="price-wrapper <?= /* @escapeNotVerified */ $block->getPriceWrapperCss() ?>">
+                    <?php /* @escapeNotVerified */ echo $block->formatCurrency($block->getMinPrice(), (bool)$block->getIncludeContainer()); ?>
+                </span>
+                <span class="price-label"><?php /* @escapeNotVerified */ echo __('-'); ?></span>
+                <span <?php if ($block->getPriceId()): ?> id="<?= /* @escapeNotVerified */ $block->getPriceId() ?>-to"<?php endif;?>
+                    <?= ($block->getPriceDisplayLabel()) ? 'data-label="' . $block->getPriceDisplayLabel() . $block->getPriceDisplayInclExclTaxes() . '"' : '' ?>
+                    data-price-amount="<?= /* @escapeNotVerified */ $block->getMaxPrice() ?>"
+                    data-price-type="<?= /* @escapeNotVerified */ $block->getPriceType() ?>-to"
+                    class="price-wrapper <?= /* @escapeNotVerified */ $block->getPriceWrapperCss() ?>">
+                    <?php /* @escapeNotVerified */ echo $block->formatCurrency($block->getMaxPrice(), (bool)$block->getIncludeContainer()); ?>
+                </span>
+                <?php if ($block->hasAdjustmentsHtml()): ?>
+                    <?= $block->getAdjustmentsHtml() ?>
+                <?php endif; ?>
+                <?php if ($block->getSchema()): ?>
+                    <meta itemprop="price" content="<?= /* @escapeNotVerified */ $block->getDisplayValue() ?>" />
+                    <meta itemprop="priceCurrency" content="<?= /* @escapeNotVerified */ $block->getDisplayCurrencyCode() ?>" />
+                <?php endif; ?>
+            </div>
+
+            <!-- used only when the prices are equal after filtering -->
+            <div class="price-all-wrapper" style="display: none;">
+                <span class="price-label"><?php /* @escapeNotVerified */ echo __(''); ?></span>
+                <span id="<?= /* @escapeNotVerified */ $block->getPriceId() ?>-all" data-price-amount="" data-price-type="<?= /* @escapeNotVerified */ $block->getPriceType() ?>-all" class="price-wrapper"></span>
+            </div>
+        </span>
+    <?php else: ?>
+        <span class="price-container <?= /* @escapeNotVerified */ $block->getAdjustmentCssClasses() ?>"
+            <?= $block->getSchema() ? ' itemprop="offers" itemscope itemtype="http://schema.org/Offer"' : '' ?>>
+            <div class="price-range-wrapper">
+                <span <?php if ($block->getPriceId()): ?> id="<?= /* @escapeNotVerified */ $block->getPriceId() ?>-from"<?php endif;?>
+                    <?= ($block->getPriceDisplayLabel()) ? 'data-label="' . $block->getPriceDisplayLabel() . $block->getPriceDisplayInclExclTaxes() . '"' : '' ?>
+                    data-price-amount="<?= /* @escapeNotVerified */ $block->getMinPrice() ?>"
+                    data-price-type="<?= /* @escapeNotVerified */ $block->getPriceType() ?>-from"
+                    class="price-wrapper <?= /* @escapeNotVerified */ $block->getPriceWrapperCss() ?>">
+                    <?php /* @escapeNotVerified */ echo $block->formatCurrency($block->getMinPrice(), (bool)$block->getIncludeContainer()); ?>
+                </span>-
+                <span <?php if ($block->getPriceId()): ?> id="<?= /* @escapeNotVerified */ $block->getPriceId() ?>-to"<?php endif;?>
+                    <?= ($block->getPriceDisplayLabel()) ? 'data-label="' . $block->getPriceDisplayLabel() . $block->getPriceDisplayInclExclTaxes() . '"' : '' ?>
+                    data-price-amount="<?= /* @escapeNotVerified */ $block->getMaxPrice() ?>"
+                    data-price-type="<?= /* @escapeNotVerified */ $block->getPriceType() ?>-to"
+                    class="price-wrapper <?= /* @escapeNotVerified */ $block->getPriceWrapperCss() ?>">
+                    <?php /* @escapeNotVerified */ echo $block->formatCurrency($block->getMaxPrice(), (bool)$block->getIncludeContainer()); ?>
+                </span>
+                <?php if ($block->hasAdjustmentsHtml()): ?>
+                    <?= $block->getAdjustmentsHtml() ?>
+                <?php endif; ?>
+                <?php if ($block->getSchema()): ?>
+                    <meta itemprop="price" content="<?= /* @escapeNotVerified */ $block->getDisplayValue() ?>" />
+                    <meta itemprop="priceCurrency" content="<?= /* @escapeNotVerified */ $block->getDisplayCurrencyCode() ?>" />
+                <?php endif; ?>
+            </div>
+
+            <!-- used only when the prices are equal after filtering -->
+            <div class="price-all-wrapper" style="display: none;">
+                <span id="<?= /* @escapeNotVerified */ $block->getPriceId() ?>-all" data-price-amount="" data-price-type="<?= /* @escapeNotVerified */ $block->getPriceType() ?>-all" class="price-wrapper"></span>
+            </div>
+        </span>
+    <?php endif; ?>
+<?php else: ?>
+    <span class="price-container <?= /* @escapeNotVerified */ $block->getAdjustmentCssClasses() ?>"
+        <?= $block->getSchema() ? ' itemprop="offers" itemscope itemtype="http://schema.org/Offer"' : '' ?>>
+        <?php if ($priceRangeHelper->displayLabels()): ?>
+            <span class="price-label"><?php /* @escapeNotVerified */ echo __(''); ?></span>
+        <?php endif; ?>
+        <span <?php if ($block->getPriceId()): ?> id="<?= /* @escapeNotVerified */ $block->getPriceId() ?>"<?php endif;?>
+            <?= ($block->getPriceDisplayLabel()) ? 'data-label="' . $block->getPriceDisplayLabel() . $block->getPriceDisplayInclExclTaxes() . '"' : '' ?>
+            data-price-amount="<?= /* @escapeNotVerified */ $block->getDisplayValue() ?>"
+            data-price-type="<?= /* @escapeNotVerified */ $block->getPriceType() ?>"
+            class="price-wrapper <?= /* @escapeNotVerified */ $block->getPriceWrapperCss() ?>">
+        <?= /* @escapeNotVerified */ $block->formatCurrency($block->getDisplayValue(), (bool)$block->getIncludeContainer()) ?>
+    </span>
+        <?php if ($block->hasAdjustmentsHtml()): ?>
+            <?= $block->getAdjustmentsHtml() ?>
+        <?php endif; ?>
+        <?php if ($block->getSchema()): ?>
+            <meta itemprop="price" content="<?= /* @escapeNotVerified */ $block->getDisplayValue() ?>" />
+            <meta itemprop="priceCurrency" content="<?= /* @escapeNotVerified */ $block->getDisplayCurrencyCode() ?>" />
+        <?php endif; ?>
+</span>
+<?php endif; ?>

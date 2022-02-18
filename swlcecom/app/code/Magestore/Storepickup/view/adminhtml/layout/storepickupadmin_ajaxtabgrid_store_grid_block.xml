@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Storepickup
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <update handle="formkey"/>
+    <update handle="storepickupadmin_store_grid_block"/>
+    <referenceBlock name="storepickupadmin.store.grid">
+        <arguments>
+            <argument name="serialize_grid" xsi:type="boolean">true</argument>
+        </arguments>
+        <action method="setRowClickCallback">
+            <argument name="value" xsi:type="string">null</argument>
+        </action>
+        <action method="unsetChild">
+            <argument name="alias" xsi:type="string">grid.massaction</argument>
+        </action>
+        <action method="unsetChild">
+            <argument name="alias" xsi:type="string">grid.export</argument>
+        </action>
+    </referenceBlock>
+    <referenceBlock name="storepickupadmin.store.grid.columnSet">
+        <action method="unsetChild">
+            <argument name="alias" xsi:type="string">latitude</argument>
+        </action>
+        <action method="unsetChild">
+            <argument name="alias" xsi:type="string">longitude</argument>
+        </action>
+        <block class="Magestore\Storepickup\Block\Adminhtml\Widget\Grid\Column\StoreCheckboxes" as="checkbox_id" before="storepickup_id">
+            <arguments>
+                <argument name="header_css_class" xsi:type="string">a-center</argument>
+                <argument name="type" xsi:type="string">checkbox</argument>
+                <argument name="index" xsi:type="string">storepickup_id</argument>
+                <argument name="id" xsi:type="string">checkbox_id</argument>
+            </arguments>
+        </block>
+    </referenceBlock>
+</layout>

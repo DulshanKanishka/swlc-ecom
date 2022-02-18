@@ -1,0 +1,176 @@
+<?php
+/** \Magenest\AbandonedCart\Block\Adminhtml\Chart\AbandonedCart $block */
+?>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    getOpeningRatesChart = function () {
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Type');
+            data.addColumn('number', 'Value');
+            data.addRows([
+                <?php foreach($block->getOpeningRatesData() as $key => $value): ?>
+                ['<?php echo $key ?>', <?php echo $value ?>],
+                <?php endforeach; ?>
+            ]);
+            var options = {
+                'legend': {position: 'bottom', textStyle: {color: 'black', fontSize: 14}},
+                'title': 'Open Rate',
+                titleTextStyle: {
+                    fontSize: 15,
+                    bold: false
+                },
+                is3D: true,
+                pieSliceTextStyle: {
+                    fontSize: 15,
+                    color: '#41362f',
+                    bold: true,
+                    italic: true
+                },
+                'width': 500,
+                'height': 400,
+                tooltip: {textStyle: {color: 'black'}, showColorCode: true},
+                slices: {
+                    0: {color: '#ffcb4d'},
+                    1: {color: '#f49c5b'}
+                }
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('opening_rates_chart'));
+            chart.draw(data, options);
+        }
+    };
+    getClickingRatesChart = function () {
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Type');
+            data.addColumn('number', 'Value');
+            data.addRows([
+                <?php foreach($block->getClickingRatesData() as $key => $value): ?>
+                ['<?php echo $key ?>', <?php echo $value ?>],
+                <?php endforeach; ?>
+            ]);
+            var options = {
+                'legend': {
+                    position: 'bottom',
+                    textStyle: {color: 'black', fontSize: 14}
+                },
+                is3D: true,
+                'title': 'Click Rate',
+                titleTextStyle: {
+                    fontSize: 15,
+                    bold: false
+                },
+                pieSliceTextStyle: {
+                    fontSize: 15,
+                    color: '#41362f',
+                    bold: true,
+                    italic: true
+                },
+                'width': 500,
+                'height': 400,
+                tooltip: {
+                    textStyle: {color: 'black'},
+                    showColorCode: true
+                },
+                slices: {
+                    0: {color: '#ffcb4d'},
+                    1: {color: '#f49c5b'}
+                }
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('clicking_rates_chart'));
+            chart.draw(data, options);
+        }
+    };
+    getUnsubscribeRatesChart = function () {
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Type');
+            data.addColumn('number', 'Value');
+            data.addRows([
+                <?php foreach($block->getUnsubscribeRatesData() as $key => $value): ?>
+                ['<?php echo $key ?>', <?php echo $value ?>],
+                <?php endforeach; ?>
+            ]);
+            var options = {
+                'legend': {
+                    position: 'bottom',
+                    textStyle: {color: 'black', fontSize: 14}
+                },
+                is3D: true,
+                pieSliceTextStyle: {
+                    fontSize: 15,
+                    color: '#41362f',
+                    bold: true,
+                    italic: true
+                },
+                'title': 'Unsubscribe Rate',
+                titleTextStyle: {
+                    fontSize: 15,
+                    bold: false
+                },
+                'width': 500,
+                'height': 400,
+                tooltip: {
+                    textStyle: {color: 'black'},
+                    showColorCode: true
+                },
+                slices: {
+                    0: {color: '#ffcb4d'},
+                    1: {color: '#f49c5b'}
+                }
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('unsubscribe_rates_chart'));
+            chart.draw(data, options);
+        }
+    };
+    getEmailsLineData = function () {
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Date', 'Emails', 'Clicks', 'Opens'],
+                <?php foreach ($block->getEmailsLineData() as $line): ?>
+                [
+                    '<?php echo $line['send_at'] ?>',
+                    <?php echo $line['count'] ?>,
+                    <?php echo $line['click_count'] ?>,
+                    <?php echo $line['opened_count'] ?>
+                ],
+                <?php endforeach; ?>
+            ]);
+
+            var options = {
+                titleTextStyle: {
+                    fontSize: 20,
+                    bold: true
+                },
+                curveType: 'none',
+                animation: {
+                    startup: true,
+                    duration: 2000,
+                    easing: 'in'
+                },
+                lineWidth: 2,
+                'legend': {
+                    textStyle: {color: 'black', fontSize: 14}
+                },
+                colors: ['#FF6600', '#00FF00', '#0000bf']
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('emails_line_chart'));
+
+            chart.draw(data, options);
+        }
+    }
+</script>
+    

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magenest" translate="label" sortOrder="200">
+            <label>Magenest</label>
+        </tab>
+        <section id="magenest_xero_config" translate="label" type="button" sortOrder="90" showInDefault="1"
+                 showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Xero</label>
+            <tab>magenest</tab>
+            <resource>Magenest_Xero::config_xero</resource>
+            <group id="xero_informations" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Xero Account Informations</label>
+                <fieldset_css>xero-connection-app</fieldset_css>
+                <include path="Magenest_Xero::xero/applications.xml"/>
+                <include path="Magenest_Xero::xero/settings_account.xml"/>
+            </group>
+            <group id="synchronization" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
+                <label>Synchronization Settings</label>
+                <include path="Magenest_Xero::xero/synchronization.xml"/>
+            </group>
+            <!--<group id="magento_sync_xero" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="0" showInStore="0">-->
+            <!--<label>Sync all data from Magento to Xero</label>-->
+            <!--<field id="sync_button" translate="button_label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">-->
+            <!--<button_label>Add All Data To Queue</button_label>-->
+            <!--<frontend_model>Magenest\Xero\Block\System\Config\Form\Button</frontend_model>-->
+            <!--<attribute type="button_url">xero/queue/alldata</attribute>-->
+            <!--</field>-->
+            <!--</group>-->
+            <group id="magenest_xero_version" translate="label" type="text" sortOrder="100" showInDefault="1"
+                   showInWebsite="0" showInStore="0">
+                <label>Xero Integration Version</label>
+                <frontend_model>Magenest\Xero\Block\System\Config\Version\Info</frontend_model>
+            </group>
+        </section>
+    </system>
+</config>

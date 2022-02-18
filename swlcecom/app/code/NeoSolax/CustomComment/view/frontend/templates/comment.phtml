@@ -1,0 +1,20 @@
+<div id="feedback" data-bind="scope:'feedback'">
+    <br />
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+        {
+            "#feedback": {
+                "Magento_Ui/js/core/app": {
+                   "components": {
+                        "feedback": {
+                            "component": "NeoSolax_CustomComment/js/comment",
+                            "config": {
+                                "getFeedbackUrl": "<?php /* @escapeNotVerified */ echo $block->getFeedbackUrl(); ?>"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</div>

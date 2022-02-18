@@ -1,0 +1,52 @@
+<script>
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/alert'
+    ], function ($, alert) {
+        $(document).ready(function(){
+            console.log('js_loaded');
+            var submitButton =  $('#submit_mapping');
+            submitButton.click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo $block->getUrl('xero/payment/savemapping')?>",
+                    data: $('#mapping_form').serialize(),
+                    showLoader: true,
+                    success: function (response) {
+                        console.log(response);
+                        alert({
+                            content: response.msg,
+                            title: 'Save Mapping'
+                        });
+                    },
+                    fail: function(response) {
+                        console.log(response);
+                        alert({
+                            content: 'Failed to save mapping',
+                            title: 'Save Mapping'
+                        });
+                    }
+                });
+            });
+
+            var updateButton = $('#update_bank_accounts');
+            updateButton.click( function () {
+                $.ajax({
+                    type: "GET",
+                    url: "<?php echo $block->getUrl('xero/payment/updatebankaccounts')?>",
+                    data: {
+                        'website_id': '<?php echo $block->getRequest()->getParam('website') ? : 0; ?>'
+                    },
+                    showLoader: true,
+                    success: function () {
+                        location.reload();
+                    },
+                    fail: function () {
+                        location.reload();
+                    }
+                })
+            })
+        });
+
+    });
+</script>

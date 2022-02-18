@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <abandonedcart>
+            <general>
+                <enable>1</enable>
+            </general>
+            <setting>
+                <considered_member>60</considered_member>
+                <considered_coupon>0</considered_coupon>
+            </setting>
+            <mandrill>
+                <mandrill_enable>0</mandrill_enable>
+            </mandrill>
+            <nexmo>
+                <nexmo_enable>0</nexmo_enable>
+            </nexmo>
+        </abandonedcart>
+    </default>
+</config>

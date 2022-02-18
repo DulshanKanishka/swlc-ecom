@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Storepickup
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magestore\Storepickup\Controller\Adminhtml\Store">
+        <arguments>
+            <argument name="mainModelName" xsi:type="string">Magestore\Storepickup\Model\Store</argument>
+            <argument name="mainCollectionName" xsi:type="string">Magestore\Storepickup\Model\ResourceModel\Store\Collection</argument>
+        </arguments>
+    </type>
+    <type name="Magestore\Storepickup\Controller\Adminhtml\Order">
+        <arguments>
+            <argument name="mainModelName" xsi:type="string">Magento\Sales\Model\Order</argument>
+            <argument name="mainCollectionName" xsi:type="string">\Magento\Sales\Model\ResourceModel\Order\Collection</argument>
+        </arguments>
+    </type>
+    <type name="Magestore\Storepickup\Controller\Adminhtml\Tag">
+        <arguments>
+            <argument name="mainModelName" xsi:type="string">Magestore\Storepickup\Model\Tag</argument>
+            <argument name="mainCollectionName" xsi:type="string">Magestore\Storepickup\Model\ResourceModel\Tag\Collection</argument>
+        </arguments>
+    </type>
+    <type name="Magestore\Storepickup\Controller\Adminhtml\Holiday">
+        <arguments>
+            <argument name="mainModelName" xsi:type="string">Magestore\Storepickup\Model\Holiday</argument>
+            <argument name="mainCollectionName" xsi:type="string">Magestore\Storepickup\Model\ResourceModel\Holiday\Collection</argument>
+        </arguments>
+    </type>
+    <type name="Magestore\Storepickup\Controller\Adminhtml\Specialday">
+        <arguments>
+            <argument name="mainModelName" xsi:type="string">Magestore\Storepickup\Model\Specialday</argument>
+            <argument name="mainCollectionName" xsi:type="string">Magestore\Storepickup\Model\ResourceModel\Specialday\Collection</argument>
+        </arguments>
+    </type>
+    <type name="Magestore\Storepickup\Controller\Adminhtml\Schedule">
+        <arguments>
+            <argument name="mainModelName" xsi:type="string">Magestore\Storepickup\Model\Schedule</argument>
+            <argument name="mainCollectionName" xsi:type="string">Magestore\Storepickup\Model\ResourceModel\Schedule\Collection</argument>
+        </arguments>
+    </type>
+    <type name="Magestore\Storepickup\Controller\Adminhtml\Store\InlineEdit">
+        <arguments>
+            <argument name="mainCollectionName" xsi:type="string">Magestore\Storepickup\Model\ResourceModel\Store\Collection</argument>
+        </arguments>
+    </type>
+    <type name="Magestore\Storepickup\Controller\Adminhtml\Tag\InlineEdit">
+        <arguments>
+            <argument name="mainCollectionName" xsi:type="string">Magestore\Storepickup\Model\ResourceModel\Tag\Collection</argument>
+        </arguments>
+    </type>
+    <type name="Magestore\Storepickup\Controller\Adminhtml\Holiday\InlineEdit">
+        <arguments>
+            <argument name="mainCollectionName" xsi:type="string">Magestore\Storepickup\Model\ResourceModel\Holiday\Collection</argument>
+        </arguments>
+    </type>
+    <type name="Magestore\Storepickup\Controller\Adminhtml\Specialday\InlineEdit">
+        <arguments>
+            <argument name="mainCollectionName" xsi:type="string">Magestore\Storepickup\Model\ResourceModel\Specialday\Collection</argument>
+        </arguments>
+    </type>
+    <type name="Magestore\Storepickup\Controller\Adminhtml\Schedule\InlineEdit">
+        <arguments>
+            <argument name="mainCollectionName" xsi:type="string">Magestore\Storepickup\Model\ResourceModel\Schedule\Collection</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Config\Model\Config\Structure\Element\Field">
+        <plugin name="custom_field" type="Magestore\Storepickup\Plugin\Config\Structure\Element\Field"/>
+    </type>
+<!--    <preference for="Magento\Sales\Model\Order\Pdf\Invoice" type="Magestore\Storepickup\Model\Order\Pdf\Invoice" />-->
+<!--    <preference for="Magento\Sales\Model\Order\Pdf\Shipment" type="Magestore\Storepickup\Model\Order\Pdf\Shipment" />-->
+<!--    <preference for="Magento\Sales\Model\Order\Pdf\Creditmemo" type="Magestore\Storepickup\Model\Order\Pdf\Creditmemo" />-->
+</config>

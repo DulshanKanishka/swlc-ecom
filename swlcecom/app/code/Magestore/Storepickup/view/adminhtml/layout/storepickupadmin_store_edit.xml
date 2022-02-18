@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Storepickup
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Store pickup</title>
+        <css src="Magestore_Storepickup::css/gallery.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magestore\Storepickup\Block\Adminhtml\Store\Edit" name="storepickup_store_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Magestore\Storepickup\Block\Adminhtml\Store\Edit\Tabs" name="store_edit_tabs">
+                <block class="Magestore\Storepickup\Block\Adminhtml\Store\Edit\Tab\GeneralTab" name="store_edit_tab_general"/>
+                <block class="Magestore\Storepickup\Block\Adminhtml\Store\Edit\Tab\GmapTab" name="store_edit_tab_gmap">
+                    <block class="Magestore\Storepickup\Block\Adminhtml\Store\Edit\Tab\GmapTab\Region" name="store_edit_region_updater"/>
+                </block>
+                <block class="Magestore\Storepickup\Block\Adminhtml\Store\Edit\Tab\ImageGalleryTab" name="store_edit_tab_imagegallery"/>
+                <block class="Magestore\Storepickup\Block\Adminhtml\Store\Edit\Tab\ScheduleTab" name="store_edit_tab_schedule"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

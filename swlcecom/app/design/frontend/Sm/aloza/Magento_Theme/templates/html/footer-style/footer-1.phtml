@@ -1,0 +1,70 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+$_config = $this->helper('Sm\Aloza\Helper\Data');
+?>
+<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('block-policyshop-ft')->toHtml(); ?>
+<div class="footer-container">
+	<div class="footer-wrapper">
+		<div class="container">
+			<div class="footer-top">
+				<div class="row">
+					<div class="col-md-4 col-sm-12 col-xs-12 about-footer">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('block-about-ft')->toHtml(); ?>
+					</div>
+					
+					<div class="col-md-4 col-sm-6 col-xs-12 inner-ft">
+						<div class="row">
+							<div class="col-sm-6">
+								<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('block-link-ft')->toHtml(); ?>
+							</div>
+							<div class="col-sm-6">
+								<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('block-information-ft')->toHtml(); ?>
+							</div>
+						</div>
+					
+					</div>
+					
+					<div class="col-md-4 col-sm-6 col-xs-12 block-socials">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('block-newletter-ft')->toHtml(); ?>
+						
+					</div>
+					
+					
+					
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<div >
+						<?php if($_config->getAdvanced('custom_copyright')){ ?>
+							<address><?php echo $_config->getAdvanced('copyright_content') ?></address>
+						<?php } else {?>
+							<address><?php /* @escapeNotVerified */ echo $block->getCopyright() ?></address>
+						<?php } ?>
+					</div>
+					
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 footer-payment">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('payment-footer')->toHtml(); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+</div>
+
+
+	
+
+

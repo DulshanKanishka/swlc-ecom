@@ -1,0 +1,75 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_MassOrderActions
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+/** @var \Mageplaza\MassOrderActions\Block\Adminhtml\System\Actions $block */
+$_value = $block->getElement()->getValue();
+?>
+<div class="design_theme_ua_regexp" id="mp-grid-sort-actions">
+    <div class="admin__control-table-wrapper">
+        <table class="admin__control-table">
+            <thead>
+            <tr>
+                <?php foreach ($block->getColumns() as $columnName => $column): ?>
+                    <th class="col-<?php echo $columnName ?>"><?php echo $column['label']; ?></th>
+                <?php endforeach; ?>
+            </tr>
+            </thead>
+            <tbody data-role="options-container">
+            <?php foreach ($block->getMassActions() as $massAction):
+                $_selected = isset($_value['selected'][$massAction['type']]);
+                $_hasPosition = isset($_value['position'][$massAction['type']]);
+                ?>
+                <tr>
+                    <td class="col-selected control-table-actions-cell">
+                        <input class="input-selected"
+                                type="checkbox"
+                                name="groups[general][fields][actions][value][selected][<?php echo $massAction['type'] ?>]"
+                                value="<?php echo $_selected ? 1 : 0 ?>" <?php echo $_selected ? 'checked' : '' ?>
+                                onchange="this.value = this.checked ? 1: 0"/>
+                    </td>
+                    <td class="col-action control-table-actions-cell">
+                        <span><?php echo $massAction['label'] ?></span>
+                    </td>
+                    <td class="col-position control-table-actions-cell">
+                        <input name="groups[general][fields][actions][value][position][<?php echo $massAction['type'] ?>]"
+                                value="<?php echo $_hasPosition ? $_value['position'][$massAction['type']] : $massAction['value'] - 1 ?>"
+                                class="required-entry validate-zero-or-greater validate-digits input-position"
+                                type="text"/>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    require(['jquery'], function ($) {
+        if ($('#mpmassorderactions_general_actions_inherit').prop('checked') === true) {
+            $('#row_mpmassorderactions_general_actions .input-selected').each(function () {
+                $(this).prop('disabled', true);
+                $(this).prop('checked', true);
+            });
+            $('#row_mpmassorderactions_general_actions .input-position').each(function () {
+                $(this).prop('disabled', true);
+            });
+        }
+    });
+</script>

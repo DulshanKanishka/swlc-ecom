@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="abandonedcart_item1"
+              label="Abandoned Cart Item 1"
+              file="abandonedcart_item1.html"
+              type="html"
+              module="Magenest_AbandonedCart"
+              area="frontend"
+    />
+    <template id="abandonedcart_item2"
+              label="Abandoned Cart Item 2"
+              file="abandonedcart_item2.html"
+              type="html"
+              module="Magenest_AbandonedCart"
+              area="frontend"
+    />
+    <template id="abandonedcart_item3"
+              label="Abandoned Cart Item 3"
+              file="abandonedcart_item3.html"
+              type="html"
+              module="Magenest_AbandonedCart"
+              area="frontend"
+    />
+    <template id="abandonedcart_item4"
+              label="Abandoned Cart Item 4"
+              file="abandonedcart_item4.html"
+              type="html"
+              module="Magenest_AbandonedCart"
+              area="frontend"
+    />
+</config>

@@ -1,0 +1,42 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_MassOrderActions
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+/** @var \Magento\Backend\Block\Template $block */
+?>
+<div id="mp-massorderactions-comment-form" class="mp-massorderactions-action-form">
+    <div class="page-main-actions">
+        <div class="page-actions" data-ui-id="page-actions-toolbar-content-header">
+            <div class="page-actions-inner" data-title="<?php echo __('Submit Comment') ?>">
+                <div class="page-actions-buttons">
+                    <button id="submit_comment" title="<?php echo __('Submit Comment') ?>" type="button"
+                            class="scalable primary"
+                            data-ui-id="mp-massorderactions-comment-form-container-button"
+                            onclick="mpMassOrderAction.submitComment();">
+                        <span><?php echo __('Submit Comment') ?></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="page:main-container" class="page-columns">
+        <?php echo $this->getChildHtml('comment_form'); ?>
+    </div>
+</div>

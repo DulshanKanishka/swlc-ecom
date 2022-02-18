@@ -1,0 +1,87 @@
+<style>
+    .note-import-blacklist {
+        font-size: 13px;
+        line-height: 1.5;
+        margin: 1em 0;
+    }
+</style>
+<div>
+    <div id="messages">
+        <div class="messages">
+            <div class="message message-notice notice">
+                <div data-ui-id="messages-message-notice">Make sure your file isn't more than 2M.</div>
+            </div>
+        </div>
+    </div>
+    <table>
+        <tr>
+            <td colspan="2">
+                <p class="note-import-blacklist">
+                    <?=
+                    __('Hi there! Upload a CSV file containing address (email/phone number) to import the contents into your shop. Choose a .csv file to upload, then click "Upload file and import".');
+                    ?>
+                </p>
+                <p class="note-import-blacklist">
+                    <?= __('Your CSV needs to include columns in a Blacklist. Click here to download a sample.') ?>
+                    <label class="addafter" for="entity">
+                    <span id="sample-file-span" class="no-display" style="display: inline;">
+                        <a id="sample-file-link" target="_blank"
+                           href="<?= $block->getUrl('*/*/download/', ['filename' => 'blacklist']) ?>">
+                            <?= __('Click here to download a sample.') ?>
+                        </a>
+                    </span>
+                    </label>
+                </p>
+            </td>
+        </tr>
+    </table>
+    <form id="form_import" action="<?php echo $block->getUrl('*/*/save'); ?>" method="POST"
+          enctype="multipart/form-data">
+        <?php echo $block->getBlockHtml('formkey'); ?>
+        <table>
+            <tr>
+                <th>
+                    <?= __('Choose a file from your computer:'); ?>
+                </th>
+                <td>
+                    <input id="blacklist"
+                           style="margin-left: 30px;"
+                           type="file"
+                           name="blacklist"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button id="import-blacklist" style="margin-top: 10px;"
+                            type="submit"><?= __('Upload file and import') ?></button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script>
+    require([
+        'jquery',
+        'jquery/ui',
+        'jquery/validate',
+        'mage/translate'
+    ], function ($) {
+        $(document).ready(function () {
+            $('#import-blacklist').click(function (e) {
+                //stop submitting the form to see the disabled button effect
+                e.preventDefault();
+                var file = document.getElementById('blacklist').value;
+                console.log(file.indexOf(".sql"));
+                if (file.indexOf(".sql") > 0) {
+                    console.log('1');
+                    var noti = '<i style="clear: both;display: block;color: red;margin-left: 28px;">You must upload file csv.</i>';
+                    $('#blacklist').after(noti);
+                    return false;
+                } else {
+                    console.log('2');
+                    $('#form_import').submit();
+                }
+            });
+        });
+    });
+</script>

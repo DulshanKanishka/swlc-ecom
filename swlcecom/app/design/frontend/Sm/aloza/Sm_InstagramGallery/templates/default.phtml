@@ -1,0 +1,51 @@
+<?php
+/*------------------------------------------------------------------------
+# SM Instagram Gallery - Version 2.0.1
+# Copyright (c) 2016 YouTech Company. All Rights Reserved.
+# @license - Copyrighted Commercial Software
+# Author: YouTech Company
+# Websites: http://www.magentech.com
+-------------------------------------------------------------------------*/
+
+$helper = $this->_helper();
+//$tag_id = 'sm_instagram_gallery_1';
+$tag_id = 'sm_instagram_gallery_' . time() . rand();
+?>
+<div class="sm-instagram block full-wrapper">
+	<div class="full-content">
+	<p class="pre-text"><?php echo __('J20-sports 2020');?></p>
+	<?php if ($this->_getConfig('display_title', 1)) { ?>
+		<?php if ($this->_getConfig('title')) { ?>
+			<div class="title-home">
+			   <?php echo $this->_getConfig('title', 'Sm Instagram Gallery'); ?>
+			</div>
+		<?php } ?>
+	<?php } ?>
+
+	<?php if ($this->_getConfig('pretext') != null) { ?>
+		<div class="bs-pretext">
+			<?php 
+				echo $this->_getConfig('pretext');
+			
+			 ?>
+		</div>
+	<?php } ?>
+
+	<div id="<?php echo $tag_id; ?>" class="sm-instagram-gallery">
+		<div class="instagram-wrap">
+			<!-- End Tabs-->
+			<div class="instagram-items-container" ><!--Begin Items-->
+				<?php 
+					echo $this->getLayout()->createBlock("Sm\InstagramGallery\Block\InstagramGallery")->setTemplate("Sm_InstagramGallery::default_items.phtml")->toHtml();
+				?>
+			</div>
+			<!--End Items-->
+		</div>
+	</div><!-- End Sm-twitter-products -->
+	<?php if ($this->_getConfig('posttext') != null) { ?>
+		<div class="bs-posttext">
+			<?php echo $this->_getConfig('posttext'); ?>
+		</div>
+	<?php } ?>
+	</div>
+</div>

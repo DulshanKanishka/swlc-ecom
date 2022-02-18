@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+<!--                <item name="attributeImport" xsi:type="object">NeoSolax\DataImport\Console\Command\ImportAttribute</item>-->
+<!--                <item name="productImport" xsi:type="object">NeoSolax\DataImport\Console\Command\ImportProduct</item>-->
+<!--                <item name="productCategory" xsi:type="object">NeoSolax\DataImport\Console\Command\ImportCategory</item>-->
+<!--                <item name="configurableProductCategory" xsi:type="object">NeoSolax\DataImport\Console\Command\ImportConfigurableProduct</item>-->
+<!--                <item name="ImportAditionalOption" xsi:type="object">NeoSolax\DataImport\Console\Command\ImportAditionalOption</item>-->
+<!--                <item name="ImportUPsells" xsi:type="object">NeoSolax\DataImport\Console\Command\ImportUPsells</item>-->
+<!--                <item name="ImportProductImage" xsi:type="object">NeoSolax\DataImport\Console\Command\ImportProductImage</item>-->
+<!--                <item name="ImportStockQty" xsi:type="object">NeoSolax\DataImport\Console\Command\ImportStockQty</item>-->
+<!--                <item name="ImportSwatchImages" xsi:type="object">NeoSolax\DataImport\Console\Command\ImportSwatchImages</item>-->
+<!--                <item name="ImportProductTime" xsi:type="object">NeoSolax\DataImport\Console\Command\ImportProductTime</item>-->
+<!--                <item name="ImportProductPosition" xsi:type="object">NeoSolax\DataImport\Console\Command\ImportProductPosition</item>-->
+<!--                <item name="orderGridImport" xsi:type="object">NeoSolax\DataImport\Console\Command\ImportOrderGrid</item>-->
+            </argument>
+        </arguments>
+    </type>
+</config>

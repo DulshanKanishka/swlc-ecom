@@ -1,0 +1,36 @@
+<?php
+/** @var \Magento\Catalog\Pricing\Render\FinalPriceBox $block */
+$idSuffix = $block->getIdSuffix() ? $block->getIdSuffix() : '';
+$schema = ($block->getZone() == 'item_view') ? true : false;
+
+$saleableProduct = $block->getSaleableItem();
+$finalPriceModel = $block->getPriceType('final_price');
+
+if ($saleableProduct->hasData('min_price') && $saleableProduct->hasData('max_price')) {
+    $minimumPrice = ($block->hasSpecialPrice()) ? $finalPriceModel->getAmount()->getValue() : $saleableProduct->getMinPrice();
+    $maximumPrice = $saleableProduct->getMaxPrice();
+} else {
+    $priceHelper = $this->helper('\WebPanda\ConfigurablePriceRange\Helper\Data');
+    $minimumPrice = ($priceHelper->getMinFinalAmount($saleableProduct)) ? $priceHelper->getMinFinalAmount($saleableProduct)->getValue() : 0;
+    $maximumPrice = ($priceHelper->getMaxFinalAmount($saleableProduct)) ? $priceHelper->getMaxFinalAmount($saleableProduct)->getValue() : 0;
+}
+
+if ($minimumPrice && $maximumPrice) {
+    $renderAmount = $block->renderAmount($finalPriceModel->getAmount(), [
+        'price_id'          => $block->getPriceId('product-price-' . $idSuffix),
+        'price_type'        => 'priceRange',
+        'include_container' => true,
+        'schema'            => $schema,
+        'min_price'         => $minimumPrice,
+        'max_price'         => $maximumPrice,
+    ]);
+} else {
+    $renderAmount = $block->renderAmount($finalPriceModel->getAmount(), [
+        'price_id'          => $block->getPriceId('product-price-' . $idSuffix),
+        'price_type'        => 'priceRange',
+        'include_container' => true,
+        'schema'            => $schema
+    ]);
+}
+
+echo $renderAmount;

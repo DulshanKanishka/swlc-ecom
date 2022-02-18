@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page 
+	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+		<move element="notification.link" destination="header.links" before="-" />
+ 		<referenceBlock name="top.links">
+			<block class="Magebees\Promotionsnotification\Block\NotificationLink" name="notification.link" template="Magebees_Promotionsnotification::notificationlink.phtml" ifconfig='promotions/general/enabled' before="-" />
+		</referenceBlock>
+	</body>
+</page>

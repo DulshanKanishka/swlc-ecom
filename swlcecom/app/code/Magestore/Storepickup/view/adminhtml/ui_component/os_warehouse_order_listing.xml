@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <!--<listingToolbar>-->
+        <!--<massaction name="listing_massaction">-->
+            <!--<action name="storepickup_repare">-->
+                <!--<argument name="data" xsi:type="array">-->
+                    <!--<item name="config" xsi:type="array">-->
+                        <!--<item name="type" xsi:type="string">prepare</item>-->
+                        <!--<item name="label" xsi:type="string" translate="true">Update storepickup status to Prepare</item>-->
+                        <!--<item name="url" xsi:type="url" path="storepickupadmin/order/massPrepare"/>-->
+                    <!--</item>-->
+                <!--</argument>-->
+            <!--</action>-->
+            <!--<action name="storepickup_wait">-->
+                <!--<argument name="data" xsi:type="array">-->
+                    <!--<item name="config" xsi:type="array">-->
+                        <!--<item name="type" xsi:type="string">wait</item>-->
+                        <!--<item name="label" xsi:type="string" translate="true">Update storepickup status to Wait for Pickup</item>-->
+                        <!--<item name="url" xsi:type="url" path="storepickupadmin/order/massWait"/>-->
+                    <!--</item>-->
+                <!--</argument>-->
+            <!--</action>-->
+            <!--<action name="storepickup_received">-->
+                <!--<argument name="data" xsi:type="array">-->
+                    <!--<item name="config" xsi:type="array">-->
+                        <!--<item name="type" xsi:type="string">received</item>-->
+                        <!--<item name="label" xsi:type="string" translate="true">Update storepickup status to Received</item>-->
+                        <!--<item name="url" xsi:type="url" path="storepickupadmin/order/massReceived"/>-->
+                    <!--</item>-->
+                <!--</argument>-->
+            <!--</action>-->
+        <!--</massaction>-->
+    <!--</listingToolbar>-->
+    <columns name="sales_order_columns">
+        <column name="storepickup_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magestore\Storepickup\Model\ResourceModel\Store\Collection</item>
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Store Pickup</item>
+                </item>
+            </argument>
+        </column>
+        <column name="storepickup_time" class="Magento\Ui\Component\Listing\Columns\Date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">dateRange</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">Storepickup Date</item>
+                    <item name="dateFormat" xsi:type="string">MMM dd, YYYY, H:mm:ss A</item>
+                </item>
+            </argument>
+        </column>
+        <!--<column name="storepickup_status">-->
+            <!--<argument name="data" xsi:type="array">-->
+                <!--<item name="options" xsi:type="object">Magestore\Storepickup\Model\ResourceModel\Orders\StorepickupStatus</item>-->
+                <!--<item name="config" xsi:type="array">-->
+                    <!--<item name="filter" xsi:type="string">select</item>-->
+                    <!--<item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>-->
+                    <!--<item name="dataType" xsi:type="string">select</item>-->
+                    <!--<item name="label" xsi:type="string" translate="true">Storepickup Status</item>-->
+                <!--</item>-->
+            <!--</argument>-->
+        <!--</column>-->
+    </columns>
+</listing>

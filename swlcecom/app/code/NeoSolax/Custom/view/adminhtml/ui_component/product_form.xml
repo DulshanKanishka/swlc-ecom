@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="sources" sortOrder="5" component="Magento_InventoryCatalogAdminUi/js/product/form/source-items">
+        <dynamicRows name="assigned_sources" component="Magento_Ui/js/dynamic-rows/dynamic-rows-grid"
+                     template="ui/dynamic-rows/templates/grid" sortOrder="20">
+            <container name="record" component="Magento_Ui/js/dynamic-rows/record">
+                <field name="shelf_location" formElement="input" sortOrder="80">
+                    <settings>
+                        <dataType>text</dataType>
+                        <dataScope>shelf_location</dataScope>
+                        <label translate="true">Shelf Location</label>
+                    </settings>
+                </field>
+            </container>
+        </dynamicRows>
+    </fieldset>
+    <modal name="advanced_inventory_modal">
+        <fieldset name="stock_data">
+            <container name="container_amasty_preorder_note">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+<!--                        <item name="label" xsi:type="string"></item>-->
+                        <item name="label" xsi:type="string" translate="true">Empty-Val</item>
+                        <item name="scopeLabel" xsi:type="string" translate="true">Empty-Val</item>
+                        <!--                        <item name="scopeLabel" xsi:type="string"></item>-->
+                    </item>
+                </argument>
+            </container>
+            <container name="container_amasty_preorder_cart_label">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Empty-Val</item>
+                        <item name="scopeLabel" xsi:type="string" translate="true">Empty-Val</item>
+                    </item>
+                </argument>
+            </container>
+        </fieldset>
+    </modal>
+
+<!--    <fieldset name="stock_data">-->
+<!--        <argument name="data" xsi:type="array">-->
+<!--            <item name="config" xsi:type="array">-->
+<!--                <item name="label" xsi:type="string"></item>-->
+<!--                <item name="scopeLabel" xsi:type="string"></item>-->
+<!--            </item>-->
+<!--        </argument>-->
+<!--    </fieldset>-->
+</form>

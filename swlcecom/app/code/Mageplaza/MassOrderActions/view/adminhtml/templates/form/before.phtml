@@ -1,0 +1,202 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_MassOrderActions
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+/** @var \Magento\Backend\Block\Template $block */
+/** @var \Mageplaza\MassOrderActions\Helper\Data $helper */
+$helper = $this->helper(\Mageplaza\MassOrderActions\Helper\Data::class);
+?>
+<script type="text/javascript">
+    require([
+        'jquery',
+        'uiRegistry'
+    ], function ($, registry) {
+        mpMassOrderAction = {
+            /** Comment popup form functions */
+            submitComment: function () {
+                var commentForm  = $('#mp-massorderactions-comment-form form'),
+                    commentPopup = $('#mp-massorderactions-comment-form');
+                this.massActionAjax(commentPopup, commentForm);
+            },
+
+            /** Process & create new order invoice */
+            submitInvoice: function () {
+                var invoiceForm  = $('#mp-massorderactions-invoice-form form'),
+                    invoicePopup = $('#mp-massorderactions-invoice-form');
+                this.massActionAjax(invoicePopup, invoiceForm);
+            },
+
+            /** Process,create & print invoice function */
+            printInvoice: function (isPrint = 'is_print') {
+                var invoiceForm = $('#mp-massorderactions-invoice-form form'),
+                    data        = invoiceForm.serialize() + '&' + $.param(mpmassorderactions_Selections);
+                if (invoiceForm.valid()) {
+                    window.location.href = '<?php echo $block->getUrl(
+                        'mpmassorderactions/order/massInvoice',
+                        ['form_key' => $block->getFormKey()]
+                    );?>' + '?' + data + '&' + isPrint + '=1';
+                }
+                setTimeout(function(){ window.location.reload(false); }, 3000);
+            },
+
+            /** Process & create new order shipment */
+            submitShipment: function () {
+                var shipmentForm  = $('#mp-massorderactions-shipment-form form'),
+                    shipmentPopup = $('#mp-massorderactions-shipment-form');
+                this.massActionAjax(shipmentPopup, shipmentForm);
+            },
+
+            /** Process,create & print shipment function */
+            printShipment: function (printType, isPrint = 'is_print') {
+                var shipmentForm = $('#mp-massorderactions-shipment-form form'),
+                    data         = shipmentForm.serialize() + '&' + $.param(mpmassorderactions_Selections);
+                if (shipmentForm.valid()) {
+                    window.location.href = '<?php echo $block->getUrl(
+                        'mpmassorderactions/order/massShipment',
+                        ['form_key' => $block->getFormKey()]
+                    );?>' + '?' + data + '&print_type=' + printType + '&' + isPrint + '=1';
+                }
+                setTimeout(function(){ window.location.reload(false); }, 3000);
+            },
+
+            /** Process & create new order invoice + shipment */
+            submitInvoiceShipment: function () {
+                var invoiceShipmentForm  = $('#mp-massorderactions-invoice-shipment-form form'),
+                    invoiceShipmentPopup = $('#mp-massorderactions-invoice-shipment-form');
+                this.massActionAjax(invoiceShipmentPopup, invoiceShipmentForm);
+            },
+
+            /** Process,create & print invoice + shipment function */
+            printInvoiceShipment: function (printType) {
+                var invoiceShipmentForm = $('#mp-massorderactions-invoice-shipment-form form'),
+                    data                = invoiceShipmentForm.serialize() + '&' + $.param(mpmassorderactions_Selections);
+                if (invoiceShipmentForm.valid()) {
+                    window.location.href = '<?php echo $block->getUrl(
+                        'mpmassorderactions/order/massInvoiceShipment',
+                        ['form_key' => $block->getFormKey(), 'is_print' => true]
+                    );?>' + '?' + data + '&print_type=' + printType;
+                }
+                setTimeout(function(){ window.location.reload(false); }, 3000);
+            },
+
+            /** Ajax load tracking number table */
+            loadTracking: function (event) {
+                var data           = $.param(mpmassorderactions_Selections),
+                    actionForm     = $(event.target).parents('.mp-massorderactions-action-form'),
+                    trackingLoader = actionForm.find('.mp-tracking-loader');
+                var el             = this;
+                trackingLoader.show();
+                $.ajax({
+                    type: "POST",
+                    url: '<?php echo $block->getUrl(
+                        'mpmassorderactions/order_shipment/newAction',
+                        ['form_key' => $block->getFormKey()]
+                    );?>',
+                    data: data,
+                    success:
+                        function (response) {
+                            if (response.ajaxRedirect) {
+                                window.location.href = response.ajaxRedirect;
+                            }
+                            if (response.status) {
+                                actionForm.find('.mp-massorderactions-tracking-wrapper').html(response.tracking_html);
+                            } else {
+                                actionForm.find('.mp-massorderactions-tracking-wrapper').html(el.errorMessageHtml(response.tracking_html));
+                            }
+                        },
+                    complete: function () {
+                        trackingLoader.hide();
+                    }
+                });
+            },
+
+            /** Mass action ajax submit function */
+            massActionAjax: function (popup, form) {
+                var data = form.serialize() + '&' + $.param(mpmassorderactions_Selections),
+                    el   = this;
+                if (form.valid()) {
+                    $('body').loader('show');
+                    $.ajax({
+                        type: "POST",
+                        url: form.attr('action'),
+                        data: data,
+                        success:
+                            function (response) {
+                                if (response.ajaxRedirect) {
+                                    window.location.href = response.ajaxRedirect;
+                                }
+                                if (response.status) {
+                                    popup.trigger('closeModal');
+                                    $('.mp-massorderactions-message.action-message').html(response.result_html);
+                                    el.updateGrid();
+                                    form[0].reset();
+                                }
+                            },
+                        complete: function () {
+                            $('body').loader('hide');
+                        },
+                        error: function (e) {
+                            popup.trigger('closeModal');
+                            $('.mp-massorderactions-message.action-message').html(e.responseText);
+                            el.updateGrid();
+                            form[0].reset();
+                        }
+                    });
+                }
+            },
+
+            /** Disable/enable append comment checkbox */
+            isAppendComment: function (event) {
+                var fieldSet             = $(event.target).parents('fieldset');
+                var appendCommentElement = $(fieldSet).find('input.comment_customer_notify'),
+                    isSendEmail          = $(fieldSet).find('input.send_email').val();
+                debugger;
+                if (isSendEmail === '1') {
+                    appendCommentElement.prop('disabled', false);
+                } else {
+                    appendCommentElement.prop('disabled', true);
+                }
+            },
+
+            /** Reload current grid */
+            updateGrid: function () {
+                var grid   = 'sales_order_grid.sales_order_grid_data_source';
+                var target = registry.get(grid);
+                if (target && typeof target === 'object') {
+                    target.set('params.t ', Date.now());
+                }
+            },
+
+            /** Get error message in html */
+            errorMessageHtml: function (messageText) {
+                return '<div class="messages">' +
+                    '<div class="message message-error error">' +
+                    '<div data-ui-id="magento-framework-view-element-messages-0-message-error">' +
+                    messageText +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+            }
+        };
+
+        window.mpIsAutoLoadTracking = <?php echo $helper->getShipmentConfig('load_tracking') ?>;
+    });
+</script>
+<div class="mp-massorderactions-message action-message"></div>

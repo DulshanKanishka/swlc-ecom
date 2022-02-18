@@ -1,0 +1,47 @@
+﻿.default-style {
+    .resp-accordion {
+        display: none;
+    }
+
+    .resp-tabs-list {
+        display: table;
+        margin: 0 auto 15px;
+        li {
+            float: left;
+            display: block;
+            border-bottom: none;
+            font-size: 133%;
+            color: #999999;
+            padding: 0px 0px 5px !important;
+            margin: 0 15px;
+            cursor: pointer;
+            text-transform: capitalize;
+            font-weight: 500;
+            position: relative;
+
+            a{
+                color: inherit;
+            }
+        }
+    }
+
+    .resp-tabs-container {
+        border-top: 1px solid #ebebeb;
+        clear: both;
+        padding: 20px 0 0;
+
+        .resp-tab-content {
+            &.resp-tab-content-active {
+                display: block;
+            }
+        }
+    }
+}
+
+/* RTL */
+.direction-rtl {
+    .default-style .resp-tabs-list li {
+        float: right;
+        margin: 0 0 0 -1px;
+    }
+}

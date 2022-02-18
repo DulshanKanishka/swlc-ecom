@@ -1,0 +1,71 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_MassOrderActions
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+/** @var \Magento\Backend\Block\Template $block */
+
+/** @var \Mageplaza\MassOrderActions\Helper\Data $helper */
+$helper = $this->helper(\Mageplaza\MassOrderActions\Helper\Data::class);
+?>
+<div id="mp-massorderactions-invoice-form" class="mp-massorderactions-action-form">
+    <div class="page-main-actions">
+        <div class="page-actions">
+            <div class="page-actions-inner" data-title="<?php echo __('Create Invoice') ?>">
+                <div class="page-actions-buttons">
+                    <div id="process_print_invoice" title="<?php echo __('Process') ?>" class="actions-split">
+                        <button id="submit_invoice" title="<?php echo __('Process') ?>"
+                                type="button"
+                                class="action-default primary"
+                                onclick="mpMassOrderAction.submitInvoice();">
+                            <span><?php echo __('Process') ?></span>
+                        </button>
+                        <button title="<?php echo __('Process') ?>"
+                                class="action-toggle primary"
+                                data-mage-init='{"dropdown":{}}'
+                                data-toggle="dropdown">
+                            <span><?php echo __('Select') ?></span>
+                        </button>
+                        <ul class="dropdown-menu" data-ui-id="mp-massorderactions-invoice-print-button-dropdown-menu">
+                            <li>
+                                <span title="<?php echo __('Process & Print') ?>"
+                                      class="item item-default"
+                                      onclick="mpMassOrderAction.printInvoice();">
+                                    <?php echo __('Process & Print') ?>
+                                </span>
+                            </li>
+                            <?php if ($helper->isModuleEnabled('Mageplaza_PdfInvoice')): /** Compatible Pdf invoice module */ ?>
+                                <li>
+                                    <span title="<?php echo __('Process & Print PDF Invoices') ?>"
+                                          class="item item-default"
+                                          onclick="mpMassOrderAction.printInvoice('is_pdf_print');">
+                                        <?php echo __('Process & Print PDF Invoices') ?>
+                                    </span>
+                                </li>
+                            <?php endif; ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="page:main-container" class="page-columns">
+        <?php echo $this->getChildHtml('invoice_form'); ?>
+    </div>
+</div>

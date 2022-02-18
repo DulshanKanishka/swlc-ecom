@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="content">
+            <block class="Magenest\Xero\Block\Adminhtml\InvoiceEdit\View" name="xero_invoice"
+                   template="tab/view/xero_invoice_info.phtml" ifconfig="magenest_xero_config/xero_order/invoice_enabled"/>
+        </referenceBlock>
+    </body>
+</page>

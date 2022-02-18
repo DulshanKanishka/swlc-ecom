@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Storepickup
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+
+ ?>
+<?php
+/** @var \Magestore\Storepickup\Block\Adminhtml\Store\Edit\Tab\GmapTab\Region $block */
+$store  = $block->getStore();
+?>
+<select id="state_id" name="state_id" style="width:100%;" class="select admin__control-select" title="<?php echo __('State/Province') ?>">
+</select>
+<input type="text" id="state"  name="state" style="width:100%;" class="input-text admin__control-text" value="<?php echo $store->getStateId() ? '' : $store->getState() ?>" placeholder="<?php echo __('State/Province') ?>"  title="<?php echo __('State/Province') ?>" class="input-text" />
+
+<script type="text/javascript">
+    require(['jquery', 'Magestore_Storepickup/js/store/region-updater'], function($){
+        $('#store_region_updater').css('width', '100%');
+        $('#store_country_id').regionUpdater({
+            regionListId: '#state_id',
+            regionInputId: '#state',
+            regionJson: <?php echo $block->getRegionJson() ?>,
+            currentRegion: '<?php echo $store->getStateId() ?>',
+        });
+    });
+</script>

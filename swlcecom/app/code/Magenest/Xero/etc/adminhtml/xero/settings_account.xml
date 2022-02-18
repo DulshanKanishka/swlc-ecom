@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="xero_account" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+        <label>Account Mapping</label>
+        <comment><![CDATA[
+                    Choose your Accounts to use in the Integration.]]>
+        </comment>
+        <field id="bank" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Bank Account</label>
+            <source_model>Magenest\Xero\Model\Config\Account\BankAccount</source_model>
+            <config_path>magenest_xero_config/xero_account/bank_id</config_path>
+            <validate>required-entry</validate>
+            <comment><![CDATA[(*Required) Bank Account will be used in syncing Order Payments, also in syncing Product's Stock Level(if enable)]]></comment>
+        </field>
+        <field id="sale" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Sales Account</label>
+            <source_model>Magenest\Xero\Model\Config\Account\SalesAccount</source_model>
+            <config_path>magenest_xero_config/xero_account/sale_id</config_path>
+            <validate>required-entry</validate>
+            <comment><![CDATA[(*Required) Sales Account will be used in syncing Order/Invoice]]></comment>
+        </field>
+        <field id="inventory" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Inventory Account</label>
+            <source_model>Magenest\Xero\Model\Config\Account\InventoryAccount</source_model>
+            <config_path>magenest_xero_config/xero_account/inventory_id</config_path>
+            <comment><![CDATA[Inventory Account will be used in syncing Product's Stock Level(if enable)]]></comment>
+        </field>
+        <field id="cogs" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Cost of good sold Account</label>
+            <source_model>Magenest\Xero\Model\Config\Account\COGSAccount</source_model>
+            <config_path>magenest_xero_config/xero_account/cogs_id</config_path>
+            <comment><![CDATA[COGS Account will be used in syncing Product's Stock Level(if enable)]]></comment>
+        </field>
+        <depends>
+            <field id="*/xero_informations/xero_api/is_connected">1</field>
+        </depends>
+    </group>
+
+</include>

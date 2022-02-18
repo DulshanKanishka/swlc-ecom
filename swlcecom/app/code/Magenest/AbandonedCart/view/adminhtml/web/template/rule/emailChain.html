@@ -1,0 +1,210 @@
+<style>
+    .main-col {
+        overflow-x: auto;
+    }
+
+    #rule_tabs_conditions_content {
+        overflow-x: auto;
+    }
+
+    #email-chain-table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #email-chain-table td, #email-chain-table th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #email-chain-table td {
+        background: none;
+    }
+
+    .promotion_0, .promotion_1 {
+        padding-top: 10px;
+    }
+
+    .table-discount td {
+        max-width: 164px;
+    }
+
+    .table-discount .discount-item {
+        max-width: none;
+    }
+</style>
+<table class="data-grid email-chain" id="email-chain-table">
+    <thead>
+    <tr class="data-grid-filters">
+        <th><b>Email Template (Email Sent After)</b></th>
+        <th><b>Delivery Time</b></th>
+        <th><b>Coupon</b></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody data-bind="foreach: { data: $root.templateEmailChain, as: 'option' }">
+    <tr data-order="100" class="sample-template not-render" data-role="row-pattern">
+        <td>
+            <select class="require-anchor email-template required-entry _required select admin__control-select email-template"
+                    data-require="required-entry"
+                    data-bind="options: $root.email_template(),
+                               optionsText: 'label',
+                               optionsValue: 'value',
+                               attr: { name: 'email_chain[' +option.id() + '][template]'},
+                               value:option.template"
+            >
+            </select>
+            <input type="hidden"
+                   data-bind="attr: { name: 'email_chain[' +option.id() + '][id]'},value:option.id"
+                   min="0"/>
+        </td>
+        <td>
+            <table>
+                <tr>
+                    <td>Days</td>
+                    <td>
+                        <input type="text"
+                               data-validate="{'validate-number':true}"
+                               data-bind="attr: { name: 'email_chain[' +option.id() + '][days]'},value:option.days"
+                               min="0"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Hours</td>
+                    <td>
+                        <input type="text"
+                               data-validate="{'validate-number':true}"
+                               data-bind="attr: { name: 'email_chain[' +option.id() + '][hour]'},value:option.hour"
+                               min="0"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mins</td>
+                    <td>
+                        <input type="text"
+                               data-validate="{'validate-number':true}"
+                               data-bind="attr: { name: 'email_chain[' +option.id() + '][min]'},value:option.min"
+                               min="0"/>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table class="table-discount">
+                <tr>
+                    <td class="discount-title">Enable coupon</td>
+                    <td class="discount-item">
+                        <select class="enable_coupon"
+                                data-bind="attr: { name: 'email_chain[' +option.id() + '][enable_coupon]'},value:option.enable_coupon"
+                        >
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </td>
+                </tr>
+                <!-- ko if: option.enable_coupon() === "1" -->
+                <tr>
+                    <td class="discount-title">Type</td>
+                    <td class="discount-item">
+                        <select class="enable_coupon"
+                                data-require="required-entry"
+                                data-bind="options: $root.types(),
+                                           optionsText: 'label',
+                                           optionsValue: 'value',
+                                           attr: { name: 'email_chain[' +option.id() + '][coupon_type]'},
+                                           value:option.coupon_type"
+                        >
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="discount-title">Discount Amount</td>
+                    <td class="discount-item">
+                        <input type="text"
+                               data-validate="{'validate-number':true}"
+                               data-bind="attr: { name: 'email_chain[' +option.id() + '][discount_amount]'},value:option.discount_amount"
+                               min="0"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="discount-title">Expired in (days)</td>
+                    <td class="discount-item">
+                        <input type="text"
+                               data-validate="{'validate-number':true}"
+                               data-bind="attr: { name: 'email_chain[' +option.id() + '][expired_in]'},value:option.expired_in"
+                               min="0"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="discount-title">Max Qty discount</td>
+                    <td class="discount-item">
+                        <input type="text"
+                               data-validate="{'validate-number':true}"
+                               data-bind="attr: { name: 'email_chain[' +option.id() + '][max_qty_discount]'},value:option.max_qty_discount"
+                               min="0"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="discount-title">Discount Qty Step (By X)</td>
+                    <td class="discount-item">
+                        <input type="text"
+                               data-validate="{'validate-number':true}"
+                               data-bind="attr: { name: 'email_chain[' +option.id() + '][discount_qty_step]'},value:option.discount_qty_step"
+                               min="0"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="checkbox"
+                               class="is_use_cart_rule"
+                               data-bind="attr: { name: 'email_chain[' +option.id() + '][is_use_cart_rule]', data_name: option.id()},
+                               checked: option.is_use_cart_rule"
+                        />
+                        Use Shopping Cart Rule
+                        <div data-bind="attr: { class: 'promotion_'+option.id()}">
+                            <p>Select a promotion rule</p>
+                            <select data-bind="options: $root.promotion,
+                               optionsText: 'label',
+                               optionsValue: 'value',
+                               attr: { name: 'email_chain[' +option.id() + '][promotion_rule]'},
+                               value:option.promotion_rule">
+                            </select>
+                            <br/>
+                            <i>The Promotion Rule must meet the requirements <br/>
+                                <div class="notes">
+                                    (If you can't see your promotion rule, please re-configure the promotion rule as
+                                    below):
+                                </div>
+                            </i>
+                            <ul style="margin-left:35px;">
+                                <li><i>Is Active</i></li>
+                                <li><i>Coupon: Specific Coupon</i></li>
+                                <li><i>Coupon: Use Auto Generation</i></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <!--/ko-->
+            </table>
+        </td>
+        <td>
+            <button type="button"
+                    class="delete-email-chain-btn action-default"
+                    data-action="delete-row"
+                    data-bind="event:{click:$root.deleteEmailChain}">
+                <span>Delete</span>
+            </button>
+        </td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4">
+            <button type="button" class="add-btn action-default" data-role="add-new-row"
+                    data-bind="click: $root.addEmailChain">
+                Add email in chain
+            </button>
+        </td>
+    </tr>
+    </tfoot>
+</table>

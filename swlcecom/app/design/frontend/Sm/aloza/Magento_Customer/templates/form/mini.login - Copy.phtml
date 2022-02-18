@@ -1,0 +1,53 @@
+
+<div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog block-popup-login">
+        <a href="javascript:void(0)" title="<?php echo __('Close');?>" class="close close-login fa fa-times-circle" data-dismiss="modal"></a>
+        <div class="tt_popup_login"><strong><?php echo __('Sign in Or Register');?></strong></div>
+        <div class="block-content">
+		<div class=" col-reg registered-account">
+			
+			<div class="block-content">
+				<form class="form form-login"
+					  action="<?php /* @escapeNotVerified */ echo $block->getPostActionUrl() ?>"
+					  method="post"
+					  id="login-form"
+					  data-mage-init='{"validation":{}}'>
+					<?php echo $block->getBlockHtml('formkey'); ?>
+					<fieldset class="fieldset login" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
+					
+						<div class="field email required email-input">
+							
+							<div class="control">
+								<input name="login[username]" value="<?php echo $block->escapeHtml($block->getUsername()) ?>" <?php if ($block->isAutocompleteDisabled()) :?> autocomplete="off"<?php endif; ?> id="email" type="email" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" data-validate="{required:true, 'validate-email':true}">
+							</div>
+						</div>
+						<div class="field password required pass-input">
+							
+							<div class="control">
+								<input name="login[password]" type="password" <?php if ($block->isAutocompleteDisabled()) :?> autocomplete="off"<?php endif; ?> class="input-text" id="pass" title="<?php /* @escapeNotVerified */ echo __('Password') ?>" data-validate="{required:true, 'validate-password':true}">
+							</div>
+						</div>
+						<?php echo $block->getChildHtml('form_additional_info'); ?>
+						<div class="secondary ft-link-p"><a class="action remind" href="<?php /* @escapeNotVerified */ echo $block->getForgotPasswordUrl() ?>"><span><?php /* @escapeNotVerified */ echo __('Forgot Your Password?') ?></span></a></div>
+						<div class="actions-toolbar">
+							<div class="primary"><button type="submit" class="action login primary" name="send" id="send2"><span><?php /* @escapeNotVerified */ echo __('Login') ?></span></button></div>
+							
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>		
+            <div class="col-reg login-customer">
+                    <h2><?php echo __('NEW HERE?');?></h2>
+                    <p class="note-reg"><?php echo __('Registration is free and easy!');?></p>
+                    <ul class="list-log">
+                        <li><?php echo __('Faster checkout');?></li>
+                        <li><?php echo __('Save multiple shipping addresses');?></li>
+                        <li><?php echo __('View and track orders and more');?></li>
+                    </ul>
+                    <a class="btn-reg-popup" title="<?php echo __('Register')?>" href="<?php echo $block->getUrl('customer/account/create/')?>"><?php echo __('Create an account');?></a>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+</div>

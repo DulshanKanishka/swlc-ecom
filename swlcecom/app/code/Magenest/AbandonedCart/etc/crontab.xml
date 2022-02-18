@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="magenest_abandonedcart">
+        <job name="abandonedcart_collect_data" instance="Magenest\AbandonedCart\Model\Cron" method="collectAbandonedCarts">
+            <schedule>* * * * *</schedule>
+        </job>
+        <job name="abandonedcart_send_email" instance="Magenest\AbandonedCart\Model\Cron" method="sendScheduledMail">
+            <schedule>* * * * *</schedule>
+        </job>
+        <job name="abandonedcart_send_sms" instance="Magenest\AbandonedCart\Model\Cron" method="scheduleSendSMS">
+            <schedule>* * * * *</schedule>
+        </job>
+        <job name="abandonedcart_cancel_condition" instance="Magenest\AbandonedCart\Model\Cron" method="scheduleCancelConditionRule">
+            <schedule>* * * * *</schedule>
+        </job>
+    </group>
+</config>

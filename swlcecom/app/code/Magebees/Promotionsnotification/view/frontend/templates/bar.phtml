@@ -1,0 +1,64 @@
+
+<?php /* @var block \Magebees\Promotionsnotification\Block\View\Top */
+/* @var block \Magebees\Promotionsnotification\Block\View\Bottom */
+$dontShowBar = $this->_cookieManager->getCookie('dontShowBar');
+if ($block->getBarEnabled()) :
+    $bar_collection = $block->getNotificationCollection();
+    if ($block->getBarHeight() == 0) {
+        $bar_height = "";
+    } else {
+        $bar_height = 'height:'.$block->getBarHeight().'px';
+    }
+    
+    $count = $bar_collection->getSize();
+    ?>
+    <?php if ($count) : ?>
+        <?php $helper = $this->helper('Magebees\Promotionsnotification\Helper\Data'); ?>
+
+        <div id="notification_slider" class="<?php if (!$block->getBarShowInMobile()) {
+            echo 'hideInmobile';
+} ?>" style="display:none; <?php echo $bar_height ?>">
+            <a href="javascript:void(0)" id="close_notification"><span class="lbl">Close</span></a>
+            <ul class="bxslider">
+            <?php foreach ($bar_collection as $bar_collection) : ?>
+                <li style="background-color:<?php echo $bar_collection->getBackgroundColor() ?>">
+                    <?php echo $helper->getFilterProvider()->getPageFilter()->filter($bar_collection->getData('notification_content')); ?>
+                </li>
+                <?php if ($block->getBarAllOrOne()=="one") : ?>
+                    <?php $count=1;
+                    break; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            require(['jquery','magebees.bxslider','magebees.notification','domReady!'],function(jQuery){
+                var notificationVar = {'count':'<?php echo $count ?>','bar_height':'<?php echo $block->getBarHeight() ?>','bar_after_time':'<?php echo $block->getBarAfterTimer() ?>','bar_auto_close':'<?php echo $block->getBarAutoClose() ?>','bar_auto_close_time':'<?php echo $block->getBarAutoCloseTime() ?>','bar_one_time_per_user':'<?php echo $block->getBarOneTimePerUser() ?>','id':"bar"};
+                jQuery('#notification_slider').cwsnotification(notificationVar);
+            });
+        </script>
+        
+    <?php endif; ?>
+<?php endif; ?>
+
+<script type="text/javascript">
+    require([
+        'jquery',
+        'jquery/jquery.cookie'
+    ],
+    function($) {
+        var not = $.cookie("dontShowBar");
+        var once = $.cookie("bar_once");
+        
+        if(not || once){
+            //$("#notification_slider").hide();
+        }else{
+            var bar_after_time = <?php echo $block->getBarAfterTimer() ?>;
+            if(!bar_after_time){
+                $("#notification_slider").show();
+            }
+        }
+    }
+
+);
+</script>

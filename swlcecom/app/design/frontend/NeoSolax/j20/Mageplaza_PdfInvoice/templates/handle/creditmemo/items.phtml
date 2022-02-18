@@ -1,0 +1,203 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Mageplaza
+ * @package    Mageplaza_PdfInvoice
+ * @copyright   Copyright (c) Mageplaza (http://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+// @codingStandardsIgnoreFile
+?>
+<?php //$_creditmemo = $block->getCreditmemo() ?>
+<?php //$_order = $block->getOrder() ?>
+<?php
+//$_order = $block->getOrder()
+$_order_id = $block->getOrderz();
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$incrementId = $_order_id;
+$orderInterface = $objectManager->create('Magento\Sales\Api\Data\OrderInterface');
+$_order = $orderInterface->loadByIncrementId($incrementId);
+$block->setOrder($_order);
+$_order_id = $_order;
+?>
+<?php
+$_creditmemo = $block->getCreditmemos();
+//
+//$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+//$incrementIds = $_creditmemo;
+//$cmInterface = $objectManager->create('Magento\Sales\Api\Data\CreditmemoInterface');
+//$_cm = $cmInterface->load($incrementIds);
+
+$_cm = $_order->getCreditmemosCollection()->getItems();
+$block->setCreditmemo($_cm);
+$_creditmemo = $_cm;
+foreach ($_creditmemo as $cmitems) {
+    $_creditmemo = $cmitems;
+}
+$block->setCreditmemo($_creditmemo);
+
+//$_creditmemo = $block->getCreditmemos();
+//
+//$objectManagers = \Magento\Framework\App\ObjectManager::getInstance();
+//$incrementId = $_creditmemo;
+//$creditmoInterface = $objectManagers->create('Magento\Sales\Api\Data\CreditmemoInterface');
+//$creditmemo = $creditmoInterface->loadByIncrementId($incrementId);
+//$block->setCreditmemo($creditmemo);
+//$_creditmemo = $creditmemo;
+?>
+
+
+<?php
+$isBarcode = $block->getItemBarcode();
+$pageSize = $block->getPageSize();
+$a4Barcode = $isBarcode && ($pageSize == 'A4');
+$a5Barcode = $isBarcode && ($pageSize == 'A5');
+?>
+<?php if ($_creditmemo && $_order): ?>
+    <div class="table">
+        <div style="font-size: 14px;" class="mp-row mp-heading bord-und">
+            <div class="mp-item-bc">
+                <span><?= /* @escapeNotVerified */
+                    __('Items'); ?><span>
+            </div>
+            <div class="mp-sku-bc">
+                <span>SKU</span>
+            </div>
+            <div class="mp-price-bc">
+                <span><?= /* @escapeNotVerified */
+                    __('Price'); ?></span>
+            </div>
+            <div class="mp-qty-bc">
+                <span> <?= /* @escapeNotVerified */
+                    __('Qty'); ?></span>
+            </div>
+
+            <div class="mp-sku-bc">
+                <span>VAT 5%</span>
+            </div>
+            <div class="mp-subtotal-bc">
+                <span>SUBTOTAL</span>
+            </div>
+        </div>
+        <?php $i = 0; ?>
+        <?php foreach ($_creditmemo->getAllItems() as $_item): ?>
+            <?php
+            $block->setItem($_item);
+            $indexKey = $i % 2 == 0 ? "odd" : "even";
+            if ($block->isBundleItem()) {
+                echo $block->renderBundleItem($_item, $_order, $block->getInvoiceType(), $indexKey, $isBarcode, 'bundleitems.phtml');
+                $i++;
+                continue;
+            }
+            if ($_item->getOrderItem()->getParentItem()) {
+                continue;
+            }
+
+            $i++;
+            ?>
+            <div class="mp-row <?php echo $indexKey; ?>" >
+                <div style="font-size: 11px" class="mp-item-bc">
+                    <p style="font-size: 11px" class="product-name"><?= $block->escapeHtml($_item->getName()) ?></p>
+
+                    <?php if ($block->getItemOptions()): ?>
+                        <p style="font-size: 11px" >
+                            <?php $c = 0; ?>
+                            <?php foreach ($block->getItemOptions() as $option): ?>
+                                <strong><em><?= /* @escapeNotVerified */
+                                    $option['label'] ?>: </em></strong><?= /* @escapeNotVerified */
+                                nl2br($option['value']) ?>
+                                <?php $c += 1;
+                                if ($c < count($block->getItemOptions()))
+                                    echo '; ' ?>
+                            <?php endforeach; ?>
+                        </p>
+                    <?php endif; ?>
+                    <?php $addInfoBlock = $block->getProductAdditionalInformationBlock(); ?>
+                    <?php if ($addInfoBlock) : ?>
+                        <?= $addInfoBlock->setItem($_item->getOrderItem())->toHtml() ?>
+                    <?php endif; ?>
+                    <?= $block->escapeHtml($_item->getDescription()) ?>
+
+                </div>
+
+                <div style="font-size: 11px" class="mp-sku-bc ">
+                    <p style="font-size: 11px" class="sku"><?= /* @escapeNotVerified */
+                        __('%1', $block->escapeHtml($block->getSku($_item))); ?></p>
+                </div>
+                <div style="font-size: 11px" class="mp-price-bc">
+                    <?php if ($block->displayPriceExclTax() || $block->displayBothPrices()): ?>
+                        <?php if ($block->displayBothPrices()): ?>
+                            <span class="label"><?= /* @escapeNotVerified */
+                                __('Excl. Tax') ?>:</span>
+                        <?php endif; ?>
+                        <?= /* @escapeNotVerified */
+                        $_order->formatPrice($_item->getPrice()) ?>
+                    <?php endif; ?>
+
+                    <?php if ($block->displayPriceInclTax() || $block->displayBothPrices()): ?>
+                        <?php if ($block->displayBothPrices()): ?>
+                            <br/><span class="label"><?= /* @escapeNotVerified */
+                                __('Incl. Tax') ?>:</span>
+                        <?php endif; ?>
+                        <?= /* @escapeNotVerified */
+                        $_order->formatPrice($_item->getPriceInclTax()) ?>
+                    <?php endif; ?>
+                </div>
+                <div style="font-size: 11px" class="mp-qty-bc">
+                    <span><?= /* @escapeNotVerified */
+                        $_item->getQty() * 1 ?></span>
+                </div>
+                <div style="font-size: 11px" class="mp-sku-bc ">
+                    <p  style="font-size: 11px" class="sku">
+                        <?php
+                        $taxAmount = $_item->getTaxAmount();
+                        $taxTwoDecim = number_format((float)$taxAmount, 2, '.', '');
+                        ?>
+                        <?= /* @escapeNotVerified */
+                        __('%1', $taxTwoDecim); ?></p>
+                </div>
+
+                <div style="font-size: 11px" class="mp-subtotal-bc">
+                    <?php if ($block->displayPriceExclTax() || $block->displayBothPrices()): ?>
+                        <?php if ($block->displayBothPrices()): ?>
+                            <span class="label"><?= /* @escapeNotVerified */
+                                __('Excl. Tax') ?>:</span>
+                        <?php endif; ?>
+                        <?= /* @escapeNotVerified */
+                        $_order->formatPrice($_item->getRowTotal()) ?>
+                    <?php endif; ?>
+
+                    <?php if ($block->displayPriceInclTax() || $block->displayBothPrices()): ?>
+                        <?php if ($block->displayBothPrices()): ?>
+                            <br/><span class="label"><?= /* @escapeNotVerified */
+                                __('Incl. Tax') ?>:</span>
+                        <?php endif; ?>
+                        <?php $_incl = $this->helper('Magento\Checkout\Helper\Data')->getSubtotalInclTax($_item); ?>
+                        <?= /* @escapeNotVerified */
+                        $_order->formatPrice($_incl) ?>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <div class="clr"></div>
+        <?php endforeach; ?>
+    </div>
+
+
+    <div  style=" font-size: 14px;" class="order-totals" >
+        <?= $block->getChildHtml('creditmemo_totals') ?>
+    </div>
+<?php endif; ?>

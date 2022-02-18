@@ -1,0 +1,20 @@
+{
+    "inventory_source_item": {
+        "column": {
+            "source_item_id": true,
+            "source_code": true,
+            "sku": true,
+            "quantity": true,
+            "status": true,
+            "shelf_location": true
+        },
+        "index": {
+            "INVENTORY_SOURCE_ITEM_SKU_SOURCE_CODE_QUANTITY": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "INVENTORY_SOURCE_ITEM_SOURCE_CODE_INVENTORY_SOURCE_SOURCE_CODE": true,
+            "INVENTORY_SOURCE_ITEM_SOURCE_CODE_SKU": true
+        }
+    }
+}

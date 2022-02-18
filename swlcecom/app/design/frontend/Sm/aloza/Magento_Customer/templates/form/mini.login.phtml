@@ -1,0 +1,34 @@
+<div class="registered-account">
+	<h2><?php echo __('Login') ?> </h2>
+				<form class="form form-login"
+					  action="<?php /* @escapeNotVerified */ echo $block->getPostActionUrl() ?>"
+					  method="post"
+					  id="login-form"
+					  data-mage-init='{"validation":{}}'>
+					<?php echo $block->getBlockHtml('formkey'); ?>
+					<fieldset class="fieldset login" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
+							<div class="wrap-top">
+							<div class="wrap wrap-user">
+								<input name="login[username]" onfocus="if(this.value=='Email') this.value='';" onblur="if(this.value=='') this.value='Email';" value="Email" <?php if ($block->isAutocompleteDisabled()) :?> autocomplete="off"<?php endif; ?> id="email" type="email" class="inp-user input-text" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" data-validate="{required:true, 'validate-email':true}">
+							</div>
+					
+			
+							<div style="clear:both"></div>
+							<div class="wrap wrap-pass">
+								<input name="login[password]" type="password" <?php if ($block->isAutocompleteDisabled()) :?> autocomplete="off"<?php endif; ?> class="inp-user input-text input-text" id="pass" title="<?php /* @escapeNotVerified */ echo __('Password') ?>" onfocus="if(this.value=='Password') this.value='';" onblur="if(this.value=='') this.value='Password';" value="Password" data-validate="{required:true, 'validate-password':true}">
+							</div>
+					
+							<?php echo $block->getChildHtml('form_additional_info'); ?>
+							<div class="actions"><button type="submit" class="action login primary" name="send" id="send2"><span><?php /* @escapeNotVerified */ echo __('Login') ?></span></button></div>
+							<a class="link_fyp" href="<?php /* @escapeNotVerified */ echo $block->getForgotPasswordUrl() ?>"><?php /* @escapeNotVerified */ echo __('Forgot Your Password?') ?></a>
+				
+						</div>
+
+					</fieldset>
+					<div class="more-actions">
+							<p><?php echo __('Or You Can') ?></p>
+							<a class="button-reg" title="<?php echo __('Register') ?>" href="<?php echo $block->getUrl('customer/account/create')?>"><?php echo __('Register') ?></a>
+					</div>
+				</form>
+			
+		</div>	

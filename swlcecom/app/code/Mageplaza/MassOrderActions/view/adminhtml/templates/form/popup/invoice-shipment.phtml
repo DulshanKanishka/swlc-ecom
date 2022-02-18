@@ -1,0 +1,66 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_MassOrderActions
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+/** @var \Magento\Backend\Block\Template $block */
+?>
+<div id="mp-massorderactions-invoice-shipment-form" class="mp-massorderactions-action-form">
+    <div class="page-main-actions">
+        <div class="page-actions" data-ui-id="page-actions-toolbar-content-header">
+            <div class="page-actions-inner" data-title="<?php echo __('Create Invoice and Shipment') ?>">
+                <div class="page-actions-buttons">
+                    <div id="process_print_invoice_shipment" title="<?php echo __('Process') ?>" class="actions-split">
+                        <button id="submit_invoice_shipment" title="<?php echo __('Process') ?>" type="button"
+                                class="action-default primary"
+                                onclick="mpMassOrderAction.submitInvoiceShipment();">
+                            <span><?php echo __('Process') ?></span>
+                        </button>
+                        <button title="<?php echo __('Process & Print') ?>"
+                                class="action-toggle primary add"
+                                data-mage-init='{"dropdown":{}}'
+                                data-toggle="dropdown">
+                            <span><?php echo __('Select') ?></span>
+                        </button>
+                        <ul class="dropdown-menu"
+                            data-ui-id="mp-massorderactions-invoice-shipment-print-button-dropdown-menu">
+                            <li>
+                                <span title="<?php echo __('Process & Print Invoices + Shipments') ?>"
+                                      class="item item-default"
+                                      onclick="mpMassOrderAction.printInvoiceShipment('pdf');">
+                                    <?php echo __('Process & Print Invoices + Shipment') ?>
+                                </span>
+                            </li>
+                            <li>
+                                <span title="<?php echo __('Process & Print Invoices + Shipping Labels') ?>"
+                                      class="item item-default"
+                                      onclick="mpMassOrderAction.printInvoiceShipment('label');">
+                                    <?php echo __('Process & Print Invoices + Shipping Labels') ?>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="page:main-container" class="page-columns">
+        <?php echo $this->getChildHtml('invoice_shipment_form'); ?>
+    </div>
+</div>

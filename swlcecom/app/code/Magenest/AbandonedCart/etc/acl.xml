@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::marketing">
+                    <resource id="Magenest_AbandonedCart::magenest_abandonedcart" title="Magenest AbandonedCart" sortOrder="50" translate="title">
+                        <resource id="Magenest_AbandonedCart::rule" title="Manage Rule" sortOrder="10" translate="title"/>
+                        <resource id="Magenest_AbandonedCart::abandonedcart" title="List of Abandoned Carts" sortOrder="20" translate="title"/>
+                        <resource id="Magenest_AbandonedCart::logcontent" title="Notification History Log" sortOrder="30" translate="title"/>
+                        <resource id="Magenest_AbandonedCart::blacklist" title="Blacklist of Abandoned Carts" sortOrder="40" translate="title"/>
+                        <resource id="Magenest_AbandonedCart::unsubscribe" title="Manage Unsubscribe" sortOrder="50" translate="title"/>
+                        <resource id="Magenest_AbandonedCart::cron" title="Cron Log" sortOrder="60" translate="title"/>
+                        <resource id="Magenest_AbandonedCart::config_abandonedcart" title="Configuration" sortOrder="70" translate="title"/>
+                        <resource id="Magenest_AbandonedCart::email_template" title="Email Templates" sortOrder="80" translate="title"/>
+                        <resource id="Magenest_AbandonedCart::abcreport" title="Chart of Abandoned Cart" sortOrder="90" translate="title"/>
+                        <resource id="Magenest_AbandonedCart::abcchartemail" title="Chart of Email Campaign" sortOrder="100" translate="title"/>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

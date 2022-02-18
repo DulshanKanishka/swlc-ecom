@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Storepickup
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Store pickup</title>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magestore\Storepickup\Block\Adminhtml\Tag\Edit" name="storepickup_tag_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Magestore\Storepickup\Block\Adminhtml\Tag\Edit\Tabs" name="tag_edit_tabs">
+                <block class="Magestore\Storepickup\Block\Adminhtml\Tag\Edit\Tab\GeneralTab" name="tag_edit_tab_general"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

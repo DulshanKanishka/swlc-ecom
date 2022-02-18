@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magebees" translate="label" sortOrder="100">
+            <label>MageBees</label>
+        </tab>
+        <section id="promotions" translate="label" type="text" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Promotions Notification Pro</label>
+            <tab>magebees</tab>
+            <resource>Magebees_Promotionsnotification::configuration_settings</resource>
+			<group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>General</label>
+				<field id="enabled" translate="label comment" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Enable Promotions Notification Pro</label> 
+					<comment><![CDATA[Select Yes for display notifications in frontend.]]></comment> 
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model> 
+				</field>
+				<field id="enable_link" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Enable Toplink</label> 
+					<comment><![CDATA[Select Yes for display promotions notification toplink.]]></comment> 
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model> 
+				</field>
+				<field id="link_label" translate="label comment" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Toplink Label</label> 
+					<comment><![CDATA[Set text of toplink for notification list.]]></comment>
+					<validate>required</validate>
+					<depends><field id="enable_link">1</field></depends>
+				</field>
+				<field id="page_layout" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Notifications List Page Layout</label> 
+					<comment><![CDATA[Select page layout for notifications list page.]]></comment> 
+					<source_model>Magebees\Promotionsnotification\Model\PageLayout</source_model>
+					<depends><field id="enable_link">1</field></depends>					
+				</field>
+			</group>
+			<group id="notification_bar" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Notifications Settings for Bar</label>
+				<field id="enabled" translate="label comment" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Enable Promotions Notification Bar</label> 
+					<comment><![CDATA[Select Yes for display notifications bar.]]></comment> 
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model> 
+				</field>
+				<field id="onetime_per_user" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>One Time Notification Per User</label> 
+					<comment><![CDATA[Select Yes for display notification only once per user.]]></comment> 
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model> 
+				</field>
+				<field id="order" translate="label comment" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Display Notification</label> 
+					<comment><![CDATA[Select notification order for display by sort order or randomly.]]></comment> 
+					<source_model>Magebees\Promotionsnotification\Model\Order</source_model> 
+				</field>
+				<field id="all_or_one" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Display Notification All or One</label> 
+					<comment><![CDATA[All >> Display all bar notifications.<br/>One >> Display only one notification as per notification order.]]></comment> 
+					<source_model>Magebees\Promotionsnotification\Model\Allorone</source_model> 
+				</field>
+				<field id="position" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Notification Position</label> 
+					<comment><![CDATA[Select notification bar position on fronted.]]></comment> 
+					<source_model>Magebees\Promotionsnotification\Model\Position</source_model> 
+				</field>
+				<field id="display_after" translate="label comment" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Display Notification Bar After</label> 
+					<comment><![CDATA[Specify time for display notificsation bar after x seconds ( Default is 0 for disable this functionality ) .]]></comment>
+					<validate>required validate-number</validate>
+				</field>
+				<field id="auto_close" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Auto Close Bar</label> 
+					<comment><![CDATA[Select Yes for close bar automatically.]]></comment> 
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model> 
+				</field>
+				<field id="close_after" translate="label comment" type="text" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Close Bar After</label> 
+					<comment><![CDATA[Specify time for close notificsation bar after x seconds.]]></comment>
+					<validate>required validate-number validate-greater-than-zero</validate>
+					<depends><field id="auto_close">1</field></depends>
+				</field>
+				<field id="height" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Bar Height</label> 
+					<comment><![CDATA[Set bar height in px (0 for auto height).]]></comment>
+					<validate>required validate-number</validate>
+				</field>
+				<field id="show_in_mobile" translate="label comment" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Show in Mobile</label> 
+					<comment><![CDATA[Select Yes for display notification in mobile.]]></comment> 
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model> 
+				</field>
+			</group>
+			<group id="notification_popup" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Notifications Settings for Popup</label>
+				<field id="enabled" translate="label comment" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Enable Promotions Notification Popup</label> 
+					<comment><![CDATA[Select Yes for display notifications bar.]]></comment> 
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model> 
+				</field>
+				<field id="onetime_per_user" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>One Time Notification Per User</label> 
+					<comment><![CDATA[Select Yes for display notification only once per user.]]></comment> 
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model> 
+				</field>
+				<field id="order" translate="label comment" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Display Notification</label> 
+					<comment><![CDATA[Select notification order for display by sort order or randomly.]]></comment> 
+					<source_model>Magebees\Promotionsnotification\Model\Order</source_model> 
+				</field>
+				<field id="all_or_one" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Display Notification All or One</label> 
+					<comment><![CDATA[All >> Display all popup notifications.<br/>One >> Display only one notification as per notification order.]]></comment> 
+					<source_model>Magebees\Promotionsnotification\Model\Allorone</source_model> 
+				</field>
+				<field id="display_after" translate="label comment" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Display Notification Popup After</label> 
+					<comment><![CDATA[Specify time for display notificsation popup after x seconds ( Default is 0 for disable this functionality ) .]]></comment>
+					<validate>required validate-number</validate>
+				</field>
+				<field id="auto_close" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Auto Close Popup</label> 
+					<comment><![CDATA[Select Yes for close popup automatically.]]></comment> 
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model> 
+				</field>
+				<field id="close_after" translate="label comment" type="text" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Close Popup After</label> 
+					<comment><![CDATA[Specify time for close notificsation popup after x seconds.]]></comment>
+					<validate>required validate-number validate-greater-than-zero</validate>
+					<depends><field id="auto_close">1</field></depends>
+				</field>
+				<field id="height" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Popup Height</label> 
+					<comment><![CDATA[Set popup height in px (0 for auto height).]]></comment>
+					<validate>required validate-number</validate>
+				</field>
+				<field id="width" translate="label comment" type="text" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Popup Width</label> 
+					<comment><![CDATA[Set popup height in px (0 for auto height).]]></comment>
+					<validate>required validate-number</validate>
+				</field>
+				<field id="show_in_mobile" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Show in Mobile</label> 
+					<comment><![CDATA[Select Yes for display notification in mobile.]]></comment> 
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model> 
+				</field>
+			</group>
+			<!-- <group id="support" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Info</label>
+				<field id="style" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1"> 
+					<label>Info</label> 
+					<frontend_model>Magebees\Promotionsnotification\Block\Adminhtml\System\Config\Support</frontend_model>
+				</field>
+			</group> -->
+		</section>
+    </system>
+</config>

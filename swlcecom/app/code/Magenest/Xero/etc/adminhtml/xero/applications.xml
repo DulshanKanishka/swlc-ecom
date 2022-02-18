@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="xero_api" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+        <label>My Applications</label>
+        <comment><![CDATA[<a href="https://developer.xero.com/documentation/getting-started/getting-started-guide" target="_blank">Learn More</a>]]>
+        </comment>
+        <field id="is_connected" translate="label" type="hidden" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Connection Status</label>
+            <config_path>magenest_xero_config/xero_api/is_connected</config_path>
+            <frontend_model>Magenest\Xero\Block\System\Config\Form\Connection</frontend_model>
+        </field>
+        <field id="consumer_key" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Consumer Key</label>
+            <config_path>magenest_xero_config/xero_api/consumer_key</config_path>
+            <attribute type="data-role">consumer-key</attribute>
+            <validate>required-entry</validate>
+            <depends>
+                <field id="is_connected">0</field>
+            </depends>
+        </field>
+        <field id="consumer_secret" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Consumer Secret</label>
+            <config_path>magenest_xero_config/xero_api/consumer_secret</config_path>
+            <validate>required-entry</validate>
+            <attribute type="data-role">consumer-secret</attribute>
+            <depends>
+                <field id="app_mode" separator=",">0,2</field>
+                <field id="is_connected">0</field>
+            </depends>
+        </field>
+        <field id="app_mode" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>App Mode</label>
+            <config_path>magenest_xero_config/xero_api/app_mode</config_path>
+            <source_model>Magenest\Xero\Model\Config\Source\AppMode</source_model>
+            <comment><![CDATA[<strong style="color:red">Warning</strong>: This version only supports Public & Private App <a href="https://developer.xero.com/documentation/auth-and-limits/" target="_blank">Learn More</a>]]></comment>
+            <depends>
+                <field id="is_connected">0</field>
+            </depends>
+        </field>
+        <field id="key_file_mode" translate="label" type="select" sortOrder="31" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Secret Key Type</label>
+            <config_path>magenest_xero_config/xero_api/key_file_mode</config_path>
+            <source_model>Magenest\Xero\Model\Config\Source\KeyFileMode</source_model>
+            <depends>
+                <field id="is_connected">0</field>
+                <field id="app_mode">1</field>
+            </depends>
+        </field>
+        <field id="public_key" translate="label" type="textarea" sortOrder="31" showInDefault="1" showInWebsite="1" showInStore="0">
+            <config_path>magenest_xero_config/xero_api/public_key</config_path>
+            <label>Public Key(.cer)</label>
+            <validate>required-entry</validate>
+            <comment><![CDATA[ To learn how to create a public/private key pair, <a href="https://developer.xero.com/documentation/api-guides/create-publicprivate-key" target="_blank">click here</a>]]></comment>
+            <depends>
+                <field id="app_mode">1</field>
+                <field id="is_connected">0</field>
+                <field id="key_file_mode">0</field>
+            </depends>
+        </field>
+        <field id="public_key_file" translate="label" type="Magenest\Xero\Block\System\Config\Form\Field\PublicKeyFile" sortOrder="33" showInDefault="1" showInWebsite="1" >
+            <label>Public Key(.cer)</label>
+            <config_path>magenest_xero_config/xero_api/public_key_file</config_path>
+            <backend_model>Magenest\Xero\Model\Config\Backend\PublicKeyFile</backend_model>
+            <base_url>var/xerokey</base_url>
+            <upload_dir>var/xerokey</upload_dir>
+            <comment><![CDATA[ To learn how to create a public/private key pair, <a href="https://developer.xero.com/documentation/api-guides/create-publicprivate-key" target="_blank">click here</a>]]></comment>
+            <depends>
+                <field id="app_mode">1</field>
+                <field id="is_connected">0</field>
+                <field id="key_file_mode">1</field>
+            </depends>
+        </field>
+        <field id="private_key" translate="label" type="textarea" sortOrder="34" showInDefault="1" showInWebsite="1" showInStore="0">
+            <config_path>magenest_xero_config/xero_api/private_key</config_path>
+            <label>Private Key(.pem)</label>
+            <validate>required-entry</validate>
+            <comment><![CDATA[ To learn how to create a public/private key pair, <a href="https://developer.xero.com/documentation/api-guides/create-publicprivate-key" target="_blank">click here</a>]]></comment>
+            <depends>
+                <field id="app_mode">1</field>
+                <field id="is_connected">0</field>
+                <field id="key_file_mode">0</field>
+            </depends>
+        </field>
+        <field id="private_key_file" translate="label" type="Magenest\Xero\Block\System\Config\Form\Field\PrivateKeyFile" sortOrder="35" showInDefault="1" showInWebsite="1" >
+            <label>Private Key(.pem)</label>
+            <config_path>magenest_xero_config/xero_api/private_key_file</config_path>
+            <backend_model>Magenest\Xero\Model\Config\Backend\PrivateKeyFile</backend_model>
+            <base_url>var/xerokey</base_url>
+            <upload_dir>var/xerokey</upload_dir>
+            <comment><![CDATA[ To learn how to create a public/private key pair, <a href="https://developer.xero.com/documentation/api-guides/create-publicprivate-key" target="_blank">click here</a>]]></comment>
+            <depends>
+                <field id="app_mode">1</field>
+                <field id="is_connected">0</field>
+                <field id="key_file_mode">1</field>
+            </depends>
+        </field>
+        <field id="test_connection_button" translate="button_label" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+            <button_label>Connect Private App Now</button_label>
+            <frontend_model>Magenest\Xero\Block\System\Config\Form\Button\Connection</frontend_model>
+            <comment><![CDATA[Please save configuration before Connect]]></comment>
+            <depends>
+                <field id="app_mode">1</field>
+                <field id="is_connected">0</field>
+            </depends>
+        </field>
+        <field id="public_connection_button" translate="button_label" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+            <button_label>Connect Public App Now</button_label>
+            <frontend_model>Magenest\Xero\Block\System\Config\Form\Button\PublicConnection</frontend_model>
+            <comment><![CDATA[Please save configuration before Connect]]></comment>
+
+            <depends>
+                <field id="app_mode">0</field>
+                <field id="is_connected">0</field>
+            </depends>
+        </field>
+        <field id="user_information" translate="label comment" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Account Information</label>
+            <frontend_model>Magenest\Xero\Block\System\Config\Form\Information</frontend_model>
+            <depends>
+                <field id="is_connected">1</field>
+            </depends>
+        </field>
+        <field id="xero_app_disconnect" translate="button_label" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="0">
+            <button_label>Disconnect</button_label>
+            <frontend_model>Magenest\Xero\Block\System\Config\Form\Button\Disconnect</frontend_model>
+            <depends>
+                <field id="is_connected">1</field>
+            </depends>
+        </field>
+    </group>
+</include>

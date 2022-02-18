@@ -1,0 +1,34 @@
+<?php
+/** @var \Magenest\AbandonedCart\Block\Customer\Form\Mobile $block */
+$is_required_field = $block->isMobileRequired();
+
+?>
+
+<fieldset class="fieldset create account">
+    <legend class="legend"><span><?php /* @escapeNotVerified */
+            echo __('Additional Information') ?></span></legend>
+    <br>
+    <div class="field my_attribute <?php if ($is_required_field) {
+        ?> required <?php
+    } ?>">
+        <label for="mobile_number" class="label"><span><?php /* @escapeNotVerified */
+                echo __('Mobile') ?></span></label>
+        <div class="control">
+            <input type="text" name="mobile_number" id="mobile_number" title="<?php /* @escapeNotVerified */
+            echo __('Mobile') ?>" class="input-text"
+                <?php if ($is_required_field) { ?>
+                    data-validate="{required:true}" <?php
+                } ?>
+                   autocomplete="off">
+        </div>
+    </div>
+</fieldset>
+<script type="text/x-magento-init">
+    {
+        "input[name='mobile_number']": {
+            "Magenest_AbandonedCart/js/intTelephoneInput": <?php echo $block->phoneConfig(); ?>
+        }
+    }
+
+
+</script>

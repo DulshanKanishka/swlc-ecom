@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp:etc/csp_whitelist.xsd">
+    <policies>
+        <policy id="connect-src">
+            <values>
+                <value id="tawk" type="host">*.tawk.to</value>
+                <value id="tawksss" type="host">wss://vsb20.tawk.to</value>
+                <value id="tawkssss" type="host">wss://*.tawk.to</value>
+            </values>
+        </policy>
+        <policy id="font-src">
+            <values>
+                <value id="gstatic" type="host">*.gstatic.com</value>
+                <value id="tawkss" type="host">*.tawk.to</value>
+
+            </values>
+        </policy>
+        <policy id="style-src">
+            <values>
+                <value id="googleapis" type="host">*.googleapis.com</value>
+                <value id="jsdelivr" type="host">*.jsdelivr.net</value>
+            </values>
+        </policy>
+        <policy id="script-src">
+            <values>
+                <value id="jsdelivrs" type="host">*.jsdelivr.net</value>
+                <value id="tawks" type="host">*.tawk.to</value>
+                <value id="getsitecontrol" type="host">*.getsitecontrol.com</value>
+                <value id="googleapiss" type="host">*.googleapis.com</value>
+            </values>
+        </policy>
+        <policy id="img-src">
+            <values>
+                <value id="jsdelivrss" type="host">*.jsdelivr.net</value>
+                <value id="gstatics" type="host">*.gstatic.com</value>
+                <value id="omtrdc" type="host">*.sc.omtrdc.net</value>
+<!--                <value id="tawks" type="host">*.tawk.to</value>-->
+            </values>
+        </policy>
+    </policies>
+</csp_whitelist>

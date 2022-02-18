@@ -1,0 +1,142 @@
+<?php
+
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Storepickup
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+
+/** @var \Magestore\Storepickup\Block\ListStore\SearchBox $block */
+?>
+<div class="search-box"
+     data-default-raidus
+     data-mage-init='{
+        "Magestore_Storepickup/js/searchbox": {
+            "defaultRaidus": "<?php echo $block->getSystemConfig()->getDefaultRadius() ?>",
+            "distanceUnit": "<?php echo $block->getSystemConfig()->getDistanceUnit() ?>"
+        }
+     }'>
+    <div class="search-button col-xs-12">
+        <div class="search-distance pull-left search-tab active" data-tab-content="#form-search-distance" id="search-distance" ><span><?php echo __('Search by distance') ?></span></div>
+        <?php if($block->getSystemConfig()->isShowTabSearchByArea()) : ?>
+        <div class="search-area pull-left search-tab" data-tab-content="#form-search-area" id="search-area" ><span><?php echo __('Search by area') ?></span></div>
+        <?php endif; ?>
+    </div>
+    <div class="search-content col-xs-12">
+        <div class="container-search">
+            <!--      Search by distance tab      -->
+            <div class="search-by-distance" id="form-search-distance">
+                <div class="form-inline col-full form-group padding-right padding-left">
+                    <div class=" form-group col-md-4 col-sm-4 col-lg-4 col-xs-12">
+                        <input type="text" class="input-search-distance input-sm"  placeholder="<?php echo __('Enter a location...')?>" value=""/>
+                    </div>
+                    <div class="form-group col-md-5 col-sm-5 col-lg-5 col-xs-12 slider-range-min">
+                        <div id="slider-range-min" class="slider-range-bar slider-range"></div>
+                        <span class="show-unit slider-range-amount">
+                            <?php echo $block->getSystemConfig()->getDefaultRadius() . ' ' . $block->getSystemConfig()->getDistanceUnit() ?>
+                        </span>
+                    </div>
+                    <div class="form-group col-md-3 col-sm-3 col-lg-3 col-xs-12 pull-right button-box text-right">
+                        <button class="btn-reset-search-distance action primary" title="<?php echo __('Reset')?>" type="submit">
+                            <span><?php echo __('Reset')?></span>
+                        </button>
+                        <button class="btn-search-distance action primary" title="<?php echo __('Search')?>" type="submit">
+                            <span><?php echo __('Search')?></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <?php if($block->getSystemConfig()->isShowTabSearchByArea()) : ?>
+            <div class="search-by-area hide" id="form-search-area">
+                <?php if($block->getSystemConfig()->hasSearchByStoreName()) : ?>
+                <div class="form-group col-sm-6 col-xs-12 padding-right padding-left">
+                    <input  type="text" title="<?php echo __('Store Name')?>" placeholder="<?php echo __('Store Name')?>" class="input-search-store-name form-control"/>
+                </div>
+                <?php endif; ?>
+                <?php if($block->getSystemConfig()->hasSearchByCountry()) : ?>
+                <div class="form-group col-sm-6 col-xs-12 padding-right padding-left">
+                    <select id="country_id"
+                            data-mage-init='{
+                                "Magestore_Storepickup/js/store/region-updater": {
+                                "regionListId": "#state_id",
+                                "regionInputId": "#state",
+                                "regionJson": <?php echo $block->escapeQuote($block->getRegionJson()) ?>
+                                }
+                            }'
+                            title="<?php echo __('Select Country') ?>"
+                            placeholder="<?php echo __('Select country')?>"
+                            class="input-search-country-id form-control">
+                        <option value=""><?php echo __('Select Country') ?></option>
+                        <?php foreach ($block->getCountryOption() as $item) : ?>
+                            <option value="<?php echo $item['value'] ?>"><?php echo $item['label'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <?php endif; ?>
+                <?php if($block->getSystemConfig()->hasSearchByState()) : ?>
+                <div class="form-group col-sm-6 col-xs-12  padding-right padding-left">
+                    <select id="state_id" placeholder="<?php echo __('State/Province')?>" title="<?php echo __('State/Province')?>" class="input-search-state-id form-control">
+                    </select>
+                    <input id="state"  type="text" placeholder="<?php echo __('State/Province')?>" title="<?php echo __('State/Province')?>" class="input-search-state form-control"/>
+                </div>
+                <?php endif; ?>
+                <?php if($block->getSystemConfig()->hasSearchByCity()) : ?>
+                <div class="form-group col-sm-6 col-xs-12  padding-right padding-left">
+                    <input  type="text" title="<?php echo __('City')?>" placeholder="<?php echo __('City')?>" class="input-search-city form-control"/>
+                </div>
+                <?php endif; ?>
+                <?php if($block->getSystemConfig()->hasSearchByZipcode()) : ?>
+                <div class="form-group col-sm-6 col-xs-12  padding-right padding-left">
+                    <input  type="text" title="<?php echo __('Zip Code')?>" placeholder="<?php echo __('Zip Code')?>" class="input-search-zipcode form-control"/>
+                </div>
+                <?php endif; ?>
+                <div class="form-group col-sm-6 col-xs-12 pull-right text-right padding-right padding-left">
+                    <button class="btn-reset-search-area action primary" title="<?php echo __('Reset')?>" type="submit">
+                        <span><?php echo __('Reset')?></span>
+                    </button>
+                    <button class="btn-search-area action primary" title="<?php echo __('Search')?>" type="submit">
+                        <span><?php echo __('Search')?></span>
+                    </button>
+                </div>
+            </div>
+            <?php endif; ?>
+
+            <div class="search-filter col-full padding-right padding-left">
+                <ul id="list-tag-ul"
+                    class="list-inline list-tag-ul col-full"
+                    data-mage-init='{"Magestore_Storepickup/js/tag": {"btnCheckAll": ".btn-check-all", "btnUnCheckAll": ".btn-un-check-all"}}'
+                >
+                    <?php if(count($block->getTagCollection())!=0):?>
+                    <?php foreach ($block->getTagCollection() as $tag) : ?>
+                    <li title="<?php echo $tag->getTagName() ?>" data-tag-id="<?php echo $tag->getId() ?>" class="tag-icon icon-filter text-center">
+                        <img src="<?php echo $block->getTagIcon($tag) ?>" class="img-responsive"/>
+                        <p><?php echo $tag->getTagName() ?></p>
+                    </li>
+                    <?php endforeach; ?>
+                    <?php endif;?>
+                </ul>
+                <?php if(count($block->getTagCollection())!=0):?>
+                <div class="btn-select pull-right text-right">
+                    <button class="btn-check-all action primary" title="<?php echo __('Select All')?>"><span><?php echo __('Select All')?></span></button>
+                    <button class="btn-un-check-all action primary" style="display: none;" title="<?php echo __('Unmark All')?>"><span><?php echo __('Unmark All')?></span></button>
+                </div>
+                <?php endif;?>
+            </div>
+
+        </div>
+    </div>
+</div>

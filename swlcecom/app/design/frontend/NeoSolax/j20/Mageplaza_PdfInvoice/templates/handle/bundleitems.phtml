@@ -1,0 +1,192 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+use Magento\Bundle\Block\Sales\Order\Items\Renderer;
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php /** @var $block Renderer */ ?>
+
+<?php
+$parentItem = $block->getItem();
+$type = $block->getType();
+$items = $block->getChildren($parentItem);
+$_index = 0;
+$_order = $block->getOrder();
+$block->setStoreId($_order->getStoreId());
+$isBarcode = $block->getIsBarcode();
+$pageSize = $block->getPageSize();
+$a4Barcode = $isBarcode && ($pageSize == 'A4');
+$a5Barcode = $isBarcode && ($pageSize == 'A5');
+?>
+
+<?php if ($block->getItemOptions() || $parentItem->getDescription() || $this->helper('Magento\GiftMessage\Helper\Message')->isMessagesAllowed('order_item', $parentItem) && $parentItem->getGiftMessageId()): ?>
+    <?php $_showlastRow = true ?>
+<?php else: ?>
+    <?php $_showlastRow = false ?>
+<?php endif; ?>
+
+<?php $_prevOptionId = '' ?>
+<div class="bundle-item <?php echo $block->getIndexKey(); ?>" style="border-bottom: 1px solid #ddd;">
+    <?php foreach ($items
+
+    as $_item): ?>
+    <?php
+    // As part of invoice item renderer logic, the order is set on each invoice item.
+    // In the case of a bundle product, this template takes over rendering its children,
+    // so it is necessary to pass the order along to each child.
+    $_item->setOrder($_order);
+    ?>
+    <div class="mp-row">
+        <div class="">
+            <?php if ($_item->getOrderItem()->getParentItem()): ?>
+                <?php $attributes = $block->getSelectionAttributes($_item) ?>
+                <?php if ($_prevOptionId != $attributes['option_id']): ?>
+
+                    <div style="font-size: 11px !important;" class="mp-item-bc ">
+                        <p class="sku" style="font-size: 11px;"><?php echo $attributes['option_label'] ?></p>
+                    </div>
+                    <div style="font-size: 11px !important;" class="mp-sku-bc ">
+                    </div>
+                    <div style="font-size: 11px !important;" class="mp-price-bc ">
+
+                    </div>
+                    <div style="font-size: 11px" class="mp-qty-bc">
+
+                    </div>
+                    <div style="font-size: 11px" class="mp-sku-bc ">
+
+                    </div>
+                    <div style="font-size: 11px" class="mp-subtotal-bc">
+
+                    </div>
+                    <?php $_prevOptionId = $attributes['option_id'] ?>
+                <?php endif; ?>
+            <?php endif; ?>
+            <?php if (!$_item->getOrderItem()->getParentItem()): ?>
+
+            <div style="font-size: 11px !important;" class="mp-item-bc ">
+                <p class="sku" style="font-size: 11px;"><?php echo $_item->getName() ?></p>
+            </div>
+            <div style="font-size: 11px !important;" class="mp-sku-bc ">
+                <?php
+                $minsku = $_item->getSku();
+                foreach ($items as $itemsec) {
+                    if (!$itemsec->getOrderItem()->getParentItem()) { } else {
+                        $subsku = $itemsec->getSku();
+                        $minsku = str_replace($subsku,"",$minsku);
+                    }
+                }
+                for ($x = 0; $x <= 10; $x++) {
+                    $length = strlen($minsku);
+                    if ($minsku[$length - 1] == '-') {
+                        $minsku = substr_replace($minsku ,"", -1);
+                    }
+                }
+                ?>
+                <p class="sku" style="font-size: 11px;"><?php echo $minsku ?></p>
+            </div>
+            <div style="font-size: 11px !important;" class="mp-price-bc ">
+
+            </div>
+            <div style="font-size: 11px" class="mp-qty-bc">
+
+            </div>
+            <div style="font-size: 11px" class="mp-sku-bc ">
+
+            </div>
+            <div style="font-size: 11px" class="mp-subtotal-bc">
+
+            </div>
+        </div>
+
+
+        <?php else: ?>
+
+
+        <div class="">
+            <div class="mp-row">
+
+                <div style="font-size: 11px !important;" class="mp-item-bc ">
+                    <p class="sku" style="font-size: 11px;"><?php echo $_item->getName() ?></p>
+                </div>
+                <div style="font-size: 11px !important;" class="mp-sku-bc ">
+                    <p class="sku" style="font-size: 11px;"><?= $block->escapeHtml($_item->getSku()) ?></p>
+                </div>
+                <div style="font-size: 11px !important;" class="mp-price-bc ">
+                    <p class="sku" style="font-size: 11px;">
+                        <?php
+                        $subtAmount = $_item->getRowTotal();
+                        $subttoDecim = number_format((float)$subtAmount, 2, '.', '');
+                        ?>
+                        <?php echo $subttoDecim; ?>
+                    </p>
+                </div>
+                <div style="font-size: 11px" class="mp-qty-bc">
+                    <span><?= /* @escapeNotVerified */
+                        $_item->getQty() * 1 ?></span>
+                </div>
+                <div style="font-size: 11px" class="mp-sku-bc ">
+                    <p style="font-size: 11px;" class="sku">
+                        <?php
+                        $taxAmount = $_item->getTaxAmount();
+                        $taxTwoDecim = number_format((float)$taxAmount, 2, '.', '');
+                        ?>
+                        <?= /* @escapeNotVerified */
+                        __('%1', $taxTwoDecim ); ?></p>
+                </div>
+                <div style="font-size: 11px" class="mp-subtotal-bc">
+                    <?php if ($block->displayPriceExclTax() || $block->displayBothPrices()): ?>
+                        <?php if ($block->displayBothPrices()): ?>
+                            <span class="label"><?= /* @escapeNotVerified */
+                                __('Excl. Tax') ?>:</span>
+                        <?php endif; ?>
+                        <?= /* @escapeNotVerified */
+                        $_order->formatPrice($_item->getRowTotal()) ?>
+                    <?php endif; ?>
+
+                    <?php if ($block->displayPriceInclTax() || $block->displayBothPrices()): ?>
+                        <?php if ($block->displayBothPrices()): ?>
+                            <br/><span class="label"><?= /* @escapeNotVerified */
+                                __('Incl. Tax') ?>:</span>
+                        <?php endif; ?>
+                        <?php $_incl = $this->helper('Magento\Checkout\Helper\Data')->getSubtotalInclTax($_item); ?>
+                        <?= /* @escapeNotVerified */
+                        $_order->formatPrice($_incl) ?>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+<?php endif; ?>
+</div>
+    <div class="clr"></div>
+<?php endforeach; ?>
+
+<?php if ($_showlastRow): ?>
+    <div class="mp-row">
+        <div class="item-extra">
+            <?php if ($block->getItemOptions()): ?>
+                <div>
+                    <?php foreach ($block->getItemOptions() as $option): ?>
+                        <div><strong><em><?= /* @escapeNotVerified */
+                                    $option['label'] ?></em></strong></div>
+                        <div><?= /* @escapeNotVerified */
+                            $option['value'] ?></div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+            <?= $block->escapeHtml($_item->getDescription()) ?>
+        </div>
+    </div>
+<?php endif; ?>
+</div>
+<div class="clr"></div>
+

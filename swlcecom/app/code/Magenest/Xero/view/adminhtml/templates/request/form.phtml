@@ -1,0 +1,139 @@
+<?php
+/** @var Magenest\Xero\Block\Adminhtml\Request\Form $block */
+?>
+<section class="admin__page-section order-view-billing-shipping">
+    <div class="admin__page-section-title">
+        <span class="title"><?php /* @escapeNotVerified */
+            echo __('Requests Made Today') ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item order-payment-method admin__fieldset-wrapper">
+            <div class="admin__page-section-item-title">
+                <span class="title"><?php /* @escapeNotVerified */
+                    echo __('Total Request Today') ?></span>
+            </div>
+            <div class="admin__page-section-item-content">
+                <span class="title" style="font-size: 12pt; font-weight: bold"><?php /* @escapeNotVerified */
+                    echo $block->getTodayRequest() ? $block->getTodayRequest() : 'No request has been made to day' ?></span>
+            </div>
+        </div>
+
+        <div class="admin__page-section-item order-information">
+            <div class="admin__page-section-item-title">
+                <span class="title"><?php echo __('Detail') ?></span>
+            </div>
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary">
+                    <tbody>
+                    <tr>
+                        <td><?php /* @escapeNotVerified */
+                            echo __('Contact Request:') ?></td>
+                        <td><?php echo $block->getTodayContactRequest() ? $block->getTodayContactRequest() : 'No request has been made to day' ?></td>
+                    </tr>
+                    <tr>
+                        <td><?php /* @escapeNotVerified */
+                            echo __('Item Request:') ?></td>
+                        <td><?php echo $block->getTodayItemRequest() ? $block->getTodayItemRequest() : 'No request has been made to day' ?></td>
+                    </tr>
+                    <tr>
+                        <td><?php /* @escapeNotVerified */
+                            echo __('Order Request:') ?></td>
+                        <td><?php echo $block->getTodayOrderRequest() ? $block->getTodayOrderRequest() : 'No request has been made to day' ?></td>
+                    </tr>
+                    <tr>
+                        <td><?php /* @escapeNotVerified */
+                            echo __('Invoice Request:') ?></td>
+                        <td><?php echo $block->getTodayInvoiceRequest() ? $block->getTodayInvoiceRequest() : 'No request has been made to day' ?></td>
+                    </tr>
+                    <tr>
+                        <td><?php /* @escapeNotVerified */
+                            echo __('CreditNote Request:') ?></td>
+                        <td><?php echo $block->getTodayCreditNoteRequest() ? $block->getTodayCreditNoteRequest() : 'No request has been made to day' ?></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</section>
+
+<section class="admin__page-section">
+    <div class="admin__page-section-title">
+        <span class="title"><?php /* @escapeNotVerified */
+            echo __('Request Records') ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item order-information">
+            <div class="admin__page-section-item-title">
+                <span class="title"><?php echo __('Detail') ?></span>
+            </div>
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary">
+                    <thead>
+                        <th></th>
+                        <th>Date</th>
+                        <th>Number of Requests</th>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><?php /* @escapeNotVerified */
+                            echo __('Highest Request:') ?></td>
+                        <td><?php echo $block->getHighestRequestDay() ? $block->getHighestRequestDay() : 'No request has been made' ?></td>
+                        <td><?php echo $block->getHighestRequest() ? $block->getHighestRequest() : 'No request has been made' ?></td>
+                    </tr>
+                    <tr>
+                        <td><?php /* @escapeNotVerified */
+                            echo __('Lowest Request:') ?></td>
+                        <td><?php echo $block->getLowestRequestDay() ? $block->getLowestRequestDay() : 'No request has been made' ?></td>
+                        <td><?php echo $block->getLowestRequest() ? $block->getLowestRequest() : 'No request has been made' ?></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="admin__page-section order-view-account-information">
+    <div class="admin__page-section-title">
+        <span class="title"><?php /* @escapeNotVerified */ echo __('Request Report') ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="select-date" data-role="show-report-date">
+            <div id="start-date" data-role="start-date" data-bind="scope: 'start-date'">
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            </div>
+            <div id="end-date" data-role="end-date" data-bind="scope: 'end-date'">
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            </div>
+            <div id="report-request" data-bind="scope:'report'">
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "start-date": {
+                    "label": "<?php echo __("Get Date From")?>",
+                    "component": "Magento_Ui/js/form/element/date",
+                    "template": "ui/form/field",
+                    "dataScope": "test_start"
+                },
+                "end-date": {
+                    "label": "<?php echo __("To")?>",
+                    "component": "Magento_Ui/js/form/element/date",
+                    "template": "ui/form/field",
+                    "dataScope": "test_end"
+                },
+                "report": {
+                    "component": "Magenest_Xero/js/view/report",
+                    "targetUrl": "<?php echo $block->getUrl('*/*/report');?>",
+                    "loaderFileUrl": "<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('images/loader-1.gif'); ?>"
+                }
+            }
+        }
+    }
+}
+</script>

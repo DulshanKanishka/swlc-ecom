@@ -1,0 +1,330 @@
+<?php
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Storepickup
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+
+?>
+<?php /** @var $block \Magento\Sales\Block\Adminhtml\Order\Create\Shipping\Method\Form */ ?>
+<?php $_shippingRateGroups = $block->getShippingRates(); ?>
+<?php if ($_shippingRateGroups): ?>
+    <div id="order-shipping-method-choose" style="display:none">
+        <dl class="admin__order-shipment-methods">
+            <?php foreach ($_shippingRateGroups as $code => $_rates): ?>
+                <dt class="admin__order-shipment-methods-title"><?php echo $block->escapeHtml($block->getCarrierName($code)) ?></dt>
+                <dd class="admin__order-shipment-methods-options">
+                    <ul class="admin__order-shipment-methods-options-list">
+                        <?php foreach ($_rates as $_rate): ?>
+                            <?php $_radioProperty = 'name="order[shipping_method]" type="radio" onclick="order.setShippingMethod(this.value)"' ?>
+                            <?php $_code = $_rate->getCode() ?>
+                            <li class="admin__field-option">
+                                <?php if ($_rate->getErrorMessage()): ?>
+                                    <div class="messages">
+                                        <div class="message message-error error">
+                                            <div><?php echo $block->escapeHtml($_rate->getErrorMessage()) ?></div>
+                                        </div>
+                                    </div>
+                                <?php else: ?>
+                                    <?php $_checked = $block->isMethodActive($_code) ? 'checked="checked"' : '' ?>
+                                    <input <?php /* @escapeNotVerified */ echo $_radioProperty ?> value="<?php /* @escapeNotVerified */ echo $_code ?>"
+                                                                                                  id="s_method_<?php /* @escapeNotVerified */ echo $_code ?>" <?php /* @escapeNotVerified */ echo $_checked ?>
+                                                                                                  class="admin__control-radio"/>
+                                    <label class="admin__field-label" for="s_method_<?php /* @escapeNotVerified */ echo $_code ?>">
+                                        <?php echo $block->escapeHtml($_rate->getMethodTitle() ? $_rate->getMethodTitle() : $_rate->getMethodDescription()) ?> -
+                                        <strong>
+                                            <?php $_excl = $block->getShippingPrice($_rate->getPrice(), $this->helper('Magento\Tax\Helper\Data')->displayShippingPriceIncludingTax()); ?>
+                                            <?php $_incl = $block->getShippingPrice($_rate->getPrice(), true); ?>
+
+                                            <?php /* @escapeNotVerified */ echo $_excl; ?>
+                                            <?php if ($this->helper('Magento\Tax\Helper\Data')->displayShippingBothPrices() && $_incl != $_excl): ?>
+                                                (<?php /* @escapeNotVerified */ echo __('Incl. Tax'); ?> <?php /* @escapeNotVerified */ echo $_incl; ?>)
+                                            <?php endif; ?>
+                                        </strong>
+                                    </label>
+                                <?php endif ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </dd>
+            <?php endforeach; ?>
+        </dl>
+    </div>
+    <?php if ($_rate = $block->getActiveMethodRate()): ?>
+        <div id="order-shipping-method-info" class="order-shipping-method-info">
+            <dl class="admin__order-shipment-methods">
+                <dt class="admin__order-shipment-methods-title">
+                    <?php echo $block->escapeHtml($block->getCarrierName($_rate->getCarrier())) ?>
+                </dt>
+                <dd class="admin__order-shipment-methods-options">
+                    <?php echo $block->escapeHtml($_rate->getMethodTitle() ? $_rate->getMethodTitle() : $_rate->getMethodDescription()) ?> -
+                    <strong>
+                        <?php $_excl = $block->getShippingPrice($_rate->getPrice(), $this->helper('Magento\Tax\Helper\Data')->displayShippingPriceIncludingTax()); ?>
+                        <?php $_incl = $block->getShippingPrice($_rate->getPrice(), true); ?>
+                        <?php /* @escapeNotVerified */ echo $_excl; ?>
+
+                        <?php if ($this->helper('Magento\Tax\Helper\Data')->displayShippingBothPrices() && $_incl != $_excl): ?>
+                            (<?php /* @escapeNotVerified */ echo __('Incl. Tax'); ?> <?php /* @escapeNotVerified */ echo $_incl; ?>)
+                        <?php endif; ?>
+                    </strong>
+                    <!-- add Store Pickup information -->
+                    <?php $liststore= $this->helper('Magestore\Storepickup\Helper\Data')->getListStore();?>
+                        <div class="list-store-to-pickup required">
+                            <label>Select Store:</label>
+                            <select class="list-store-select disable-ul required">
+                                <option class="show-tag-li store-item" value="">Select a store to pickup</option>
+                                <?php foreach ($liststore as $store):?>
+                                    <option class="show-tag-li store-item" value="<?php echo $store["storepickup_id"]?>" class="show-tag-li store-item"><?php echo $store["store_name"]?></option>
+                                <?php endforeach;?>
+                            </select>
+                            <div class ="info-store-checkout"></div>
+                        </div>
+
+                    <?php if($_rate->getCode()=="storepickup_storepickup"):?>
+                        <script type="text/javascript">
+                            require(['jquery'],function($){
+                                $('.list-store-to-pickup').show();
+                            });
+                        </script>
+                    <?php else: ?>
+                            <script type="text/javascript">
+                                require(['jquery'],function($){
+                                    $('.list-store-to-pickup').hide();
+                                    if($('.list-store-select')) $('.list-store-select').val(<?php echo '"'.$store["storepickup_id"].'"'?>);
+                                    if($('#shipping_date')) $('#shipping_date').val("2");
+                                    if($('#shipping_time')) $('#shipping_time').val("2");
+                                });
+                            </script>
+                    <?php endif;?>
+                    <!--end edit-->
+                </dd>
+            </dl>
+            <a href="#"
+               onclick="$('order-shipping-method-info').hide();$('order-shipping-method-choose').show();return false"
+               class="action-default">
+                <span><?php /* @escapeNotVerified */ echo __('Click to change shipping method') ?></span>
+            </a>
+        </div>
+    <?php else: ?>
+        <script>
+            require(['prototype'], function(){
+                $('order-shipping-method-choose').show();
+            });
+        </script>
+    <?php endif; ?>
+<?php elseif ($block->getIsRateRequest()): ?>
+    <div class="order-shipping-method-summary">
+        <strong class="order-shipping-method-not-available"><?php /* @escapeNotVerified */ echo __('Sorry, no quotes are available for this order.') ?></strong>
+    </div>
+<?php else: ?>
+    <div id="order-shipping-method-summary" class="order-shipping-method-summary">
+        <a href="#" onclick="order.loadShippingRates();return false" class="action-default">
+            <span><?php /* @escapeNotVerified */ echo __('Get shipping methods and rates') ?></span>
+        </a>
+        <input type="hidden" name="order[has_shipping]" value="" class="required-entry" />
+    </div>
+<?php endif; ?>
+<div style="display: none;" id="shipping-method-overlay" class="order-methods-overlay">
+    <span><?php /* @escapeNotVerified */ echo __('You don\'t need to select a shipping method.') ?></span>
+</div>
+<script>
+    require(["Magento_Sales/order/create/form"], function(){
+
+        order.overlay('shipping-method-overlay', <?php if ($block->getQuote()->isVirtual()): ?>false<?php else: ?>true<?php endif; ?>);
+        order.overlay('address-shipping-overlay', <?php if ($block->getQuote()->isVirtual()): ?>false<?php else: ?>true<?php endif; ?>);
+
+        <?php if ($block->getQuote()->isVirtual()): ?>
+        order.isOnlyVirtualProduct = true;
+        <?php endif; ?>
+    });
+</script>
+<script type="text/javascript">
+
+    var icon_src_loading_wait = '<?php echo $block->getViewFileUrl("Magestore_Storepickup::images/opc-ajax-loader.gif") ?>';
+    var time_ajax_loading_wait = '<span class="time-ajax-loading-wait" style="position: relative;">'+ '<img style="width: 20px;" src="'+ icon_src_loading_wait + '" class="ajax-loading-image"> '+'<?php echo __("Loading") ?>... </span>';
+    var date_ajax_loading_wait = '<span class="date-ajax-loading-wait" style="position: relative;">'+ '<img style="width: 20px;" src="'+ icon_src_loading_wait + '" class="ajax-loading-image"> '+'<?php echo __("Loading") ?>... </span>';
+    var save_ajax_loading_wait = '<span class="save-ajax-loading-wait" style="position: relative;">'+ '<img style="width: 20px;" src="'+ icon_src_loading_wait + '" class="ajax-loading-image"> '+'<?php echo __("Saving") ?>... </span>';
+    var storepickup_date_box = '<div id="shipping_date_div" class="storepickup-box col-xs-12"> Please select Pickup Date/Time to go next step!<br/>'
+        + '<label class="required" for="shipping_date"><?php echo __("Pickup Date :") ?> </label>'
+        + date_ajax_loading_wait
+        + '<input name="shipping_date" style="display:none; width: 180px;" type="text" id="shipping_date" value="" class="input-text required-entry form-control" readonly>'
+        + '</div>' +'<br />';
+    var storepickup_time_box = '<div id="shipping_time_div" class="storepickup-box col-xs-12">'
+        + '<label class="required" for="shipping_time"><?php echo __("Pickup Time :") ?>  </label>'
+        + time_ajax_loading_wait
+        + '<select style="display:none; width: 180px; margin:10px 0px;" id="shipping_time" name="shipping_time" class="validate-select"></select>'
+        + '</div>'
+        +save_ajax_loading_wait;
+    var defaultStore= '<?php echo $this->helper('Magestore\Storepickup\Helper\Data')->getDefaultStore() ?>';
+    var isDisplayPickuptime= <?php echo $this->helper('Magestore\Storepickup\Helper\Data')->isDisplayPickuptime() ?>;
+    var storePikcuplatitude="";
+    var storePikcuplongitude="";
+
+    require(
+        [
+            'jquery',
+            'mage/url',
+            'mage/translate',
+            'mage/template',
+            'jquery/ui'
+        ],
+        function( $, url, $t, mageTemplate) {
+            $('#select_store_by_map').click(function () {
+                $('#popup-mpdal').modal('openModal');
+            });
+            // change store event
+            $('.list-store-select').change(function () {
+
+                $.each(liststoreJson, function (index, el) {
+                    if (el.storepickup_id == $('.list-store-select').val()) {
+                        storePikcuplatitude= el.latitude;
+                        storePikcuplongitude=el.longitude;
+                        var store_information = '<p>' + $t('Store address: ') + el.address + '</p>'+'<p>' + $t('Store Phone: ') + el.phone + '</p>'+'<img src="http://maps.google.com/maps/api/staticmap?'+'<?php echo $this->helper('Magestore\Storepickup\Helper\Data')->getGoogleApiKey() ?>'+'center=' + storePikcuplatitude + ',' + storePikcuplongitude + '&zoom=15&size=200x200&markers=color:red|label:S|' + storePikcuplatitude + ',' + storePikcuplongitude + '&sensor=false" />';
+                        $('.info-store-checkout').html(store_information);
+                        $('.info-store-checkout').show();
+                        $.ajax(
+                            {
+                                url: url.build('../../../../../storepickupadmin/checkout/changestore'),
+                                type: "post",
+                                dateType: "text",
+                                data: {
+                                    store_id: $('.list-store-select').val()
+                                },
+                                success: function (result) {
+                                    if(isDisplayPickuptime) showInputDateBox();
+                                }
+                            });
+                    }
+                });
+                if ($('#shipping_date_div').length > 0)
+                {
+                    $('#shipping_date_div').show();
+                    $('.date-ajax-loading-wait').show();
+                    $('#shipping_date').hide();
+                    $('#shipping_time_div').hide();
+                } else if(isDisplayPickuptime)
+                {
+                    $('.info-store-checkout').append(storepickup_date_box);
+                    $("#shipping_date").change(function()
+                    {
+                        $('.time-ajax-loading-wait').show();
+                        showTimeBox($('#shipping_date').val(),$('.list-store-select').val());
+                    });
+                }
+                if($('.list-store-select').val()==""){
+                    $('.info-store-checkout').hide();
+                }
+
+            });
+            function showInputDateBox(){
+
+                $.ajax(
+                    {
+                        url: url.build('../../../../../storepickupadmin/checkout/disabledate'),
+                        type: "post",
+                        dateType: "json",
+                        data: {
+                            store_id: $('.list-store-select').val()
+                        },
+                        success: function (result) {
+                            result = $.parseJSON(result);
+                            $("#shipping_date").val("");
+                            $("#shipping_date").datepicker("destroy");
+                            $("#shipping_date").datepicker(
+                                {
+                                    minDate: -0,
+                                    dateFormat: 'mm/dd/yy',
+                                    beforeShowDay: function(day) {
+                                        var formatdate = $.datepicker.formatDate('mm/dd/yy', day);
+                                        return [ ($.inArray(formatdate,result.holiday) == -1)&&($.inArray(day.getDay(),result.schedule) == -1) ];
+                                    }
+                                });
+                            $('#shipping_date').show();
+                            $('.date-ajax-loading-wait').hide();
+                        }
+                    });
+            }
+            function showTimeBox(shipping_date_val,store_id_val)
+            {
+                if (!($('#shipping_time_div').length > 0))
+                {
+                    $('.info-store-checkout').append(storepickup_time_box);
+                    $("#shipping_time").change(function()
+                    {
+                        $('.save-ajax-loading-wait').show();
+                        $.ajax(
+                            {
+                                url: url.build('../../../../../storepickupadmin/checkout/changetime'),
+                                type: "post",
+                                dateType: "json",
+                                data: {
+                                    store_id: $('.list-store-select').val(),
+                                    shipping_date: $('#shipping_date').val(),
+                                    shipping_time: $("#shipping_time").val()
+                                },
+                                success: function (result) {
+                                    $('.save-ajax-loading-wait').hide();
+                                }
+                            });
+
+                    });
+                }
+                $('#shipping_time_div').show();
+                $('#shipping_time').hide();
+                $('.save-ajax-loading-wait').hide();
+                $.ajax(
+                    {
+                        url: url.build('../../../../../storepickupadmin/checkout/changedate'),
+                        type: "post",
+                        dateType: "json",
+                        data: {
+                            shipping_date: shipping_date_val,
+                            store_id:store_id_val
+                        },
+                        success: function (result) {
+                            result = $.parseJSON(result);
+                            $('#shipping_time').html("");
+                            var selecttime='<option value="-1">Select time to pickup</option>';
+                            if(!result.error)
+                            {
+                                $('#shipping_time').append(selecttime+result.html);
+                                $('#shipping_time').show();
+                                $('.time-ajax-loading-wait').hide();
+                            } else alert(result.error);
+
+                        }
+                    });
+            }
+            $.each(liststoreJson, function (index, el) {
+                if (el.storepickup_id == defaultStore && !($('.info-store-checkout').length>0 )) {
+                    $('.list-store-select').val(defaultStore).trigger('change');
+                }
+            });
+        }
+    );
+    window.liststoreJson = <?php echo $this->helper('Magestore\Storepickup\Helper\Data')->getListStoreJson() ?>;
+</script>
+<style>
+    .list-store-to-pickup.required label::after {
+        color: red;
+        content: "*";
+        margin-right: 10px;
+        font-size: 1.2rem;
+    }
+</style>
+
+

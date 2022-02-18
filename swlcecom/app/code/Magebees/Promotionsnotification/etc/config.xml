@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <promotions>
+			<general>
+				<enabled>1</enabled>
+				<enable_link>1</enable_link>
+				<link_label>Promotions Notification</link_label>
+				<page_layout>1column</page_layout>
+			</general>
+			<notification_bar>
+				<enabled>1</enabled>
+				<display_after>0</display_after>
+				<close_after>5</close_after>
+				<height>0</height>
+				<show_in_mobile>1</show_in_mobile>
+				<position>top</position>
+				<onetime_per_user>0</onetime_per_user>
+			</notification_bar>
+			<notification_popup>
+				<enabled>1</enabled>
+				<display_after>0</display_after>
+				<close_after>5</close_after>
+				<height>0</height>
+				<width>350</width>
+				<show_in_mobile>1</show_in_mobile>
+				<position>top</position>
+			</notification_popup>
+		</promotions>    
+    </default>
+</config>

@@ -1,0 +1,25 @@
+<?php
+/** @var $block \Magenest\Xero\Block\System\Config\Form\Button\PublicConnection */
+?>
+<div class="actions button-container">
+    <button class="button"
+            type="button"
+            data-role="<?php /* @escapeNotVerified */
+            echo $block->getHtmlId() ?>"
+            id="<?php /* @escapeNotVerified */
+            echo $block->getHtmlId() ?>"
+        <?php echo $block->isConsumerKeyExist() ? '' : 'disabled' ?>>
+        <span><?php /* @escapeNotVerified */
+            echo $block->escapeHtml($block->getButtonLabel()) ?></span>
+    </button>
+    <div id="result" data-role="result-check" class="message-validation hide"></div>
+</div>
+<script>
+    require(['jquery'], function ($) {
+        'use strict';
+        var buttonDataRole = $('[data-role="<?php /* @escapeNotVerified */ echo $block->getHtmlId()?>"]');
+        buttonDataRole.click(function () {
+            location.href = "<?php echo $block->getConnectUrl() ?>";
+        });
+    });
+</script>

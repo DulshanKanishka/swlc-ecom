@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magenest" translate="label" sortOrder="200">
+            <label>Magenest</label>
+        </tab>
+        <section id="abandonedcart" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Abandoned Cart</label>
+            <tab>magenest</tab>
+            <resource>Magenest_AbandonedCart::config_abandonedcart</resource>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General</label>
+                <field id="enable" translate="label" sortOrder="10" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="email_identity" translate="label" sortOrder="20" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+                <field id="bcc_name" translate="label" sortOrder="30" type="text" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>BCC name</label>
+                </field>
+                <field id="bcc_email" translate="label" sortOrder="40" type="text" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>BCC email</label>
+                    <validate>validate-email</validate>
+                </field>
+            </group>
+            <group id="setting" translate="label" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Setting</label>
+                <field id="considered_member" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Time for carts to be considered abandoned for Members</label>
+                    <comment>Default is 60 minutes</comment>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="considered_coupon" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Coupons are only available to particular customers</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="mandrill" translate="label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Mandrill integration</label>
+                <comment>Recommendation: You can use Mandrill to send massive emails, up to 1000 emails/s</comment>
+                <field id="mandrill_enable" type="select" translate="10" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Mandrill</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable this option will make module sending abandoned cart email reminder via Mandrill</comment>
+                </field>
+                <field id="api_key" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>API key</label>
+                    <depends>
+                        <field id="mandrill_enable">1</field>
+                    </depends>
+                </field>
+                <field id="account" translate="label" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Account information</label>
+                    <frontend_model>Magenest\AbandonedCart\Block\Adminhtml\System\Config\Account</frontend_model>
+                    <source_model>Magenest\AbandonedCart\Model\Config\Source\Account</source_model>
+                    <depends>
+                        <field id="mandrill_enable">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="nexmo" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>NexMo Integration (SMS)</label>
+                <field id="nexmo_enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable this option allows sending message via Nexmo</comment>
+                </field>
+                <field id="api_key" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>API key</label>
+                    <depends>
+                        <field id="nexmo_enable">1</field>
+                    </depends>
+                </field>
+                <field id="api_secret" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>API Secret</label>
+                    <depends>
+                        <field id="nexmo_enable">1</field>
+                    </depends>
+                </field>
+                <field id="from" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>From</label>
+                    <depends>
+                        <field id="nexmo_enable">1</field>
+                    </depends>
+                </field>
+                <field id="enable_mobile_field" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Allow mobile field input in customer register form</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If you choose yes, there is a mobile input field in customer's registration form</comment>
+                    <depends>
+                        <field id="nexmo_enable">1</field>
+                    </depends>
+                </field>
+                <field id="is_required" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Make mobile number a required field</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If you choose yes the mobile input is required for customer registration</comment>
+                    <depends>
+                        <field id="nexmo_enable">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,87 @@
+<?php
+
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Storepickup
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+
+/** @var \Magestore\Storepickup\Block\Wrapper $block */
+?>
+<?php
+$mcOptions= array (
+				array (
+					"height" => 53,
+					"url" => $this->helper('Magestore\Storepickup\Helper\Image')->getMediaUrlImage('storepickup/markerclusterer/m1.png'),
+					"width" => 53
+				),
+				array (
+					"height" => 56,
+					"url" => $this->helper('Magestore\Storepickup\Helper\Image')->getMediaUrlImage('storepickup/markerclusterer/m2.png'),
+					"width" => 56
+				),
+				array (
+					"height" => 66,
+					"url" => $this->helper('Magestore\Storepickup\Helper\Image')->getMediaUrlImage('storepickup/markerclusterer/m3.png'),
+					"width" => 66
+				),
+				array (
+					"height" => 78,
+					"url" => $this->helper('Magestore\Storepickup\Helper\Image')->getMediaUrlImage('storepickup/markerclusterer/m4.png'),
+					"width" => 78
+				),
+				array (
+					"height" => 90,
+					"url" => $this->helper('Magestore\Storepickup\Helper\Image')->getMediaUrlImage('storepickup/markerclusterer/m5.png'),
+					"width" => 90
+				)
+			); ?>
+
+<div class="storepickup-wrapper col-full">
+    <h2 class="title-page"><?php echo __('Store pickup') ?></h2>
+    <?php echo $block->getChildHtml('storepickup.searchbox'); ?>
+    <div class="boxes-content">
+        <?php echo $block->getChildHtml('storepickup.mapbox'); ?>
+        <?php echo $block->getChildHtml('storepickup.liststorebox'); ?>
+    </div>
+    <div class="overlay-bg">
+        <img src="<?php echo $block->getViewFileUrl('Magestore_Storepickup::images/ajax-loader.gif') ?>" alt="overlay" />
+    </div>
+    <script type="text/javascript">
+		var mcOptions = JSON.parse('<?php echo $this->helper('Magento\Framework\Json\Helper\Data')->jsonEncode($mcOptions) ?>');
+        var loadStoreURL = '<?php echo $block->getUrl('storepickup/index/loadstore') ?>';
+        if(window.location.href.slice(0,5)=='https') loadStoreURL= loadStoreURL.replace("http:","https:");
+        require(['jquery', 'Magestore_Storepickup/js/liststore', 'Magestore_Storepickup/js/checkout/liststorecheckout', 'Magestore_Storepickup/js/pagination', 'Magestore_Storepickup/js/googlemap', 'Magestore_Storepickup/js/makercluster'], function($){
+            $(document).ready(function ($) {
+                $('.googlemap').GoogleMap({
+                    urlLoadStore: loadStoreURL,
+                    paginationWrapper: '.pagination-wrapper',
+                    liststoreContainer: '.list-store-container',
+                    storePopupTemplate: '.popup-store-template',
+                    listTag: '.list-tag-ul',
+                    searchBox: '.search-box',
+                    loader: '.overlay-bg',
+                    defaultRaidus: '<?php echo $block->getSystemConfig()->getDefaultRadius() ?>',
+                    distanceUnit: '<?php echo $block->getSystemConfig()->getDistanceUnit() ?>',
+                    circleCenterIcon: '<?php echo $block->getViewFileUrl('Magestore_Storepickup/images/circlecenter.png') ?>',
+                    mediaUrlImage: '<?php echo $block->getMediaUrlImage() ?>'
+                });
+            });
+        });
+        window.googleMapApiKey="<?php echo $block->getSystemConfig()->getGoolgeApiKey()?>";
+    </script>
+</div>

@@ -1,0 +1,71 @@
+<?php $_config = $this->helper('Sm\Aloza\Helper\Data'); ?>
+<div class="header-container header-style-1">
+	<div class="header-top">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 language-currency-top">
+				<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('block-contact-header')->toHtml(); ?>
+				<?php echo $block->getChildHtml('language-header'); ?>
+				<?php echo $block->getChildHtml('currency-header'); ?>
+			</div>
+			<div class="col-sm-6 hidden-xs about-header">
+				<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('block-about-header')->toHtml(); ?>
+			</div>
+		</div>
+	</div>
+
+	</div>
+	<div class="header-bottom">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-1 col-md-2 col-sm-3 col-xs-12 col-phone-12 logo-header">
+					<?php echo $block->getChildHtml('logo-header'); ?>
+				</div>
+				<div class="col-lg-9 col-md-10 col-sm-3 col-xs-2">
+					<div class="main-menu" id="mmmenu" style="display: none">
+	 					<?php
+						if($_config->getGeneral('menu_style') == 'megamenu'){
+								echo $block->getChildHtml('navigation-header-megamenu');
+						} else {
+								echo $block->getChildHtml('navigation-header');
+						}
+						?>
+					</div>
+				<div class="navigation-mobile-container">
+					<?php echo $block->getChildHtml('navigation.mobile'); ?>
+				</div>
+				</div>
+				<div class="col-lg-2 col-md-offset-10 col-lg-offset-0 col-md-2 col-sm-6 col-xs-10 header-nav-920-1200-width">
+					<div class="inner-setting-right">
+						<div class="header-search">
+							<?php echo $block->getChildHtml('search-header'); ?>
+						</div>
+						<div class="my-accounts top-drop">
+								<?php echo $block->getChildHtml('toplinks-header'); ?>
+						</div>
+
+						<div class="minicart-header">
+								<div class="minicart-content">
+									<?php echo $block->getChildHtml('cart-header'); ?>
+								</div>
+						</div>
+
+
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+
+</div>
+<script>
+    require(['jquery'], function () {
+
+        jQuery(document).ready(function () {
+            jQuery('#mmmenu').css("display", "block");
+        });
+    });
+</script>

@@ -1,0 +1,54 @@
+<?php
+/** \Magenest\AbandonedCart\Block\Adminhtml\Chart\EmailCampaign $block */
+if (!$block->getEmailCount()) {
+    echo '<div class=\'message message-warning warning\'>There are no email reports for this period of time.</div>';
+} else {
+    ?>
+    <section class="admin__page-section">
+        <div class="admin__page-section-title">
+            <span class="title"><?php /* @escapeNotVerified */
+                echo 'Emails Line Chart' ?></span>
+        </div>
+        <?php if ($block->getPeriodFromParam() || $block->getPeriodToParam()) : ?>
+            <div>
+                <?php echo $block->getPeriodFromParam() ? '(From: ' . $block->getPeriodFromParam() : '(' ?>
+                <?php echo $block->getPeriodToParam() ? ' To: ' . $block->getPeriodToParam() . ')' : ')' ?>
+            </div>
+        <?php endif; ?>
+        <div class="admin__page-section-content">
+            <div id="emails_line_chart" style="clear: both;"></div>
+        </div>
+    </section>
+    <section class="admin__page-section">
+        <div class="admin__page-section-title">
+        <span class="title"><?php /* @escapeNotVerified */
+            echo __('Emails Open Rate and Click Rate') ?></span>
+        </div>
+        <?php if ($block->getPeriodFromParam() || $block->getPeriodToParam()) : ?>
+            <div>
+                <?php echo $block->getPeriodFromParam() ? '(From: ' . $block->getPeriodFromParam() : '(' ?>
+                <?php echo $block->getPeriodToParam() ? ' To: ' . $block->getPeriodToParam() . ')' : ')' ?>
+            </div>
+        <?php endif; ?>
+        <div class="admin__page-section-content" style="width: 100%; margin: auto">
+            <div id="opening_rates_chart" style="float: left"></div>
+            <div id="clicking_rates_chart" style="float: left"></div>
+            <div id="unsubscribe_rates_chart" style="float: left"></div>
+        </div>
+    </section>
+    <?php
+}
+?>
+
+<script>
+    require([
+        "jquery"
+    ], function ($) {
+        $(document).ready(function () {
+            getEmailsLineData();
+            getOpeningRatesChart();
+            getClickingRatesChart();
+            getUnsubscribeRatesChart();
+        });
+    })
+</script>

@@ -1,0 +1,68 @@
+<?php echo $block->getChildHtml('payment.mapping.switcher'); ?>
+<br />
+<br />
+<br />
+<br />
+<?php
+/** @var Magenest\Xero\Block\Adminhtml\Xero\Payment $block */
+$accounts = $block->getAccounts();
+if (!is_array($accounts)) {
+    echo ("<span class=\"title\" style=\"font-size: 11pt; font-weight: normal; font-style: italic\">");
+    echo __($accounts);
+    echo ("</span>");
+} else {
+    ?>
+    <section class="admin__page-section order-view-billing-shipping">
+        <div class="admin__page-section-content" style="width: 100%;">
+            <div class="admin__page-section-item order-payment-method admin__fieldset-wrapper" style="width: 100%;">
+                <div class="admin__page-section-item-title" style="width: 100%;">
+                <span class="title" style="font-size: 11pt; font-weight: normal; font-style: italic"><?php /* @escapeNotVerified */
+                    echo __('(Paid Orders will be transfered to the Bank Account matches that Order\'s Payment Method. Only enabled Payments will display here.)') ?></span>
+                </div>
+                <div class="admin__page-section-item-content" style="width: 100%;">
+                    <button id="submit_mapping" style="width: 25%; margin-right: 20%;">Save Mapping</button>
+                    <button id="update_bank_accounts" style="width: 25%;">Update Bank Accounts</button>
+                    <form id="mapping_form">
+                        <table class="admin__table-secondary">
+                            <thead>
+                            <th>Title</th>
+                            <th>Code</th>
+                            <th>Xero Account</th>
+                            </thead>
+                            <tbody>
+                            <input name="form_key" type="hidden" value="<?php echo $block->getFormKey() ?>"/>
+                            <input name="website_id" type="hidden" value="<?php echo $block->getWebsiteId() ?>" />
+                            <?php foreach ($block->getPaymentMethods() as $code => $paymentMethod): ?>
+                                <?php $selectedAcc = $block->getSelectedMapping($code) ?>
+                                <tr>
+                                    <td><?php /* @escapeNotVerified */
+                                        echo isset($paymentMethod['title']) ? $paymentMethod['title'] : $code ?></td>
+                                    <td><?php /* @escapeNotVerified */
+                                        echo $code ?></td>
+                                    <td><select class="admin__control-select"
+                                                style="width: 400px; height: 30px;"
+                                                name="paymentMapping<?php echo '['.$code.']'?>"
+                                        >
+                                            <option value="null">Default Bank Account (in Stores/Configuration)</option>
+                                            <?php foreach ($accounts as $account): ?>
+                                                <option value="<?php echo $account['AccountID']?>"
+                                                    <?php echo $account['AccountID'] == $selectedAcc ? 'selected' : '' ?>>
+                                                    <?php echo isset($account['Code'])
+                                                        ? '['.$account['Code'].']'
+                                                        : '';
+                                                    echo $account['Name']?>
+                                                </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+<?php } ?>

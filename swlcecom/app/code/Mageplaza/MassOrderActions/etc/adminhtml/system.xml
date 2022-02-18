@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_MassOrderActions
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="mpmassorderactions" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+            <label>Mass Order Actions</label>
+            <tab>mageplaza</tab>
+            <resource>Mageplaza_MassOrderActions::configuration</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <label>General</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Select <b>Yes</b> to enable this module.<br> Fully compatible with <a href="https://www.mageplaza.com/magento-2-delete-orders/" target="_blank">Delete Orders</a> and <a href="https://www.mageplaza.com/magento-2-order-archive/" target="_blank">Order Archive</a>]]></comment>
+                </field>
+                <field id="actions" translate="label comment" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Select Actions</label>
+                    <frontend_model>Mageplaza\MassOrderActions\Block\Adminhtml\System\Actions</frontend_model>
+                    <backend_model>Mageplaza\MassOrderActions\Model\Config\Backend\Actions</backend_model>
+                    <comment><![CDATA[Admins can set the sort order for the position of each action. The smaller the sort order, the upper position of the action in the action grid.]]></comment>
+                </field>
+                <field id="different_state" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Only Change Status with Same-state Orders</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[If <b>Yes</b>, admin only can change status of the orders which have the same state.]]></comment>
+                </field>
+                <field id="tracking_carrier_default" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Default Tracking Carrier</label>
+                    <source_model>Mageplaza\MassOrderActions\Model\Config\Source\System\TrackingCarrier</source_model>
+                    <comment><![CDATA[This default Tracking carrier value will be used after selecting a carrier. If you want to change the Tracking carrier you can Add tracking carrier and tracking number manually on the Order grid or Popup Create Shipment.]]></comment>
+                </field>
+            </group>
+            <group id="invoice_action" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <label>Create Invoice</label>
+                <field id="default_status" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Auto Select Order Status After Invoice</label>
+                    <source_model>Mageplaza\MassOrderActions\Model\Config\Source\System\OrderStatus</source_model>
+                </field>
+                <field id="notify_customer" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Auto Check Email Copy of Invoice</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="shipment_action" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <label>Create Shipment</label>
+                <field id="default_status" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Auto Select Order Status After Shipment</label>
+                    <source_model>Mageplaza\MassOrderActions\Model\Config\Source\System\OrderStatus</source_model>
+                </field>
+                <field id="notify_customer" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Auto Check Email Copy of Shipment</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="load_tracking" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Auto Load Tracking Number Table</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

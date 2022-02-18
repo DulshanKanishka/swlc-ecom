@@ -1,0 +1,8 @@
+.shelf_location {
+    display: inline-grid;
+}
+
+.shelf_location p {
+    margin-top: 15%;
+    font-weight: bold;
+}

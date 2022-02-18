@@ -1,0 +1,191 @@
+<style>
+    #email-chain-table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #email-chain-table td, #email-chain-table th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #email-chain-table td {
+        background: none;
+    }
+
+    .discount-table td {
+        max-width: 164px;
+    }
+
+    .discount-table .discount-content {
+        max-width: none;
+    }
+
+    .promotion_sms_0, .promotion_sms_1 {
+        padding-top: 15px;
+    }
+</style>
+<table class="data-grid email-chain" id="email-chain-table">
+    <thead>
+    <tr class="data-grid-filters">
+        <th><b>Message Content</b></th>
+        <th><b>Delivery Time</b></th>
+        <th><b>Coupon</b></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody data-bind="foreach: { data: $root.templateSMSChain, as: 'option' }">
+    <tr data-order="100" class="sample-template not-render" data-role="row-pattern">
+        <td>
+            <textarea
+                    data-bind="attr: { name: 'sms_chain[' +option.id() + '][content]'},value:option.content"></textarea>
+            <input type="hidden"
+                   data-bind="attr: { name: 'sms_chain[' +option.id() + '][id]'},value:option.id"
+                   min="0"/>
+        </td>
+        <td>
+            <table>
+                <tr>
+                    <td>Days</td>
+                    <td>
+                        <input type="text"
+                               data-validate="{'validate-number':true}"
+                               data-bind="attr: { name: 'sms_chain[' +option.id() + '][days]'},value:option.days"
+                               min="0"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Hours</td>
+                    <td>
+                        <input type="text"
+                               data-validate="{'validate-number':true}"
+                               data-bind="attr: { name: 'sms_chain[' +option.id() + '][hour]'},value:option.hour"
+                               min="0"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mins</td>
+                    <td>
+                        <input type="text"
+                               data-validate="{'validate-number':true}"
+                               data-bind="attr: { name: 'sms_chain[' +option.id() + '][min]'},value:option.min"
+                               min="0"/>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table class="discount-table">
+                <tr>
+                    <td>Enable coupon</td>
+                    <td class="discount-content">
+                        <select class="enable_coupon"
+                                data-bind="attr: { name: 'sms_chain[' +option.id() + '][enable_coupon]'},value:option.enable_coupon"
+                        >
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </td>
+                </tr>
+                <!-- ko if: option.enable_coupon() === "1" -->
+                <tr>
+                    <td>Type</td>
+                    <td class="discount-content">
+                        <select class="enable_coupon"
+                                data-require="required-entry"
+                                data-bind="options: $root.types(),
+                                       optionsText: 'label',
+                                       optionsValue: 'value',
+                                       attr: { name: 'sms_chain[' +option.id() + '][coupon_type]'},
+                                       value:option.coupon_type"
+                        >
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Discount Amount</td>
+                    <td class="discount-content">
+                        <input type="text"
+                               data-validate="{'validate-number':true}"
+                               data-bind="attr: { name: 'sms_chain[' +option.id() + '][discount_amount]'},value:option.discount_amount"
+                               min="0"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Expired in (days)</td>
+                    <td>
+                        <input type="text"
+                               data-validate="{'validate-number':true}"
+                               data-bind="attr: { name: 'sms_chain[' +option.id() + '][expired_in]'},value:option.expired_in"
+                               min="0"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Max Qty discount</td>
+                    <td class="discount-content">
+                        <input type="text"
+                               data-validate="{'validate-number':true}"
+                               data-bind="attr: { name: 'sms_chain[' +option.id() + '][max_qty_discount]'},value:option.max_qty_discount"
+                               min="0"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Discount Qty Step (By X)</td>
+                    <td class="discount-content">
+                        <input type="text"
+                               data-validate="{'validate-number':true}"
+                               data-bind="attr: { name: 'sms_chain[' +option.id() + '][discount_qty_step]'},value:option.discount_qty_step"
+                               min="0"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="checkbox"
+                               class="is_use_cart_rule_sms"
+                               data-bind="attr: { name: 'sms_chain[' +option.id() + '][is_use_cart_rule]', data_name: option.id()},checked: option.is_use_cart_rule"
+                               min="0"/>
+                        Use Shopping Cart Rule
+                        <div data-bind="attr: { class: 'promotion_sms_'+option.id()}" class="discount-info">
+                            <p>Select a promotion rule</p>
+                            <select data-bind="options: $root.promotion,
+                               optionsText: 'label',
+                               optionsValue: 'value',
+                               attr: { name: 'sms_chain[' +option.id() + '][promotion_rule]'},
+                               value:option.promotion_rule">
+                            </select>
+                            <br/>
+                            <i>The Promotion Rule must meet the requirements <br/>
+                                (If you can't see your promotion rule, please re-configure the promotion rule as below):
+                            </i>
+                            <ul style="margin-left:35px;">
+                                <li><i>Is Active</i></li>
+                                <li><i>Coupon: Specific Coupon</i></li>
+                                <li><i>Coupon: Use Auto Generation</i></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <!--/ko-->
+            </table>
+        </td>
+        <td>
+            <button type="button"
+                    class="delete-email-chain-btn action-default"
+                    data-action="delete-row"
+                    data-bind="event:{click:$root.deleteSMSChain}">
+                <span>Delete</span>
+            </button>
+        </td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4">
+            <button type="button" class="add-btn action-default" data-role="add-new-row"
+                    data-bind="click: $root.addSMSChain">
+                Add SMS in chain
+            </button>
+        </td>
+    </tr>
+    </tfoot>
+</table>

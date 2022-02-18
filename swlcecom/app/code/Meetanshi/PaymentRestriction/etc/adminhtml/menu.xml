@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Meetanshi_PaymentRestriction::rule" title="Payment Restrictions" module="Meetanshi_PaymentRestriction"
+             sortOrder="40" parent="Magento_Sales::sales_operation" action="paymentrestriction/rule/"
+             resource="Meetanshi_PaymentRestriction::rule"/>
+    </menu>
+</config>

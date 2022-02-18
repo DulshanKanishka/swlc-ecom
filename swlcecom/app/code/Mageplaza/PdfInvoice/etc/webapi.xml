@@ -1,0 +1,146 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_PdfInvoice
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- Admin Pdf Invoice Endpoint End -->
+    <route method="GET" url="/V1/pdfinvoice/order/:id">
+        <service class="Mageplaza\PdfInvoice\Api\AdminPdfInterface" method="getPdfOrder"/>
+        <resources>
+            <resource ref="Magento_Sales::sales" />
+        </resources>
+    </route>
+
+    <route method="GET" url="/V1/pdfinvoice/order/:id/invoices">
+        <service class="Mageplaza\PdfInvoice\Api\AdminPdfInterface" method="getPdfInvoicesByOrder"/>
+        <resources>
+            <resource ref="Magento_Sales::sales" />
+        </resources>
+    </route>
+
+    <route method="GET" url="/V1/pdfinvoice/order/:id/shipments">
+        <service class="Mageplaza\PdfInvoice\Api\AdminPdfInterface" method="getPdfShipmentsByOrder"/>
+        <resources>
+            <resource ref="Magento_Sales::sales" />
+        </resources>
+    </route>
+
+    <route method="GET" url="/V1/pdfinvoice/order/:id/creditmemos">
+        <service class="Mageplaza\PdfInvoice\Api\AdminPdfInterface" method="getPdfCreditmemosByOrder"/>
+        <resources>
+            <resource ref="Magento_Sales::sales" />
+        </resources>
+    </route>
+
+    <route method="GET" url="/V1/pdfinvoice/invoice/:id">
+        <service class="Mageplaza\PdfInvoice\Api\AdminPdfInterface" method="getPdfInvoice"/>
+        <resources>
+            <resource ref="Magento_Sales::sales" />
+        </resources>
+    </route>
+
+    <route method="GET" url="/V1/pdfinvoice/shipment/:id">
+        <service class="Mageplaza\PdfInvoice\Api\AdminPdfInterface" method="getPdfShipment"/>
+        <resources>
+            <resource ref="Magento_Sales::sales" />
+        </resources>
+    </route>
+
+    <route method="GET" url="/V1/pdfinvoice/creditmemo/:id">
+        <service class="Mageplaza\PdfInvoice\Api\AdminPdfInterface" method="getPdfCreditmemo"/>
+        <resources>
+            <resource ref="Magento_Sales::sales" />
+        </resources>
+    </route>
+    <!-- Admin Pdf Invoice Endpoint End -->
+
+    <!-- Customer Pdf Invoice Endpoint Begin -->
+    <route method="GET" url="/V1/pdfinvoice/mine/order/:id">
+        <service class="Mageplaza\PdfInvoice\Api\CustomerPdfInterface" method="getPdfOrder"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+
+    <route method="GET" url="/V1/pdfinvoice/mine/order/:id/invoices">
+        <service class="Mageplaza\PdfInvoice\Api\CustomerPdfInterface" method="getPdfInvoicesByOrder"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+
+    <route method="GET" url="/V1/pdfinvoice/mine/order/:id/shipments">
+        <service class="Mageplaza\PdfInvoice\Api\CustomerPdfInterface" method="getPdfShipmentsByOrder"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+
+    <route method="GET" url="/V1/pdfinvoice/mine/order/:id/creditmemos">
+        <service class="Mageplaza\PdfInvoice\Api\CustomerPdfInterface" method="getPdfCreditmemosByOrder"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+
+    <route method="GET" url="/V1/pdfinvoice/mine/invoice/:id">
+        <service class="Mageplaza\PdfInvoice\Api\CustomerPdfInterface" method="getPdfInvoice"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+
+    <route method="GET" url="/V1/pdfinvoice/mine/shipment/:id">
+        <service class="Mageplaza\PdfInvoice\Api\CustomerPdfInterface" method="getPdfShipment"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+
+    <route method="GET" url="/V1/pdfinvoice/mine/creditmemo/:id">
+        <service class="Mageplaza\PdfInvoice\Api\CustomerPdfInterface" method="getPdfCreditmemo"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+    <!-- Customer Pdf Invoice Endpoint End -->
+</routes>

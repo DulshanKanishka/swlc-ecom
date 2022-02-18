@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="customer_delete_after">
+        <observer name="xero_admin_delete_customer" instance="Magenest\Xero\Observer\Customer\Adminhtml\Delete" />
+    </event>
+
+    <event name="catalog_product_save_after">
+        <observer name="xero_admin_save_product" instance="Magenest\Xero\Observer\Product\Adminhtml\Save" />
+    </event>
+
+    <event name="sales_order_creditmemo_save_after">
+        <observer name="xero_admin_save_creditmemo" instance="Magenest\Xero\Observer\Creditmemo\Save" />
+    </event>
+
+    <event name="admin_system_config_changed_section_magenest_xero_config">
+        <observer name="xero_admin_save_config" instance="Magenest\Xero\Observer\Setting\Adminhtml\Save" />
+    </event>
+
+</config>

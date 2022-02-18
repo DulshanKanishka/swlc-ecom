@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="layout_load_before">
+        <observer name="abandonedcart_layout_customer" instance="Magenest\AbandonedCart\Observer\Layout\Customer\Mobile"/>
+    </event>
+    <event name="sales_order_save_after">
+        <observer name="abandonedcart_rebuy_abandoned_cart" instance="Magenest\AbandonedCart\Observer\Order\RebuyAbandonedCart"/>
+    </event>
+</config>

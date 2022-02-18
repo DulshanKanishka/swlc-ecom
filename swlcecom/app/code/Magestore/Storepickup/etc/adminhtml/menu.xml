@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Storepickup
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magestore_Storepickup::storepickup" title="Store pickup" resource="Magestore_Storepickup::storepickup" module="Magestore_Storepickup" sortOrder="20"/>
+        <add id="Magestore_Storepickup::store" title="Manage Store" resource="Magestore_Storepickup::store" parent="Magestore_Storepickup::storepickup" action="storepickupadmin/store" module="Magestore_Storepickup" sortOrder="20"/>
+        <add id="Magestore_Storepickup::tag" title="Manage Tag" resource="Magestore_Storepickup::tag" parent="Magestore_Storepickup::storepickup" action="storepickupadmin/tag" module="Magestore_Storepickup" sortOrder="20"/>
+        <add id="Magestore_Storepickup::schedule" title="Manage Schedule" resource="Magestore_Storepickup::schedule" parent="Magestore_Storepickup::storepickup" action="storepickupadmin/schedule" module="Magestore_Storepickup" sortOrder="20"/>
+        <add id="Magestore_Storepickup::holiday" title="Manage Holiday" resource="Magestore_Storepickup::holiday" parent="Magestore_Storepickup::storepickup" action="storepickupadmin/holiday" module="Magestore_Storepickup" sortOrder="20"/>
+        <add id="Magestore_Storepickup::specialday" title="Manage Special day" resource="Magestore_Storepickup::specialday" parent="Magestore_Storepickup::storepickup" action="storepickupadmin/specialday" module="Magestore_Storepickup" sortOrder="20"/>
+        <add id="Magestore_Storepickup::guide" title="Guide" module="Magestore_Storepickup" parent="Magestore_Storepickup::storepickup" action="storepickupadmin/guide" resource="Magestore_Storepickup::guide" sortOrder="20" />
+        <add id="Magestore_Storepickup::settings" title="Settings" module="Magestore_Storepickup" parent="Magestore_Storepickup::storepickup" action="adminhtml/system_config/edit/section/storepickup" resource="Magestore_Storepickup::settings" sortOrder="20"/>
+    </menu>
+</config>

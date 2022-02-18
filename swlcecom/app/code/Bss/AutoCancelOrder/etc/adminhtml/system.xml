@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_AutoCancelOrder
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2017-2018 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="bss" translate="label" sortOrder="300"> 
+			<label><![CDATA[Bss Commerce]]></label> 
+		</tab> 
+		<section id="bss_autocancelorder" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+			<label>Auto Cancel Order</label>
+			<tab>bss</tab>
+			<resource>Bss_AutoCancelOrder::config</resource>
+			<group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Auto Cancel Order Config Setting</label>
+				<field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Enabled</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Version 1.0.4]]></comment>
+				</field>
+				<field id="startdate" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Consider Cancelation after</label>
+                    <comment><![CDATA[Date format (DD-MM-YYYY).]]></comment>
+                    <validate>validate-date</validate>
+                    <tooltip>The orders placed after the chosen date will be canceled if they meet the following requirements.</tooltip>
+                    <frontend_model>Bss\AutoCancelOrder\Block\Calendar</frontend_model>
+                    <backend_model>Bss\AutoCancelOrder\Model\Config\Backend\CheckDateTime</backend_model>
+                </field>
+				<field id="order_status_option" translate="label" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order Status Option</label>
+                    <comment><![CDATA[Choose the order statuses of orders for cancelation.]]></comment>
+                    <source_model>Bss\AutoCancelOrder\Model\Config\StatusCollection</source_model>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+                <field id="payment_method_group" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Payment Method Group</label>
+                    <comment><![CDATA[Choose the number of hours for cancelation.]]></comment>
+                    <tooltip>Choose 2 for Check/Money Order which means for orders with this payment method, after 2 hours, if the above order statuses are not changed, the orders will be canceled.</tooltip>
+                    <frontend_model>Bss\AutoCancelOrder\Block\Adminhtml\System\Config\Form\PaymentMethodGroup</frontend_model>
+	                <backend_model>Bss\AutoCancelOrder\Model\Config\Backend\Serialized\PaymentMethodGroupConditionCheck</backend_model>
+                </field>
+                <field id="apply_now" translate="label comment" type="button" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <frontend_model>Bss\AutoCancelOrder\Block\Adminhtml\System\Config\Button\ApplyNow</frontend_model>
+                    <label>Apply Now</label>
+                </field>
+                <field id="show_log" translate="label comment" type="button" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <frontend_model>Bss\AutoCancelOrder\Block\Adminhtml\System\Config\Button\ShowLog</frontend_model>
+                    <label>Show Log</label>
+                </field>
+			</group>
+		</section>
+	</system>
+</config>

@@ -1,0 +1,223 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_MassOrderActions
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+/** @var \Mageplaza\MassOrderActions\Block\Adminhtml\Order\Tracking $block */
+
+$trackingCarrierDefault = $block->getTrackingCarrierDefault();
+?>
+<?php if ($orders = $block->getOrderCollection()) :
+    $_shipments = $block->getOrderShipments(); ?>
+    <table id="mp-massorderactions-order" class="mp-massorderactions-table">
+        <thead>
+        <tr class="heading">
+            <th class="mp-order-cols col-id"><?= $block->escapeHtml(__('ID')) ?></th>
+            <th class="mp-order-cols col-status"><?= $block->escapeHtml(__('Status')) ?></th>
+            <th class="mp-order-cols col-total"><?= $block->escapeHtml(__('Grand Total (Base)')) ?></th>
+            <th class="mp-order-cols col-tracking"><?= $block->escapeHtml(__('Tracking Number')) ?></th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($orders as $order) :
+            /** @var \Magento\Sales\Model\Order $order */
+            ?>
+            <tr class="mp-order-rows">
+                <td class="mp-order-records"><?= $block->escapeHtml($order->getIncrementId()) ?></td>
+                <td class="mp-order-records"><?= $block->escapeHtml($order->getStatusLabel()) ?></td>
+                <td class="mp-order-records"><?= /** @noEscape */ $order->formatPrice($order->getBaseGrandTotal()) ?></td>
+                <td class="mp-order-records">
+                    <?php if ($order->canShip() && !$order->getForcedShipmentWithInvoice()) :
+                        $title     = '';
+                        $_shipment = $_shipments[$order->getId()];
+                        ?>
+                        <script id="mp_track_row_template-<?= /** @noEscape */ $order->getId() ?>"
+                                type="text/x-magento-template">
+                            <tr>
+                                <td>
+                                    <select title="<?= $block->escapeHtmlAttr(__('Carrier Code')) ?>"
+                                            name="tracking[<?= /** @noEscape */ $order->getId() ?>][<%- data.index %>][carrier_code]"
+                                            id="trackingC-<?= /** @noEscape */ $order->getId() ?>-<%- data.index %>"
+                                            class="select admin__control-select carrier"
+                                            onchange="mpTrackingControl.courierOnChange(event)">
+                                        <?php foreach ($block->getCarriers($_shipment) as $_code => $_name) : ?>
+                                            <?php
+                                            if (!$title) {
+                                                $title = $_code === $trackingCarrierDefault ? $_name : '';
+                                            }
+                                            ?>
+                                            <option value="<?= $block->escapeHtmlAttr($_code) ?>" <?= $_code === $trackingCarrierDefault ? ' selected="selected"' : '' ?>><?= $block->escapeHtml($_name) ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input title="<?= $block->escapeHtmlAttr(__('Title')) ?>"
+                                           class="input-text admin__control-text number-title"
+                                           type="text"
+                                           name="tracking[<?= /** @noEscape */ $order->getId() ?>][<%- data.index %>][title]"
+                                           id="trackingT-<?= /** @noEscape */ $order->getId() ?>-<%- data.index %>"
+                                           value="<?= $block->escapeHtmlAttr($title) ?>">
+                                </td>
+                                <td>
+                                    <input title="<?= $block->escapeHtmlAttr(__('Tracking Number')) ?>"
+                                           class="input-text admin__control-text required-entry"
+                                           type="text"
+                                           name="tracking[<?= /** @noEscape */ $order->getId() ?>][<%- data.index %>][number]"
+                                           id="trackingN-<?= /** @noEscape */ $order->getId() ?>-<%- data.index %>" value="">
+                                </td>
+                                <td>
+                                    <button type="button" class="action-default action-delete"
+                                            onclick="mpTrackingControl.deleteRow(event)">
+                                        <span><?= $block->escapeHtml(__('Delete')) ?></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </script>
+                        <table id="mp-massorderactions-tracking"
+                               class="mp-massorderactions-table admin__control-table">
+                            <thead>
+                            <tr class="heading">
+                                <th class="col-carrier"><?= $block->escapeHtml(__('Carrier')) ?></th>
+                                <th class="col-title"><?= $block->escapeHtml(__('Title')) ?></th>
+                                <th class="col-number"><?= $block->escapeHtml(__('Number')) ?></th>
+                                <th class="col-action"><?= $block->escapeHtml(__('Action')) ?></th>
+                            </tr>
+                            </thead>
+                            <tfoot>
+                            <tr class="mp-row-add-button">
+                                <td colspan="4" class="mp-row-add" data-order-id="<?= /** @noEscape */ $order->getId(); ?>">
+                                    <button id="add-tracking" title="<?= $block->escapeHtmlAttr(__('Add Tracking Number')) ?>"
+                                            type="button"
+                                            class="action-default scalable"
+                                            onclick="mpTrackingControl.add(event)">
+                                        <span><?= $block->escapeHtml(__('Add Tracking Number')) ?></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tfoot>
+                            <tbody id="mp_track_row_container">
+                            <tr>
+                                <td>
+                                    <select title="<?= $block->escapeHtmlAttr(__('Carrier Code')) ?>"
+                                            name="tracking[<?= /** @noEscape */ $order->getId() ?>][1][carrier_code]"
+                                            id="trackingC-<?= /** @noEscape */ $order->getId() ?>-1"
+                                            class="select admin__control-select carrier"
+                                            onchange="mpTrackingControl.courierOnChange(event)">
+                                        <?php foreach ($block->getCarriers($_shipment) as $_code => $_name) : ?>
+                                            <option value="<?= $block->escapeHtmlAttr($_code) ?>" <?= $_code === $trackingCarrierDefault ? ' selected="selected"' : '' ?>><?= $block->escapeHtml($_name) ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input title="<?= $block->escapeHtmlAttr(__('Title')) ?>"
+                                           class="input-text admin__control-text number-title"
+                                           type="text"
+                                           name="tracking[<?= /** @noEscape */ $order->getId() ?>][1][title]"
+                                           id="trackingT-<?= /** @noEscape */ $order->getId() ?>-1"
+                                           value="<?= $block->escapeHtmlAttr($title) ?>">
+                                </td>
+                                <td>
+                                    <input title="<?= $block->escapeHtmlAttr(__('Tracking Number')) ?>"
+                                           class="input-text admin__control-text required-entry"
+                                           type="text"
+                                           name="tracking[<?= /** @noEscape */ $order->getId() ?>][1][number]"
+                                           id="trackingN-<?= /** @noEscape */ $order->getId() ?>-1" value="">
+                                </td>
+                                <td>
+                                    <button type="button" class="action-default action-delete"
+                                            onclick="mpTrackingControl.deleteRow(event)">
+                                        <span><?= $block->escapeHtml(__('Delete')) ?></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    <?php else : ?>
+                        <?php $_shipmentCollection = $block->getShipmentsByOrderId($order->getId()); ?>
+                        <?php foreach ($_shipmentCollection as $_shipment) :
+                            /** @var \Magento\Sales\Model\Order\Shipment $_shipment */
+                                $_tracks = $block->loadShipmentById($_shipment->getId())->getAllTracks(); ?>
+                            <div class="mp-shipment-container">
+                                <div class="mp-shipment-id">
+                                    <?= $block->escapeHtml(__('Shipment #%1', $_shipment->getIncrementId())) ?></div>
+                                <div class="mp-tracking-container">
+                                    <?php if ($_tracks) : ?>
+                                        <span class="mp-tracking-info"><?= $block->escapeHtml(__('Carrier:')) ?>
+                                            <b><?= $block->escapeHtml($block->getCarrier($_tracks)) ?></b> | <?= $block->escapeHtml(__('Tracking Number')) ?>
+                                            <b><?= $block->escapeHtml($block->getTrackingNumber($_tracks)) ?></b>
+                                        </span>
+                                    <?php else : ?>
+                                        <span class="mp-tracking-info"><?= $block->escapeHtml(__('Shipment has no tracks.')) ?></span>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php else : ?>
+    <div class="mp-order-empty"><?= $block->escapeHtml(__('There are orders is selected.')) ?></div>
+<?php endif; ?>
+<script>
+    require([
+        'jquery',
+        'mage/template'
+    ], function ($, mageTemplate) {
+        mpTrackingControl = {
+            index: 1,
+            add: function (event) {
+                this.index++;
+                var currentOrderId = $(event.target).parents('.mp-row-add').attr('data-order-id'),
+                    data           = {index: this.index},
+                    tBody          = $(event.target).parents('#mp-massorderactions-tracking').find('#mp_track_row_container'),
+                    rowHtml        = mageTemplate(
+                        '#mp_track_row_template-' + currentOrderId,
+                        {
+                            data: data
+                        }
+                    );
+
+                tBody.append(rowHtml);
+            },
+
+            deleteRow: function (event) {
+                var row = $(event.target).parents()[1];
+
+                if (row) {
+                    row.parentNode.removeChild(row)
+                }
+            },
+
+            courierOnChange: function (event) {
+                var row = $(event.target).parents()[1];
+
+                if (row) {
+                    if ($(event.target).val() && $(event.target).val() !== 'custom') {
+                        $(row).find('.number-title').val($(event.target).find('option:selected').text());
+                    } else {
+                        $(row).find('.number-title').val('');
+                    }
+                }
+            }
+        };
+    });
+</script>

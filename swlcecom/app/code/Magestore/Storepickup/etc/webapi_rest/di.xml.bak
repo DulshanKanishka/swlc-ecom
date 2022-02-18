@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_StorePickup
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Model\GuestShippingInformationManagement">
+        <plugin name="storepickup_save_shippingaddress" type="Magestore\Storepickup\Plugin\Checkout\Model\ChangeShippingAddress"/>
+    </type>
+	<type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="storepickup_save_customer_shippingaddress" type="Magestore\Storepickup\Plugin\Checkout\Model\CustomerChangeShippingAddress"/>
+    </type>
+</config>

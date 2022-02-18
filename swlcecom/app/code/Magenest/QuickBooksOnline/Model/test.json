@@ -1,0 +1,33 @@
+{
+    "Line": [{
+        "Amount": 16.67,
+        "DetailType": "SalesItemLineDetail",
+        "SalesItemLineDetail": {
+            "UnitPrice": 16.67,
+            "Qty": 1,
+            "TaxCodeRef": {
+                "value": "3",
+                "name": "20.0% S"
+            }
+        }
+    }],
+    "GlobalTaxCalculation": "TaxInclusive",
+    "TxnTaxDetail": {
+        "TaxLine": [{
+            "Amount": 3.33,
+            "DetailType": "TaxLineDetail",
+            "TaxLineDetail": {
+                "TaxRateRef": {
+                    "value": "4",
+                    "name": "SS-20.0"
+                },
+                "PercentBased": true,
+                "NetAmountTaxable": 16.67
+            }
+        }],
+        "TotalTax": 0
+    },
+    "CustomerRef": {
+        "value": "1"
+    }
+}

@@ -1,0 +1,26 @@
+<div class="entry-edit">
+    <div class="entry-edit-head">
+		<h3 class="icon-head head-edit-form fieldset-legend"><?php echo 'Template Tag'; ?></h3>
+    </div>
+<textarea id="flexslider-template-tag" rows="3" cols="80" onclick="this.focus();this.select()" readonly="readonly">{{block class="Magebees\Promotionsnotification\Block\Promotionsnotification" template="notification.phtml" notification_id="<?php echo $block->getNotificationData(); ?>"}}</textarea>
+
+</div>
+<br><br>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h3 class="icon-head head-edit-form fieldset-legend"><?php echo 'XML Code'; ?></h3>
+    </div>
+<textarea id="flexslider-code" rows="7" cols="80" onclick="this.focus();this.select()" readonly="readonly"><block class="Magebees\Promotionsnotification\Block\Promotionsnotification" name="notification<?php echo $block->getNotificationData(); ?>" template="notification.phtml">
+    <arguments>
+        <argument name="notification_id" xsi:type="string"><?php echo $block->getNotificationData(); ?></argument>
+    </arguments>
+</block></textarea>
+</div>
+<br><br>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h3 class="icon-head head-edit-form fieldset-legend"><?php echo 'Call Via Frontend Template File'; ?></h3>
+    </div>
+<textarea id="flexslider-template-tag" rows="3" cols="80" onclick="this.focus();this.select()" readonly="readonly"><?php echo '<?php echo  $this->getLayout()->createBlock("Magebees\Promotionsnotification\Block\Promotionsnotification")->setNotificationId('. $block->getNotificationData().')->setTemplate("notification.phtml")->toHtml() ?>'; ?></textarea>
+</div>
+

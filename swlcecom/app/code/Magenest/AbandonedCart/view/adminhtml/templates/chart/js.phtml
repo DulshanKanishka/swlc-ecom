@@ -1,0 +1,172 @@
+<?php
+/** \Magenest\AbandonedCart\Block\Adminhtml\Chart\AbandonedCart $block */
+?>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    getAbandonedCartChart = function () {
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Type');
+            data.addColumn('number', 'Value');
+            data.addRows([
+                <?php foreach($block->getAbandonedCartData() as $key => $value): ?>
+                ['<?php echo $key ?>', <?php echo $value ?>],
+                <?php endforeach; ?>
+            ]);
+            var options = {
+                'legend': {position: 'bottom', textStyle: {color: 'black', fontSize: 14}},
+                'title': 'Cart Rate',
+                titleTextStyle: {
+                    fontSize: 15,
+                    bold: false
+                },
+                is3D: true,
+                pieSliceTextStyle: {
+                    fontSize: 15,
+                    color: '#41362f',
+                    bold: true,
+                    italic: true
+                },
+                'width': 500,
+                'height': 400,
+                tooltip: {textStyle: {color: 'black'}, showColorCode: true},
+                slices: {
+                    0: {color: '#ffcb4d'},
+                    1: {color: '#f49c5b'}
+                }
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('abandoned_cart_chart'));
+            chart.draw(data, options);
+        }
+    };
+    getGuestAbandonedCartChart = function () {
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Type');
+            data.addColumn('number', 'Value');
+            data.addRows([
+                <?php foreach($block->getGuestAbandonedCartData() as $key => $value): ?>
+                ['<?php echo $key ?>', <?php echo $value ?>],
+                <?php endforeach; ?>
+            ]);
+            var options = {
+                'legend': {
+                    position: 'bottom',
+                    textStyle: {color: 'black', fontSize: 14}
+                },
+                'title': 'Customer Type',
+                titleTextStyle: {
+                    fontSize: 15,
+                    bold: false
+                },
+                is3D: true,
+                pieSliceTextStyle: {
+                    fontSize: 15,
+                    color: '#41362f',
+                    bold: true,
+                    italic: true
+                },
+                'width': 500,
+                'height': 400,
+                tooltip: {
+                    textStyle: {color: 'black'},
+                    showColorCode: true
+                },
+                slices: {
+                    0: {color: '#ffcb4d'},
+                    1: {color: '#f49c5b'}
+                }
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('guest_abandoned_cart_chart'));
+            chart.draw(data, options);
+        }
+    };
+    getRepurchasedCartChart = function () {
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Type');
+            data.addColumn('number', 'Value');
+            data.addRows([
+                <?php foreach($block->getRepurchasedCartData() as $key => $value): ?>
+                ['<?php echo $key ?>', <?php echo $value ?>],
+                <?php endforeach; ?>
+            ]);
+            var options = {
+                'legend': {position: 'bottom', textStyle: {color: 'black', fontSize: 14}},
+                'title': 'Cart Recovery Rate',
+                titleTextStyle: {
+                    fontSize: 15,
+                    bold: false
+                },
+                is3D: true,
+                pieSliceTextStyle: {
+                    fontSize: 15,
+                    color: '#41362f',
+                    bold: true,
+                    italic: true
+                },
+                'width': 500,
+                'height': 400,
+                tooltip: {textStyle: {color: 'black'}, showColorCode: true},
+                slices: {
+                    0: {color: '#ffcb4d'},
+                    1: {color: '#f49c5b'}
+                }
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('repurchased_cart_chart'));
+            chart.draw(data, options);
+        }
+    };
+    getAbandonedCartLineChart = function () {
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Date', 'Abandoned Carts'],
+                <?php foreach ($block->getAbandonedCartLineChart() as $line): ?>
+                ['<?php echo $line['created_at'] ?>',  <?php echo $line['count'] ?>],
+                <?php endforeach; ?>
+            ]);
+
+            var options = {
+                titleTextStyle: {
+                    fontSize: 20,
+                    bold: true
+                },
+                hAxis: {
+                    title: 'Date Time',
+                    minValue: 0.0
+                },
+                vAxis: {
+                    title: 'Abandoned Carts',
+                    minValue: 0.0
+                },
+                curveType: 'none',
+                animation: {
+                    startup: true,
+                    duration: 2000,
+                    easing: 'in'
+                },
+                lineWidth: 5,
+                'legend': {
+                    textStyle: {color: 'black', fontSize: 14}
+                },
+                colors: ['#f8673c'],
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('abandoned_cart_line_chart'));
+
+            chart.draw(data, options);
+        }
+    }
+</script>

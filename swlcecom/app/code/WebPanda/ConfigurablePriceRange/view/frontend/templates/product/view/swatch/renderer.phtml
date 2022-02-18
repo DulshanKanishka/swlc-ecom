@@ -1,0 +1,41 @@
+<?php
+// @codingStandardsIgnoreFile
+?>
+<?php
+if (method_exists($block, 'getJsonSwatchSizeConfig'))
+    $magento22 = true;
+else
+    $magento22 = false;
+?>
+<?php /** @var $block \Magento\Swatches\Block\Product\Renderer\Configurable */ ?>
+<div class="swatch-opt" data-role="swatch-options"></div>
+
+<script type="text/x-magento-init">
+    {
+        "[data-role=swatch-options]": {
+            "pandaSwatchRenderer": {
+                "jsonConfig": <?= /* @escapeNotVerified */ $swatchOptions = $block->getJsonConfig() ?>,
+                "jsonSwatchConfig": <?php /* @noEscape */ echo $block->getJsonSwatchConfig(); ?>,
+                "mediaCallback": "<?= /* @escapeNotVerified */ $block->getMediaCallback() ?>",
+                "gallerySwitchStrategy": "<?php /* @escapeNotVerified */ echo $block->getVar('gallery_switch_strategy',
+        'Magento_ConfigurableProduct') ?: 'replace'; ?>"
+                <?php if ($magento22): ?>
+                    ,
+                    "jsonSwatchImageSizeConfig": <?php /* @noEscape */ echo $block->getJsonSwatchSizeConfig() ?>
+                <?php endif; ?>
+            }
+            <?php if ($magento22): ?>
+                ,
+                "Magento_Swatches/js/configurable-customer-data": {
+                        "swatchOptions": <?php /* @noEscape */ echo $swatchOptions ?>
+                }
+            <?php endif; ?>
+        }
+        <?php if ($magento22): ?>
+            ,
+            "*" : {
+                "Magento_Swatches/js/catalog-add-to-cart": {}
+            }
+        <?php endif; ?>
+    }
+</script>

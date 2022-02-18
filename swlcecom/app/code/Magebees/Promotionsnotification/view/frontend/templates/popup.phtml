@@ -1,0 +1,67 @@
+<?php /* @var block \Magebees\Promotionsnotification\Block\View */
+
+if ($block->getPopupEnabled()) :
+    $popup_collection = $block->getNotificationCollection('popup');
+    $popup_height = 'height:'.$block->getPopupHeight().'px';
+    if ($block->getPopupHeight() == 0) {
+        $popup_height = "";
+    } else {
+        $popup_height = 'height:'.$block->getPopupHeight().'px';
+    }
+    if ($block->getPopupWidth() == 0) {
+        $popup_width = "";
+    } else {
+        $popup_width = 'max-width:'.$block->getPopupWidth().'px';
+    }
+    
+    $count = $popup_collection->getSize();
+    ?>
+    <?php if ($count) : ?>
+        <?php $helper = $this->helper('Magebees\Promotionsnotification\Helper\Data'); ?>
+        <div id="popup" class="modal-box <?php if (!$block->getPopupShowInMobile()) {
+            echo 'hideInmobile';
+}?>" style="display:none; <?php echo $popup_width; ?>">
+            <a href="javascript:void(0)" class="js-modal-close close">×</a>
+            <div class="modal-body" style="<?php echo $popup_height; ?>">
+                <ul class="bxslider">
+                    <?php foreach ($popup_collection as $popup_collection) : ?>
+                        <li style="background-color:<?php echo $popup_collection->getBackgroundColor() ?>">
+                            <?php echo $helper->getFilterProvider()->getPageFilter()->filter($popup_collection->getData('notification_content')); ?>
+                        </li>
+                        <?php if ($block->getPopupAllOrOne()=="one") : ?>
+                            <?php $count=1;
+                            break; ?>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+            <footer><label><input type="checkbox" name="notshow" id="dontShowPopup" /> Do not show again notification</label></footer>
+        </div>
+        <script type="text/javascript">
+            require(['jquery','magebees.bxslider','magebees.notification','domReady!'],function(jQuery){
+                var notificationVar = {'popupcount':'<?php echo $count ?>','popup_height':'<?php echo $block->getPopupHeight() ?>','popup_after_time':'<?php echo $block->getPopupAfterTimer() ?>','popup_auto_close':'<?php echo $block->getPopupAutoClose() ?>','popup_auto_close_time':'<?php echo $block->getPopupAutoCloseTime() ?>','popup_one_time_per_user':'<?php echo $block->getPopupOneTimePerUser() ?>','id':"popup",'popup_show_in_mobile':<?php echo $block->getPopupShowInMobile() ?>};
+                jQuery('#popup').cwsnotification(notificationVar);
+            });
+        </script>
+    <?php endif; ?>
+<?php endif; ?>
+<script type="text/javascript">
+    require([
+        'jquery',
+        'jquery/jquery.cookie'
+    ],
+    function($) {
+        var not = $.cookie("dontShowPopup");
+        var once = $.cookie("popup_once");
+        if(not || once){
+            //$("#notification_slider").hide();
+        }else{
+            var popup_after_time = <?php echo $block->getPopupAfterTimer() ?>;
+            if(!popup_after_time){
+               jQuery("#popup").show();
+            }
+        }
+    }
+
+);
+</script>

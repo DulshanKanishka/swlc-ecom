@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="checkout_cart_item_renderers"/>
+    <body>
+       <referenceContainer name="after.body.start">
+			<block class="Magebees\Promotionsnotification\Block\View\Bar" name="notification_top" ifconfig="promotions/general/enabled" >
+				<action method="addTop" /> 
+			</block>
+		</referenceContainer>
+		<referenceContainer name="before.body.end">
+			<block class="Magebees\Promotionsnotification\Block\View\Bar" name="notification_bottom" ifconfig="promotions/general/enabled" >
+				<action method="addBottom" /> 
+			</block>
+		</referenceContainer>
+		<referenceContainer name="before.body.end">
+			<block class="Magebees\Promotionsnotification\Block\View" name="notification_popup" template="Magebees_Promotionsnotification::popup.phtml" ifconfig="promotions/general/enabled" before="-" />
+		</referenceContainer>
+    </body>
+</page>

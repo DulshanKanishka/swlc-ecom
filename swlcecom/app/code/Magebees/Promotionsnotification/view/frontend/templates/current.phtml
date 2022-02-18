@@ -1,0 +1,29 @@
+<?php /* @var block \Magebees\Promotionsnotification\Block\Allnotification */ ?>
+<?php $current_coll = $block->getCurrentNotificationCollection(); ?>
+<?php $helper = $this->helper('Magebees\Promotionsnotification\Helper\Data'); ?>
+<ul class="mage_notificList" id="current">
+    <li class="mageTtl">
+        <a class="current showNtificList" href="javascript:void(0)">Current Notification</a>
+        <ul id="current-notification" class="subListsec">
+            <?php foreach ($current_coll as $current_data) : ?>
+            <li>
+                <a id="<?php echo $current_data->getId(); ?>" class="current showNtificList" href="javascript:void(0)"><?php echo $current_data->getTitle(); ?></a>
+                <div id="notification_<?php echo $current_data->getId(); ?>" class="notificDetails" style="background-color:<?php echo $current_data->getBackgroundColor() ?>">
+                    <?php echo $helper->getFilterProvider()->getPageFilter()->filter($current_data->getData('notification_content')); ?>
+                </div>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+    </li>
+</ul>
+<script type="text/javascript">
+    require(['jquery'],function(jQuery){
+        jQuery(".current").click(function() {
+            if(!jQuery('ul #current-notification li').length){
+                jQuery("ul #current-notification").append('<li class=noFound>Notification Not Found</li>');
+            }
+            jQuery(this).next().slideToggle("slow");
+            jQuery(this).toggleClass("active");
+        });
+    });
+</script>

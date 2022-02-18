@@ -1,0 +1,45 @@
+<div id='preview-result-content'>
+<?php $helper = $this->helper('Magebees\Promotionsnotification\Helper\Data'); ?>
+<?php $data = $block->getFomrData() ?>
+<?php if ($data['notification_style']=="bar") : ?>
+<?php
+if ($block->getBarHeight() == 0) {
+    $bar_height = "";
+} else {
+    $bar_height = 'height:'.$block->getBarHeight().'px';
+}
+?>
+<div id="notification_slider" style="<?php echo $bar_height ?>">
+    <a href="javascript:void(0)" id="close_notification"><span class="lbl">Close</span></a>
+    <ul class="bxslider">
+        <li style="background-color:<?php echo $data['background_color'] ?>">
+        <?php echo $helper->getFilterProvider()->getPageFilter()->filter($data['notification_content']); ?>
+        </li>
+    </ul>
+</div>
+<?php else : ?>
+<?php if ($block->getPopupHeight() == 0) {
+        $popup_height = "";
+} else {
+    $popup_height = 'height:'.$block->getPopupHeight().'px';
+}
+if ($block->getPopupWidth() == 0) {
+    $popup_width = "";
+} else {
+    $popup_width = 'max-width:'.$block->getPopupWidth().'px';
+}
+    
+    ?>
+        <div id="popup" class="modal-box" style="<?php echo $popup_width; ?>">
+            <a href="javascript:void(0)" class="js-modal-close close">×</a>
+            <div class="modal-body" style="<?php echo $popup_height; ?>">
+                <ul class="bxslider">
+                    <li style="background-color:<?php echo $data['background_color'] ?>">
+                        <?php echo $helper->getFilterProvider()->getPageFilter()->filter($data['notification_content']); ?>
+                    </li>
+                </ul>
+            </div>
+            <footer><label><input type="checkbox" name="notshow" id="dontShowPopup" /> Do not show again notification</label></footer>
+        </div>
+</div>      
+<?php endif; ?>

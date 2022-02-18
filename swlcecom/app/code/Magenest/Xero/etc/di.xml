@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Config\Block\System\Config\Form\Field">
+        <plugin name="xero_form_field_attribute_plugin" type="Magenest\Xero\Plugin\System\Config\FormFieldPlugin" sortOrder="0"/>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="xero_log_listing_data_source" xsi:type="string">Magenest\Xero\Model\ResourceModel\Log\Grid\Collection</item>
+                <item name="xero_queue_listing_data_source" xsi:type="string">Magenest\Xero\Model\ResourceModel\Queue\Collection</item>
+                <item name="xero_cron_listing_data_source" xsi:type="string">Magenest\Xero\Model\ResourceModel\CronSchedule\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Magenest\Xero\Model\ResourceModel\Queue\Collection" type="Magenest\Xero\Model\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_xero_queue</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Xero\Model\ResourceModel\Queue</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Magenest\Xero\Model\ResourceModel\Log\Collection" type="Magenest\Xero\Model\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_xero_log</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Xero\Model\ResourceModel\Log</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magenest\Xero\Model\ResourceModel\CronSchedule\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">cron_schedule</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Xero\Model\ResourceModel\CronSchedule</argument>
+            <argument name="eventPrefix" xsi:type="string">Magenest_Xero__grid_cron_collection</argument>
+            <argument name="eventObject" xsi:type="string">Magenest_Xero_cron_collection</argument>
+        </arguments>
+    </type>
+    <type name="Magenest\Xero\Model\ResourceModel\Log\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_xero_log</argument>
+            <argument name="eventPrefix" xsi:type="string">Magenest_Xero__grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">Magenest_Xero_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Xero\Model\ResourceModel\Log</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Model\Product\Action">
+        <plugin name="xero_update_attributes_after" type="Magenest\Xero\Plugin\Product\MultipleSave" sortOrder="0"/>
+    </type>
+    <type name="Magenest\Xero\Model\Synchronization">
+        <plugin name="save_xml_log" type="Magenest\Xero\Plugin\XmlLog\Save" sortOrder="0"/>
+    </type>
+</config>

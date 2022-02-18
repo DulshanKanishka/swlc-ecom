@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<update handle="editor"/>
+	<head>      
+		 <script src="Magebees_Promotionsnotification::js/jscolor/jscolor.js"/>
+		<css src="Magebees_Promotionsnotification::css/mbnotification.css"/>
+	</head>
+	<body>
+		<referenceContainer name="content">
+			<block class="Magebees\Promotionsnotification\Block\Adminhtml\Promotionsnotification\Edit" name="promotionsnotification_edit"/>
+		</referenceContainer>
+		<referenceContainer name="left">
+			<block class="Magebees\Promotionsnotification\Block\Adminhtml\Promotionsnotification\Edit\Tabs" name="promotionsnotification_edit_tabs">
+			</block>
+		</referenceContainer> 
+		
+	</body>
+</page>

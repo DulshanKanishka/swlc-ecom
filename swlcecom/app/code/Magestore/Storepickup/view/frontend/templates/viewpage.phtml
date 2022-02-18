@@ -1,0 +1,336 @@
+<?php
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Storepickup
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+
+/** @var \Magestore\Storepickup\Block\Store\ViewPage $block */
+
+/** @var \Magestore\Storepickup\Model\Store $store */
+$store = $block->getStore();
+
+$holidayData = $store->getHolidaysData();
+$specialDayData = $store->getSpecialdaysData();
+
+$isHasHoliday = count($holidayData);
+$ishasSpecialday = count($specialDayData);
+
+?>
+<div class="views-wrapper">
+<div class="back-page"><a href="<?php echo $block->getUrl('storepickup') ?>"><small>&laquo;</small>Back</a></div>
+<h2 class="title-page"><?php echo $block->escapeHtml($store->getStoreName()) ?></h2>
+    <div class="description">
+        <?php echo $store->getDescription(); ?>
+    </div>
+<div class="map-box-container col-md-8 col-sm-12 col-xs-12 pull-right">
+    <div class="googlemap"></div>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12 pull-left table-wrap">
+    <div class="info-detail col-md-12 col-sm-6 col-xs-12 pull-right">
+        <h2 class="title-store"><?php echo __('Store Infomation'); ?></h2>
+
+        <!-- Box Store detail -->
+        <div class="box-detail col-xs-12">
+
+            <!-- Address -->
+            <p class="col-full">
+                <strong><?php echo __('Address:'); ?></strong>
+                <span class="group-info">
+                    <span><?php echo $block->escapeHtml($store->getAddress()) ?></span>
+                    <span><?php echo $block->escapeHtml($store->getCity()) . ',' .  $block->escapeHtml($store->getState())?></span>
+                    <span><?php echo $block->escapeHtml($store->getCountryName()) ?></span>
+
+                </span>
+            </p>
+
+            <!-- Phone -->
+            <?php if ($store->getPhone()): ?>
+            <p class="col-full">
+                <strong><?php echo __('Phone:'); ?></strong>
+                <span class="group-info"><?php echo $block->escapeHtml($store->getPhone()); ?></span>
+            </p>
+            <?php endif; ?>
+
+            <!-- Fax -->
+            <?php if ($store->getFax()): ?>
+            <p class="col-full">
+                <strong><?php echo __('Fax:'); ?></strong>
+                <span class="group-info"><?php echo $block->escapeHtml($store->getFax()); ?></span>
+            </p>
+            <?php endif; ?>
+
+            <!-- Email -->
+            <?php if ($store->getEmail()): ?>
+            <p class="col-full"><strong><?php echo __('Email:'); ?></strong>
+                <a class="group-info" href="mailto:<?php echo $block->escapeQuote($store->getEmail()); ?>"><?php echo $block->escapeHtml($store->getEmail()); ?></a>
+            </p>
+            <?php endif; ?>
+
+            <!-- Link -->
+            <?php if ($store->getLink()): ?>
+            <p class="col-full"><strong><?php echo __('Link:'); ?></strong>
+                <a class="group-info" href="<?php echo $block->escapeQuote($store->getLink()); ?>" target="_blank"><?php echo $block->escapeHtml($store->getLink()); ?></a>
+            </p>
+            <?php endif; ?>
+
+            <div class="tab_content col-full">
+                <div data-mage-init='{"Magestore_Storepickup/js/direction": {"latitude": "<?php echo $store->getLatitude() ?>", "longitude": <?php echo $store->getLongitude() ?>}}' class="option-direction custom-popup col-xs-12"style="padding: 0;">
+                    <ul class="vertical text-center">
+                        <li class="travel car active" data-traveling="DRIVING"><span>A</span></li>
+                        <li class="travel bus"  data-traveling="TRANSIT"><span>A</span></li>
+                        <li class="travel walk"  data-traveling="WALKING"><span>A</span></li>
+                        <li class="travel bicycle"  data-traveling="BICYCLING"><span>A</span></li>
+                    </ul>
+                    <div id="directions-tool" class="col-xs-12 directions-tool">
+                        <div class="widget-directions-searchbox-handle">
+                            <div class="widget-directions-icon waypoint-handle"><label for="origin">A</label></div>
+                            <div class="widget-directions-icon waypoint-to"><label for="origin">C</label></div>
+                            <div class="widget-directions-icon waypoint-bullet"><label for="origin">B</label></div>
+                        </div>
+                        <div class="form-inputs">
+                            <input class="form-control origin originA start" type="text" name="originA" isStart="true" autocomplete="off">
+                            <input class="form-control origin originB end" readonly="true" type="text" name="originB" autocomplete="off" value="<?php echo $store->getAddress() ?>">
+                        </div>
+                        <div class="widget-directions-right-overlay">
+                            <button type="button" onclick="" class="swap-locations" title="<?php echo __('Swap locations A-B') ?>"><?php echo __('Swap locations A-B') ?></button>
+                        </div>
+                        <div class="directions-panel"></div>
+                    </div>
+                    <div class="box-input form-group col-xs-12">
+                        <button class="get-direction action primary pull-right" id="get_direction"
+                                title="<?php echo __('Get Directions') ?>"
+                                type="submit">
+                            <span><?php echo __('Go') ?></span>
+                        </button>
+                    </div>
+                </div>
+                <!-- direction -->
+            </div>
+        </div>
+        <!-- End Box Store detail -->
+    </div>
+
+    <!-- Store's Days-->
+    <div class="tab_content open  col-md-12 col-sm-6 col-xs-12 pull-left">
+        <div id="open_hour" class="open_hour">
+            <h2 class="open_hour_title"><span class="glyphicon glyphicon-time"></span><span><?php echo __('Opening hours') ?></span>
+            </h2>
+
+            <div class="table-responsive">
+                <table class="table table-hover table-striped">
+                    <tbody>
+                    <?php foreach ($block->getHashWeekdays() as $codeDay => $label) : ?>
+                        <tr>
+                            <td class="time-label" style="text-align: center; width: 20%;"><?php echo $label ?>:</td>
+                            <td><?php echo $block->getScheduleTimeHtml($store, $codeDay) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-xs-12 tabs">
+            <ul class="col-full" >
+                <?php  if($ishasSpecialday): ?>
+                    <li class="storeday-tab-bar active <?php if (!$isHasHoliday): ?> full-width <?php endif; ?>" data-tab-content="#tab_content_1">
+                        <?php echo __('Special Days') ?>
+                    </li>
+                <?php endif;?>
+                <?php if($isHasHoliday): ?>
+                    <li class="storeday-tab-bar <?php if (!$ishasSpecialday): ?> active full-width <?php endif; ?>" data-tab-content="#tab_content_2">
+                        <?php echo __('Holidays') ?>
+                    </li>
+                <?php endif;?>
+
+            </ul>
+        </div>
+
+        <!-- Holiday Tab content-->
+        <?php  if($ishasSpecialday): ?>
+        <div name="tab_content" id="tab_content_1" class="tab-content col-full display active" >
+            <div class="open_time speacial-days">
+                <?php foreach ($specialDayData as $specialDay): ?>
+                    <h3 class="title text-center"><?php echo $specialDay['name']; ?></h3>
+                    <?php if(isset($specialDay['date'])) : ?>
+                        <?php foreach ($specialDay['date'] as $date): ?>
+                            <li>
+                                <div class="content1">
+                                    <?php echo date_format(date_create($date), 'l jS F'); ?>
+                                </div>
+                                <div class="content2">
+                                    <?php if ($specialDay['time_open'] != null && $specialDay['time_open'] != $specialDay['time_close']): ?>
+                                        <?php echo date("H:i", strtotime($specialDay['time_open'])) . ' - ' . date("H:i", strtotime($specialDay['time_close'])) ?>
+                                    <?php else: ?>
+                                        <?php echo __('Open'); ?>
+                                    <?php endif; ?>
+                                </div>
+                            </li>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <?php endif;?>
+
+        <!-- Specialday tab content -->
+        <?php if($isHasHoliday): ?>
+        <div name="tab_content" id="tab_content_2" class="tab-content col-full display " <?php if ($ishasSpecialday): ?> style="display: none;" <?php endif; ?>>
+            <div class="open_time holidays">
+                <?php foreach ($holidayData as $holiday): ?>
+                    <h3 class="title text-center"><?php echo $holiday['name']; ?></h3>
+                    <?php if(isset($holiday['date'])) : ?>
+                        <?php foreach ($holiday['date'] as $holidayDate): ?>
+                            <li>
+                                <div class="content1">
+                                    <?php echo date_format(date_create($holidayDate), 'l jS F'); ?>
+                                </div>
+                                <div class="content2">
+                                    <?php echo __('Closed'); ?>
+                                </div>
+                            </li>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <?php endif;?>
+
+    </div>
+</div>
+<div class="form-information col-md-8 col-sm-12 col-xs-12 pull-right">
+    <h2><span class="glyphicon glyphicon-th" aria-hidden="true"></span><span><?php echo __('More Views') ?></span></h2>
+    <?php $images = $store->getImages(); ?>
+    <?php if($images->getSize()) : ?>
+    <div class="col-sm-6 form-group">
+        <a class="magestore-map-image col-full" title="" href="javascript:void(0)">
+            <?php if($store->getBaseimage()) : ?>
+                <img id="image" src="<?php echo $block->getMediaUrlImage($store->getBaseimage()) ?>"
+                     class="current-image img-responsive">
+            <?php else : ?>
+                <img id="image" src="<?php echo $block->getMediaUrlImage($store->getFirstImage()->getPath()) ?>"
+                     class="current-image img-responsive">
+            <?php endif; ?>
+        </a>
+        <p class="store-pickup-img"><?php echo __('Images of %1', $store->getStoreName())?></p>
+    </div>
+    <div class="more-views col-sm-6"">
+        <div  class="slider-imgs col-full">
+            <ul>
+                <?php foreach ($images as $image) : ?>
+                    <li>
+                        <a class="pickup-image-small">
+                            <img width="57" height="56" alt="" src="<?php echo $block->getMediaUrlImage($image->getPath()) ?>">
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <p class="small-imgages"><?php echo __('View all images of %1', $store->getStoreName())?></p>
+    </div>
+    <?php endif; ?>
+</div>
+<div class="location-box-view" style="display: none;">
+    <div class="widget-mylocation">
+        <button id="widget-mylocation-button" class="widget-mylocation-button" title="Show My Location">
+            <div class="widget-mylocation-cookieless"></div>
+        </button>
+    </div>
+</div>
+<div class="store-pickup-column-right col-md-8 col-sm-12 col-xs-12" style="float: right;">
+    <?php if ($block->getSystemConfig()->isAllowFacebookComment()): ?>
+        <p class="store-pickup-title"><span><?php echo __('Comments'); ?></span></p>
+        <div id="fb-root"></div>
+        <script>(function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id))
+                    return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/<?php echo $block->getSystemConfig()->getLocaleFacebookLanquage() ?>/all.js#xfbml=1&appId=<?php echo $block->getSystemConfig()->getFacebookApiKey(); ?>";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+        <div class="fb-comments" data-width="520" data-href="<?php echo $block->getCurrentUrl(); ?>"  data-num-posts="5"></div>
+
+    <?php endif; ?>
+</div>
+</div>
+<script id="popup-store-template" class="popup-store-template" type="text/x-magento-template">
+    <div class="popup-store store-item store-<%- data.storepickup_id %>"
+         title="<%- data.store_name %>"
+         data-store-id="<%- data.storepickup_id %>"
+         data-latitude="<%- data.latitude %>"
+         data-longitude="<%- data.longitude %>"
+         data-address="<%- data.address %>"
+    >
+        <div class="store-content">
+            <div class="col-sm-4 col-xs-4 tag-store" style="padding-left: 5px;padding-right: 5px;">
+                <img class="img-responsive" width="100%" height="100%" src="<%- data.imgSrc %>" alt="<%- data.store_name %>">
+                <p class="text-center"><%- data.distanceText %></p>
+            </div>
+            <div class="col-sm-8 col-xs-8 tag-content" style="padding-left: 5px;padding-right: 5px;" >
+                <h4 style="color: #428BCA"><%- data.store_name %></h4>
+                <p class="address-store"><strong><?php echo __('Address:'); ?></strong> <%- data.address %></p>
+                <?php if ($store->getPhone()): ?>
+                <p class="phone-store"><strong><?php echo __('Phone:'); ?></strong> <%- data.phone %></p>
+                <?php endif; ?>
+                <?php if ($store->getFax()): ?>
+                <p class="fax-store"><strong><?php echo __('Fax:'); ?></strong> <%- data.fax %></p>
+                <?php endif; ?>
+                <?php if ($store->getEmail()): ?>
+                <p class="email-store"><strong><?php echo __('Email:'); ?></strong><a href="mailto:<%- data.email %>"> <%- data.email %></a></p>
+                <?php endif; ?>
+                <?php if ($store->getLink()): ?>
+                <p class="link-store"><strong><?php echo __('Link:'); ?></strong><a target="_blank" href="<%- data.link %>"> <%- data.link %></a></p>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/javascript">
+    require(['jquery', 'Magestore_Storepickup/js/viewpage/map'], function ($) {
+        $(document).ready(function ($) {
+            $('.storeday-tab-bar').click(function () {
+                if (!$(this).hasClass('active')) {
+                    var $oldTab = $('.storeday-tab-bar.active'),
+                        $newTab = $(this);
+                    $oldTab.removeClass('active');
+                    $($oldTab.data('tab-content')).hide();
+
+                    $newTab.addClass('active');
+                    $($newTab.data('tab-content')).show();
+                }
+            });
+
+            $('.pickup-image-small img').click(function () {
+                $('.current-image').hide().attr('src', $(this).attr('src')).fadeIn( "slow" );
+            });
+
+            $('.googlemap').Map($.extend({
+                storePopupTemplate: '.popup-store-template',
+                distanceUnit: '<?php echo $block->getSystemConfig()->getDistanceUnit() ?>',
+                mediaUrlImage: '<?php echo $block->getMediaUrlImage() ?>',
+                defaultStoreIcon: '<?php echo $block->getViewFileUrl("Magestore_Storepickup::images/map_with_pin.png")?>',
+            }, <?php echo $block->getStoreJson($store)?>));
+        });
+
+    });
+    window.googleMapApiKey="<?php echo $block->getSystemConfig()->getGoolgeApiKey()?>";
+    window.googleSpecialCountry= "<?php echo $this->helper('Magestore\Storepickup\Helper\Data')->getSpecialCountry()?>";
+
+</script>

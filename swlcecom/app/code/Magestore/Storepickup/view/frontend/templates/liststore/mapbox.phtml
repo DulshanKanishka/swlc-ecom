@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Storepickup
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+
+/** @var \Magestore\Storepickup\Block\ListStore\MapBox $block */
+?>
+<div class="map-box-container col-sm-8 col-xs-12 pull-right" >
+    <div class="googlemap"></div>
+</div>
+<div class="location-box-view" style="display: none;">
+    <div class="widget-mylocation">
+        <button id="widget-mylocation-button" class="widget-mylocation-button" title="Show My Location">
+            <div class="widget-mylocation-cookieless"></div>
+        </button>
+    </div>
+</div>
+<script type="text/javascript">
+window.googleMapApiKey="<?php echo $block->getSystemConfig()->getGoolgeApiKey()?>";
+window.googleSpecialCountry= "<?php echo $this->helper('Magestore\Storepickup\Helper\Data')->getSpecialCountry()?>";
+
+</script>

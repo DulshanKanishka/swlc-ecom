@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="xero_init_data" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
+        <label>Sync Needed Data</label>
+        <field id="enabled" translate="label comment" type="select" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Enable</label>
+            <config_path>magenest_xero_config/xero_init_data/enabled</config_path>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <comment><![CDATA[<strong style="color:dodgerblue">Notice:</strong> Data will be synced if needed, such as customers, items data will be synced while syncing order/invoice/credit memo]]></comment>
+        </field>
+    </group>
+    <group id="xero_multiple" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+        <label>Multiple Websites</label>
+        <field id="enabled" translate="label comment" type="select" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Enable</label>
+            <config_path>magenest_xero_config/xero_multiple/enabled</config_path>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <comment><![CDATA[<strong style="color:dodgerblue">Notice:</strong> Data will be synced to separated Xero account corresponding to "Store Views - Websites" configuration]]></comment>
+        </field>
+    </group>
+    <group id="xero_contact" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+        <label>Contacts</label>
+        <field id="enabled" translate="label comment" type="select" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Enable</label>
+            <config_path>magenest_xero_config/xero_contact/enabled</config_path>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+        </field>
+        <field id="sync_mode" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Sync Mode</label>
+            <source_model>Magenest\Xero\Model\Config\Source\SyncMode</source_model>
+            <config_path>magenest_xero_config/xero_contact/sync_mode</config_path>
+            <depends>
+                <field id="enabled">1</field>
+            </depends>
+            <validate>required-entry</validate>
+        </field>
+        <field id="cron_time" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Time</label>
+            <source_model>Magenest\Xero\Model\Config\Source\CronTime</source_model>
+            <config_path>magenest_xero_config/xero_contact/cron_time</config_path>
+            <depends>
+                <field id="sync_mode">1</field>
+                <field id="enabled">1</field>
+            </depends>
+            <validate>required-entry</validate>
+        </field>
+        <field id="sync_button" translate="button_label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+            <frontend_model>Magenest\Xero\Block\System\Config\Form\Button</frontend_model>
+            <button_label>Add All Customers To Queue</button_label>
+            <depends>
+                <field id="enabled">1</field>
+            </depends>
+            <attribute type="button_url">xero/queue/customer</attribute>
+        </field>
+    </group>
+
+    <group id="xero_item" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+        <label>Items</label>
+        <field id="enabled" translate="label comment" type="select" sortOrder="5" showInDefault="1"
+               showInWebsite="0" showInStore="0">
+            <label>Enable</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <config_path>magenest_xero_config/xero_item/enabled</config_path>
+        </field>
+        <field id="sync_mode" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Sync Mode</label>
+            <source_model>Magenest\Xero\Model\Config\Source\SyncMode</source_model>
+            <config_path>magenest_xero_config/xero_item/sync_mode</config_path>
+            <depends>
+                <field id="enabled">1</field>
+            </depends>
+            <validate>required-entry</validate>
+        </field>
+        <field id="sync_qty" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Sync Stock Level</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <config_path>magenest_xero_config/xero_item/sync_qty</config_path>
+            <validate>required-entry</validate>
+            <comment><![CDATA[<strong style="color:dodgerblue">Notice:</strong> Can't disable stock level sync in Xero once enable]]></comment>
+        </field>
+        <field id="cron_time" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Time</label>
+            <source_model>Magenest\Xero\Model\Config\Source\CronTime</source_model>
+            <config_path>magenest_xero_config/xero_item/cron_time</config_path>
+            <depends>
+                <field id="sync_mode">1</field>
+                <field id="enabled">1</field>
+            </depends>
+            <validate>required-entry</validate>
+        </field>
+        <field id="sync_button" translate="button_label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+            <frontend_model>Magenest\Xero\Block\System\Config\Form\Button</frontend_model>
+            <button_label>Add All Products To Queue</button_label>
+            <depends>
+                <field id="enabled">1</field>
+            </depends>
+            <attribute type="button_url">xero/queue/product</attribute>
+        </field>
+    </group>
+
+    <group id="xero_order" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+        <label>Invoices</label>
+        <field id="enabled" translate="label comment" type="select" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Enable</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <config_path>magenest_xero_config/xero_order/enabled</config_path>
+        </field>
+        <field id="order_invoice_enabled" translate="label comment" type="select" sortOrder="8" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Choose Object to sync to Xero Invoice</label>
+            <source_model>Magenest\Xero\Model\Config\Source\OrderOrInvoice</source_model>
+            <comment><![CDATA[<strong style="color:dodgerblue">Notice:</strong> Either Orders or Invoices in Magento will be synced to Xero Invoices. ]]></comment>
+            <config_path>magenest_xero_config/xero_order/order_invoice_enabled</config_path>
+            <depends>
+                <field id="enabled">1</field>
+            </depends>
+        </field>
+        <field id="tax_type" translate="label comment" type="select" sortOrder="8" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Tax Type</label>
+            <source_model>Magenest\Xero\Model\Config\Source\TaxType</source_model>
+            <config_path>magenest_xero_config/xero_order/tax_type</config_path>
+            <depends>
+                <field id="enabled">1</field>
+            </depends>
+        </field>
+        <field id="sync_mode" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Sync Mode</label>
+            <source_model>Magenest\Xero\Model\Config\Source\SyncMode</source_model>
+            <config_path>magenest_xero_config/xero_order/sync_mode</config_path>
+            <validate>required-entry</validate>
+            <depends>
+                <field id="enabled">1</field>
+            </depends>
+        </field>
+        <field id="cron_time" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Time</label>
+            <source_model>Magenest\Xero\Model\Config\Source\CronTime</source_model>
+            <config_path>magenest_xero_config/xero_order/cron_time</config_path>
+            <depends>
+                <field id="sync_mode">1</field>
+                <field id="enabled">1</field>
+            </depends>
+            <validate>required-entry</validate>
+        </field>
+        <field id="sync_button_order" translate="button_label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+            <frontend_model>Magenest\Xero\Block\System\Config\Form\Button</frontend_model>
+            <button_label>Add All Orders To Queue</button_label>
+            <depends>
+                <field id="enabled">1</field>
+                <field id="order_invoice_enabled">1</field>
+            </depends>
+            <attribute type="button_url">xero/queue/order</attribute>
+        </field>
+        <field id="sync_button_invoice" translate="button_label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+            <frontend_model>Magenest\Xero\Block\System\Config\Form\Button</frontend_model>
+            <button_label>Add All Invoices To Queue</button_label>
+            <depends>
+                <field id="enabled">1</field>
+                <field id="order_invoice_enabled">0</field>
+            </depends>
+            <attribute type="button_url">xero/queue/invoice</attribute>
+        </field>
+    </group>
+
+    <group id="xero_credit" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="0" showInStore="0">
+        <label>Credit Memos</label>
+        <field id="enabled" translate="label comment" type="select" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Enable</label>
+            <config_path>magenest_xero_config/xero_credit/enabled</config_path>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+        </field>
+        <field id="sync_mode" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Sync Mode</label>
+            <source_model>Magenest\Xero\Model\Config\Source\SyncMode</source_model>
+            <validate>required-entry</validate>
+            <config_path>magenest_xero_config/xero_credit/sync_mode</config_path>
+            <depends>
+                <field id="enabled">1</field>
+            </depends>
+        </field>
+        <field id="cron_time" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Time</label>
+            <source_model>Magenest\Xero\Model\Config\Source\CronTime</source_model>
+            <config_path>magenest_xero_config/xero_credit/cron_time</config_path>
+            <depends>
+                <field id="sync_mode">1</field>
+                <field id="enabled">1</field>
+            </depends>
+            <validate>required-entry</validate>
+        </field>
+        <field id="sync_button" translate="button_label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+            <frontend_model>Magenest\Xero\Block\System\Config\Form\Button</frontend_model>
+            <button_label>Add All Credit Memos To Queue</button_label>
+            <depends>
+                <field id="enabled">1</field>
+            </depends>
+            <attribute type="button_url">xero/queue/credit</attribute>
+        </field>
+    </group>
+</include>

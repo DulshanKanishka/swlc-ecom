@@ -1,0 +1,29 @@
+<?php /* @var block \Magebees\Promotionsnotification\Block\Allnotification */ ?>
+<?php $upcoming_coll = $block->getUpcomingNotificationCollection(); ?>
+<?php $helper = $this->helper('Magebees\Promotionsnotification\Helper\Data'); ?>
+<ul class="mage_notificList" id="upcomming">
+    <li class="mageTtl">
+        <a class="upcoming showNtificList" href="javascript:void(0)">Upcoming Notification</a>
+        <ul id="upcoming-notification" class="subListsec">
+            <?php foreach ($upcoming_coll as $upcoming_data) : ?>
+            <li>
+                <a class="upcoming showNtificList" href="javascript:void(0)"><?php echo $upcoming_data->getTitle(); ?></a>
+                <div id="notification_<?php echo $upcoming_data->getId(); ?>" class="notificDetails" style="background-color:<?php echo $upcoming_data->getBackgroundColor() ?>">
+                    <?php echo $helper->getFilterProvider()->getPageFilter()->filter($upcoming_data->getData('notification_content')); ?>
+                </div>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+    </li>
+</ul>   
+<script type="text/javascript">
+    require(['jquery'],function(jQuery){
+        jQuery(".upcoming").click(function() {
+            if(!jQuery('ul #upcoming-notification li').length){
+                jQuery("ul #upcoming-notification").append('<li class=noFound>Notification Not Found</li>');
+            }
+            jQuery(this).next().slideToggle("slow");
+            jQuery(this).toggleClass("active");
+        });
+    });
+</script>

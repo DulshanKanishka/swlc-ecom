@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<css src="Sm_InstagramGallery::css/instagramgallery.css" media="all" />
+		<css src="Sm_InstagramGallery::css/owl.carousel.css" media="all" />
+		<css src="Sm_InstagramGallery::css/animate.css" media="all" />
+		<css src="Sm_InstagramGallery::css/jquery.fancybox.css" media="all" />
+		<css src="Sm_InstagramGallery::helpers/jquery.fancybox-buttons.css" media="all" />
+		<css src="Sm_InstagramGallery::helpers/jquery.fancybox-thumbs.css" media="all" />
+		<!-- <script src="jquery.js" data-requiremodule="jquery"/> -->
+		<!-- <script src="Sm_InstagramGallery::js/owl.carousel.js"   data-requiremodule="jquery"/> -->
+
+	</head>
+</page>

@@ -1,0 +1,25 @@
+<?php
+/** @var \Magenest\AbandonedCart\Block\Adminhtml\Rule\Edit\Tab\EmailChain $block */
+$uploadUrl      = $block->getData('uploadUrl');
+$attached_files = $block->getAttachedFiles();
+$emailblock     = $block->getData('papaClass');
+echo $emailblock->getChildHtml('gallery');
+?>
+<style>
+    .admin__data-grid-pager-wrap {
+        display: none;
+    }
+</style>
+<div id="abandonedcart_emailchain" data-bind="scope:'abandonedcart_emailchain'">
+    <!-- ko template: 'Magenest_AbandonedCart/rule/emailChain' --><!-- /ko -->
+    <script type="text/x-magento-init">
+        {
+            "*":{
+                "Magento_Ui/js/core/app": <?php /* @escapeNotVerified */
+        echo $emailblock->getEmailChain(); ?>
+            }
+        }
+    
+
+    </script>
+</div>

@@ -1,0 +1,23 @@
+@magenest-icons-admin__font-name-path: 'Magenest_Xero::fonts/icomoon';
+@magenest-icons-admin__font-name : 'Magenest';
+
+.lib-font-face(
+  @family-name: @magenest-icons-admin__font-name,
+  @font-path: @magenest-icons-admin__font-name-path,
+  @font-weight: normal,
+  @font-style: normal
+);
+
+.admin__menu .item-xero.parent.level-0 > a:before,
+.admin__menu .item-xero.level-0 > a:before {
+  font-family: @magenest-icons-admin__font-name;
+  font-size: 3.5rem;
+  line-height: 2px;
+  content: "\e927";
+  border: solid 2px;
+  width: 38px;
+  border-radius: 50%;
+  padding: 16px 0;
+  text-align: center;
+  margin: 0 auto 0.5rem;
+}

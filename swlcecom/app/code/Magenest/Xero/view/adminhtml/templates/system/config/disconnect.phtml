@@ -1,0 +1,31 @@
+<?php
+/** @var $block \Magenest\Xero\Block\System\Config\Form\Button\Disconnect */
+?>
+<div class="actions button-container">
+    <button class="button action-configure"
+            type="button"
+            data-action="disconnect-app">
+        <span><?php /* @escapeNotVerified */ echo __('Disconnect');?></span>
+    </button>
+</div>
+<script>
+    require(['jquery'],
+        function ($) {
+            'use strict';
+            var disconnectButton = $('[data-action="disconnect-app"]');
+            disconnectButton.click(function () {
+                $.ajax({
+                    type: "GET",
+                    url: '<?php /* @escapeNotVerified */ echo $block->getDisconnectUrl()?>',
+                    data: {},
+                    showLoader: true,
+                    success: function() {
+                        location.reload();
+                    },
+                    error: function() {
+                        location.reload();
+                    }
+                });
+            });
+        });
+</script>

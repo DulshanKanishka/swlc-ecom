@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <magenest_xero_config>
+            <xero_api>
+                <is_connected>0</is_connected>
+                <public_key><![CDATA[-----BEGIN CERTIFICATE-----
+MIIC7jCCAlegAwIBAgIJAPLPbe1PLVUDMA0GCSqGSIb3DQEBCwUAMIGPMQswCQYD
+VQQGEwJWTjEPMA0GA1UECAwGSGEgTm9pMQ8wDQYDVQQHDAZIYSBOb2kxETAPBgNV
+BAoMCE1hZ2VuZXN0MRIwEAYDVQQLDAlEZXZlbG9wZXIxEjAQBgNVBAMMCVRoYW8g
+UGhhbTEjMCEGCSqGSIb3DQEJARYUdGhhb3BoYW1pdEBnbWFpbC5jb20wHhcNMTYw
+NjA3MDcyMTUxWhcNMjYwNjA1MDcyMTUxWjCBjzELMAkGA1UEBhMCVk4xDzANBgNV
+BAgMBkhhIE5vaTEPMA0GA1UEBwwGSGEgTm9pMREwDwYDVQQKDAhNYWdlbmVzdDES
+MBAGA1UECwwJRGV2ZWxvcGVyMRIwEAYDVQQDDAlUaGFvIFBoYW0xIzAhBgkqhkiG
+9w0BCQEWFHRoYW9waGFtaXRAZ21haWwuY29tMIGfMA0GCSqGSIb3DQEBAQUAA4GN
+ADCBiQKBgQC/qdUDlcI715VOE5zy2+0bDkfykEjxxOTm7BMDXtSffr8hc8/ka5UK
+iA8wd08hVdk4RbqUNEz59H0e9lUjpYCbZ760IPQ5nBDxdb0o7mRv86g565Foxl2x
+ptK/tor1dySQZH//sOJaeBw1QCYsCPqS6f0B4SqRv/n0Z+uB7Y09fQIDAQABo1Aw
+TjAdBgNVHQ4EFgQU7AKLfdYX95dUpq8qsOivgrmBZGUwHwYDVR0jBBgwFoAU7AKL
+fdYX95dUpq8qsOivgrmBZGUwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOB
+gQBvSp5HBSYnIp8zcebSXZNLbBMxxY+r6K2nbTNXedU2fllF72xYgSFxWzYqcUN/
+t4UhuVj8aW96dF3+oLrgdiniZ0G6DaR2V/6w2E9Te0evw2aYGfkA7xIGEU7D0NCY
+RG4e22Jv1euo0VncywnDgvjiAOj9zLYaXGzQrei+N4T3iA==
+-----END CERTIFICATE-----]]>
+                </public_key>
+                <private_key><![CDATA[-----BEGIN RSA PRIVATE KEY-----
+MIICXAIBAAKBgQC/qdUDlcI715VOE5zy2+0bDkfykEjxxOTm7BMDXtSffr8hc8/k
+a5UKiA8wd08hVdk4RbqUNEz59H0e9lUjpYCbZ760IPQ5nBDxdb0o7mRv86g565Fo
+xl2xptK/tor1dySQZH//sOJaeBw1QCYsCPqS6f0B4SqRv/n0Z+uB7Y09fQIDAQAB
+AoGAJAAsiM3afA8UdmPsuRliQhC+pus/KFqJfG6fa6SmX4cZM5ljVU534lCIOdxP
+Or27XXyLfUcNpm2sCuLOPzHZJARwTzHv4uFDJoIs+frXW7UG0dqCLBSoptLidKnm
+Qg28+sywjSDKRf0GFuZLpUFZkbgVJLzcB+/VdjM2IaK8CAECQQDhjwgx5xlruRnC
+9f+HATDJjFZUfr1DFhftuQIG/A/5ppvH8JkHAEXdDHOzz/HQkcrfVQ9Fa3xY+zeI
+tZd33RR9AkEA2Ye63Dqm9xyUFVy5W7bLR9Ye33wCwYcqBBs0wcGj0PIxzPIFGhyA
+WBizMN0+u7LgYVub43obb53+XZo3+DYdAQJARtnQ7yvydj38c5smGtgq5QRqEbyF
+4s7L0WZt1pfSxM6q3FEdIG/bgiXpKjBFewhwu1pSo7Gxq5mtxgmUfJg7WQJAWi0K
+KYGm9YnDWZe2v25nlsAMzFh8S/3cTRd6J1g+sL+2JV+u/cQS8HJM1lThTK46liGD
+3ikgdoTojaUAzsSgAQJBALSqXyWUHL7EGSj2GMVyGyn7Qq7+vssQFWosN+aOApEu
+KCxgczCJwxLqshir5ihbdrsohEL8NqaDsGQfh9Di9r0=
+-----END RSA PRIVATE KEY-----]]>
+                </private_key>
+            </xero_api>
+            <xero_order>
+                <order_enabled>0</order_enabled>
+                <invoice_enabled>0</invoice_enabled>
+            </xero_order>
+        </magenest_xero_config>
+    </default>
+</config>

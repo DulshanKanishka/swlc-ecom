@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"  xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+		<referenceContainer name="content">
+			<block class="Magebees\Promotionsnotification\Block\Allnotification" name="notification_current" template="Magebees_Promotionsnotification::current.phtml" ifconfig="promotions/general/enabled"/>
+			<block class="Magebees\Promotionsnotification\Block\Allnotification" name="notification_upcoming" template="Magebees_Promotionsnotification::upcoming.phtml" ifconfig="promotions/general/enabled" />
+		</referenceContainer>
+    </body>
+</page>

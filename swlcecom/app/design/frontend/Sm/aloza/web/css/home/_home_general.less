@@ -1,0 +1,130 @@
+// HOME GENERAL
+.bottom-action .swatch-input.super-attribute-select { 
+	display:none !important; 
+}
+.full-content {
+    margin: 0 auto;
+}
+
+@-webkit-keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+@-webkit-keyframes circle {
+    0% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 1;
+    }
+    100% {
+        width: 200%;
+        height: 200%;
+        opacity: 0;
+    }
+}
+@keyframes circle {
+    0% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 1;
+    }
+    100% {
+        width: 200%;
+        height: 200%;
+        opacity: 0;
+    }
+}
+.no-padding {
+  padding: 0px !important;
+}
+.no-margin {
+  margin: 0px !important;
+}
+.banner {
+    display: block;
+    overflow: hidden;
+    position: relative;
+  &:before{
+    border: 200px double transparent;
+    bottom: 0;
+    content: "";
+    left: 0;
+    .opacity(1);
+    position: absolute;
+    right: 0;
+    top: 0;
+    .transition(all 0.4s cubic-bezier(0.94, 0.85, 0.1, 0.62) 0s);
+    visibility: visible;
+    z-index: 1;
+  }
+  &:hover:before{
+    border: 0 double rgba(255, 255, 255, 0.7);
+    .opacity(0);
+    visibility: hidden;
+  }
+    
+}
+.banner2{
+      margin-bottom: 30px;
+      position: relative !important;
+      background: #fff;
+      overflow: hidden;
+      display: block;
+     &:before {
+          position: absolute;
+          top: 0;
+          left: -75%;
+          z-index: 2;
+          display: block;
+          content: '';
+          width: 50%;
+          height: 100%;
+          background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+          background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+          -webkit-transform: skewX(-25deg);
+          transform: skewX(-25deg); 
+        }
+
+        &:hover{
+          &:before{
+           -webkit-animation: shine .75s;
+           animation: shine .75s;
+          }
+        }
+}
+.banner3{
+    img {
+        .transition(0.3s all ease 0s);
+    }
+    &:hover img{
+     transform: scale(1.2);
+    }
+}
+.mr20 {
+    margin-bottom: 20px;
+}
+.mr30 {
+    margin-bottom: 30px;
+}
+.mr50 {
+     margin-bottom:50px;
+}
+.mr60 {
+    margin-bottom: 60px;
+}
+
+@media (max-width: 480px) {
+.col-phone-12 {
+    width: 100%;
+
+}
+}
+
