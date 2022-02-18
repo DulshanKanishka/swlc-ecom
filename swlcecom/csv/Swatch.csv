@@ -1,0 +1,161 @@
+atribute_name,admin_label,front_label,image
+color,NA,,
+color,BLK,Black,#000000
+color,BLK/FLG,"Black/Fluro Green",/b/l/blk-flg_1.jpg
+color,BLK/FLO,"Black/Fluro Orange",/b/l/blk-flo.jpg
+color,BLK/GLD,"Black/Fluro Gold",/b/l/blk-gold.jpg
+color,BLK/GRN,Black/Green,/b/l/blk-green.jpg
+color,BLK/GRY,Black/Grey,/b/l/blk-grey.jpg
+color,BLK/ORG,Black/Orange,/b/l/blk-orange.jpg
+color,BLK/RED,Black/Red,/b/l/blk-red.jpg
+color,BLK/SKY,"Black/Sky Blue",/b/l/blk-skyblue.jpg
+color,BLK/WHT,Black/White,/b/l/blk-white.jpg
+color,BLK/YLW,Black/Yellow,/b/l/blk-yellow.jpg
+color,BLU,Blue,#3d1ed6
+color,BLU/NVY,Blue/Navy,/b/l/blu-navy.jpg
+color,BLU/VLT,Blue/Violet,/b/l/blu-violet.jpg
+color,BLU/YLW,Blue/Yellow,/b/l/blu-yellow.jpg
+color,CLR,Clear,#d6d2d6
+color,CRM,Cream,#f2ebeb
+color,CRM/MRN,Cream/Maroon,/c/r/cream-maroon.jpg
+color,CTY,"Citrus Yellow",#e1fc17
+color,DNM,Denim,#727bc9
+color,EMR,Emerald,#188c1d
+color,FLG,"Fluro Green",#0ef53d
+color,FLO,"Fluro Orange",#f27922
+color,FLY,"Fluro Yellow",#edf731
+color,GRN,Green,#0a9403
+color,GRN/BLK,Green/Black,/g/r/grn-blk.jpg
+color,GRN/WHT,Green/White,/g/r/grn-wht.jpg
+color,GRY/BLK,Grey/Black,/g/r/grey-blk.jpg
+color,GRN/YLW,Grey/Yellow,/g/r/grey-yellow.jpg
+color,GRY/ORG,Grey/Orange,/g/r/grey-orange.jpg
+color,GRW,"Grape Wine",#5c2d3e
+color,KHK,Khaki,#a19270
+color,GRY,Grey,#919191
+color,MRB,"Marine Blue",#1d07bd
+color,MRN,Maroon,#750533
+color,NVY,Navy,#312c4f
+color,NVY/FLG,"Navy/Fluro Green",/n/a/navy-flg.jpg
+color,NVY/FLO,"Navy/Fluro Orange",/n/a/navy-flo.jpg
+color,NVY/GLD,Navy/Gold,/n/a/navy-gold.jpg
+color,NVY/GRY,Navy/Grey,/n/a/navy-grey.jpg
+color,NVY/ORG,Navy/Orange,/n/a/navy-org.jpg
+color,NVY/PNK,Navy/Pink,/n/a/navy-pink.jpg
+color,NVY/RED,Navy/Red,/n/a/nav-red.jpg
+color,NVY/SKY,Navy/Sky,/n/a/navy-sky.jpg
+color,NVY/SKY/CRM,Navy/Sky/Cream,/n/a/navy-sky_1.jpg
+color,NVY/SKY/WHT,Navy/Sky/White,/n/a/navy-sky_2.jpg
+color,NVY/WHT,Navy/White,/n/a/navy-wht.jpg
+color,NVY/YLW,Navy/Yellow,/n/a/navy-yellow.jpg
+color,ORG,Orange,#eb780c
+color,ORG/BLK,Orange/Black,/o/r/org-blk_1.jpg
+color,PNK,Pink,#ed13d7
+color,PUR,Purple,#660666
+color,RED,Red,#f00050
+color,RED/BLK,Red/Black,/o/r/org-blk.jpg
+color,RED/BLU,Red/Blue,/r/e/red-blu.jpg
+color,RED/GRY,Red/Grey,/r/e/red-grg.jpg
+color,RED/NVY,Red/Navy,/r/e/red-navy.jpg
+color,RED/WHT,Red/White,/r/e/red-wht.jpg
+color,RSG,"Rose Gold",#c90446
+color,RYB,"Royal Blue",#1446fc
+color,RYB/WHT,"Royal Blue/White",/r/y/ryb-wht.jpg
+color,SDG,"Sand Grey",#c2c2c2
+color,SKY,"Sky Blue",#58bdf0
+color,SKY/NVY,"Sky Blue/Navy",/s/k/skyblue-navy.jpg
+color,STG,"Steel Grey",#aaa095
+color,VLT,Violet,#9c329c
+color,WHT,White,#e5e7e8
+color,WHT/BLK,White/Black,/w/h/wht-blk.jpg
+color,WHT/GRY,White/Grey,/w/h/wht-grey.jpg
+color,WHT/NVY,White/Navy,/w/h/wht-navy.jpg
+color,WHT/PUR,White/Purple,/w/h/wht-purple.jpg
+color,WHT/RED,White/Red,/w/h/wht-red.jpg
+color,WHT/RYB,"White/Royal Blue",/w/h/wht-ryb.jpg
+color,WHT/SKY,"White/Sky Blue",/w/h/wht-sky.jpg
+color,YLW,Yellow,#f6fa0a
+color,YLW/BLK,Yellow/Black,/y/e/yellow-blk.jpg
+color,YLW/GRN,Yellow/Green,/y/e/yellow-grn.jpg
+color,YLW/RYB,"Yellow/Royal Blue",/y/e/yellow-ryl-blue.jpg
+size,NA,,
+size,5,,/5/-/5-6_1.png
+size,3-4,,/3/-/3-4.png
+size,5-6,,/5/-/5-6.png
+size,7-8,,/7/-/7-8.png
+size,9-10,,
+size,30,,/3/0/30.png
+size,31,,/3/1/31.png
+size,32,,/3/2/32.png
+size,33,,/3/3/33.png
+size,34,,/3/4/34.png
+size,36,,/3/6/36.png
+size,38,,/3/8/38.png
+size,40,,/4/0/40.png
+size,42,,/4/2/42.png
+size,44,,/4/4/44.png
+size,46,,/4/6/46.png
+size,47,,/4/7/47.png
+size,48,,/4/8/48.png
+size,49,,/4/9/49.png
+size,50,,/5/0/50.png
+size,51,,/5/1/51.png
+size,52,,/5/2/52.png
+size,1LTR,,
+size,800ML,,
+size,35-36,,/3/5/35-36.png
+size,37-38,,/3/7/37-38_3.png
+size,39-40,,/3/9/39-40.png
+size,41-42,,/4/1/41-42.png
+size,43-44,,/4/3/43-44.png
+size,45-46,,/4/5/45-46.png
+size,INF,,/i/n/inf.png
+size,XSC,,/x/s/xsc.png
+size,CHD,,/c/h/chd.png
+size,JNR,,/j/n/jnr.png
+size,JNRG,,/j/n/jnrg.png
+size,XSB,,/x/s/xsb.png
+size,XSG,,/x/s/xsg.png
+size,XCD,,
+size,XCS,,/x/s/xsc_1.png
+size,SB,,/s/b/sb.png
+size,SG,,/s/g/sg.png
+size,MB,,/m/b/mb.png
+size,MG,,/m/g/mg.png
+size,LB,,/l/b/lb.png
+size,LG,,
+size,XS,,/x/s/xs.png
+size,S,,/s/_/s.png
+size,M,,/m/_/m.png
+size,L,,/l/_/l.png
+size,XL,,/x/l/xl.png
+size,2XL,,/2/x/2xl_4.jpg
+size,3XL,,/3/x/3xl.png
+size,4XL,,/4/x/4xl.png
+size,5XL,,/5/x/5xl.png
+size,BABY,,/b/a/baby.png
+size,MINI,,
+size,SPARE,,
+size,2,,/2/_/2.png
+size,3,,/3/_/3.png
+size,4,,/4/_/4.png
+size,6,,/6/_/6.png
+size,8,,/8/_/8.png
+size,9,,/9/_/9.png
+size,10,,/1/0/10.png
+size,11,,/1/1/11.png
+size,12,,/1/2/12.png
+size,14,,/1/4/14.png
+size,16,,/1/6/16.png
+size,18,,/1/8/18.png
+size,20,,/2/0/20_1.png
+size,22,,/2/2/22_1.png
+size,24,,/2/4/24.png
+size,26,,/2/6/26.png
+size,28,,/2/8/28.png
+size,29,,/2/9/29.png
+size,ADULT,,/a/d/adult.png
+size,BOY,,/b/o/boy.png
+size,GIRL,,/g/i/girl.png
+size,NEUTRAL,,/n/e/neutral.png
+size,SNR,,/s/n/snr.png

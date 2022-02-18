@@ -1,0 +1,143 @@
+parent_name,name,created_at,updated_at,categoryPath,include_in_menu,description,meta_keywords,meta_description,custom_layout_update,is_active,landing_page,is_anchor,custom_use_parent_settings,custom_apply_to_products,image,meta_title,display_mode,url_key
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+Default Category,Cycling,2012-08-08 08:51:33,2018-05-08 12:44:34,Root Catalog/Root Catalog Migrated/Cycling,1,,,,,1,,0,,1,,,PRODUCTS,cycling
+Default Category,Samurai Sportswear,2012-08-08 09:28:43,2019-11-21 12:06:44,Root Catalog/Root Catalog Migrated/Samurai Sportswear,1,,Samurai Sportswear,Samurai Sportswear,,1,,0,,1,,Samurai Sportswear,PRODUCTS,samurai
+Default Category,Schools & Clubs,2015-10-11 07:04:47,2020-05-21 11:19:24,Root Catalog/Root Catalog Migrated/Schools & Clubs,0,,,,,0,,0,,1,,Schools & Clubs,PAGE,schools
+Default Category,Kit Designer,2015-12-28 12:35:26,2018-01-02 03:48:34,Root Catalog/Root Catalog Migrated/Kit Designer,1,,,,,0,,0,,1,,,PRODUCTS,kitdesigner
+Default Category,BeSpoke,2016-02-23 08:26:37,2016-02-23 08:31:49,Root Catalog/Root Catalog Migrated/BeSpoke,1,,,,,1,,0,,1,,BeSpoke,PRODUCTS,bespoke
+Default Category,Sale,2016-04-04 05:36:36,2020-03-08 09:21:02,Root Catalog/Root Catalog Migrated/Sale,1,,,,,1,,0,,1,sale-56.jpg,Sale,PRODUCTS,sale
+,,,,,,,,,,,,,,,,,,
+Default Category,B2B,2016-08-28 07:24:12,2017-02-28 11:02:46,Root Catalog/Root Catalog Migrated/B2B,0,,,,,0,,0,,1,,,PRODUCTS,test
+Default Category,Havaianas,2017-01-24 11:54:33,2018-06-05 05:04:28,Root Catalog/Root Catalog Migrated/Havaianas,1,,,,,1,,0,,1,Havaianasbanner.png,Havaianas,PRODUCTS,havaianas
+Samurai Sportswear,Rugby,2012-08-08 09:29:10,2019-01-16 08:38:05,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Rugby,1,,Rugby,Rugby,,1,,0,,1,Samurai_Rugbybanner_1.jpg,Rugby,PRODUCTS,rugby
+Samurai Sportswear,Hockey,2015-09-20 08:54:15,2019-11-21 12:06:55,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Hockey,1,,,,,1,,0,,1,Samurai_Hockey2_1.jpg,Samurai | Hockey,PRODUCTS,hockey
+Samurai Sportswear,Netball,2015-09-20 09:00:06,2019-11-21 12:06:54,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Netball,1,,,,,1,,0,,1,Samurai_NetballbannerImage_1.jpg,Samurai | Netball,PRODUCTS,netball
+Samurai Sportswear,Cricket,2015-09-20 09:00:34,2019-11-21 12:06:55,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Cricket,1,,,,,1,,0,,0,Samurai_CricketBanner2_1.jpg,Samurai | Cricket,PRODUCTS,cricket
+Samurai Sportswear,Leisurewear,2015-10-01 08:08:24,2018-05-14 10:56:29,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Leisurewear,1,,,,,1,,0,,1,,Leisurewear,PRODUCTS,leisurewear
+Schools & Clubs,JESS,2015-11-10 07:05:06,2019-12-30 07:30:17,Root Catalog/Root Catalog Migrated/Schools & Clubs/JESS,0,,,,,0,,0,,1,Jess_Banner.png,JESS,PAGE,jess
+Schools & Clubs,GCS,2015-10-11 08:41:44,2018-01-25 10:51:12,Root Catalog/Root Catalog Migrated/Schools & Clubs/GCS,0,,,,,1,,0,,1,GCS_School-banner.png,GCS,PRODUCTS,gcs
+Schools & Clubs,APRSA,2015-10-19 06:26:31,2018-01-25 10:51:42,Root Catalog/Root Catalog Migrated/Schools & Clubs/APRSA,0,,,,,1,,0,,1,APRSA_club-banner.png,APRSA,PRODUCTS,aprsa
+Samurai Sportswear,Fitness,2015-12-13 07:47:18,2018-04-29 12:30:19,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Fitness,1,,,,,1,,0,,1,,,PRODUCTS,fitness
+BeSpoke,Brochures & Sizes,2015-12-27 11:58:45,2016-10-19 06:59:11,Root Catalog/Root Catalog Migrated/BeSpoke/Brochures & Sizes,0,,,,,1,,0,,1,, BeSpoke & Sizes,PRODUCTS,bespokeandsizes
+Samurai Sportswear,Swimming,2016-01-14 05:32:03,2018-10-24 12:23:25,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Swimming,1,,,,,1,,0,,1,,,PRODUCTS,swiming
+Schools & Clubs,Dubai Sea Dragon,2016-02-23 08:07:46,2018-01-25 10:52:07,Root Catalog/Root Catalog Migrated/Schools & Clubs/Dubai Sea Dragon,0,,,,,1,,0,,1,Dragon_Banner.png,,PRODUCTS,dubai-sea-dragon
+Schools & Clubs,Los Atletas,2016-04-04 10:43:15,2016-11-22 06:43:44,Root Catalog/Root Catalog Migrated/Schools & Clubs/Los Atletas,0,,,,,0,,0,,1,Losatlantas-banner.png,,PRODUCTS,losatletas
+Schools & Clubs,American Academy,2016-07-04 06:15:09,2018-06-14 11:50:44,Root Catalog/Root Catalog Migrated/Schools & Clubs/American Academy,0,,,,,1,,0,,1,American_Academy-banner.png,,PRODUCTS,american-academy
+Schools & Clubs,Doha Rugby,2016-05-03 11:46:02,2018-01-25 10:53:37,Root Catalog/Root Catalog Migrated/Schools & Clubs/Doha Rugby,0,,,,,1,,0,,1,DohaRugby-banner.png,Doha Rugby,PRODUCTS,doha-rugby
+Samurai Sportswear,Accessories,2016-08-18 06:41:02,2020-01-08 12:52:52,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Accessories,1,,,,,1,,0,,1,,,PRODUCTS,accessories
+Samurai Sportswear,Foot Ball,2016-08-21 08:44:20,2018-03-04 09:29:37,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Foot Ball,0,,,,,1,,0,,1,,,PRODUCTS,foot-ball
+Schools & Clubs,Jammie Dodgers,2016-06-10 09:23:42,2018-01-25 10:54:00,Root Catalog/Root Catalog Migrated/Schools & Clubs/Jammie Dodgers,0,,,,,1,,0,,1,JammieDodgerbanner.png,Jammie Dodgers,PRODUCTS,jammiedodgers
+Schools & Clubs,Kings Al Barsha,2016-10-12 12:15:42,2018-09-09 12:39:09,Root Catalog/Root Catalog Migrated/Schools & Clubs/Kings Al Barsha,0,,,,,1,,0,,1,kingsalbarshabanner.png,Kings Al Barsha School,PRODUCTS,kingsalbarsha
+Schools & Clubs,Kings Nad Al Sheba,2016-11-15 08:34:39,2018-09-09 12:45:42,Root Catalog/Root Catalog Migrated/Schools & Clubs/Kings Nad Al Sheba,0,,,,,1,,0,,1,Kingsnaldalshebabanner.png,Kings Nad Al Sheba,PRODUCTS,kingsnadalsheba
+Schools & Clubs,Victory Heights,2016-11-22 05:43:24,2020-01-23 11:17:07,Root Catalog/Root Catalog Migrated/Schools & Clubs/Victory Heights,0,,,,,1,,0,,1,vhbanner.png,Victory Heights,PRODUCTS,victoryheights
+Cycling,Red White,2016-11-29 11:29:15,2017-12-27 10:23:27,Root Catalog/Root Catalog Migrated/Cycling/Red White,1,,,,,1,,0,,1,,,PRODUCTS,redwhite
+Cycling,Fat Lad At The Back,2016-11-29 11:31:03,2018-02-06 11:52:06,Root Catalog/Root Catalog Migrated/Cycling/Fat Lad At The Back,0,,,,,1,,0,,1,,Fat Lad At The Back,PRODUCTS,fat-lad-at-the-back
+Schools & Clubs,EMERALD,2017-01-18 08:30:42,2017-10-11 05:52:50,Root Catalog/Root Catalog Migrated/Schools & Clubs/EMERALD,0,,,,,1,,0,,1,emeraldbanner.png,,PRODUCTS,emerald
+Havaianas,Men,2017-01-24 12:26:13,2018-01-02 03:50:38,Root Catalog/Root Catalog Migrated/Havaianas/Men,1,,,,,1,,0,,1,havianamen.jpg,,PRODUCTS,men
+Havaianas,Women,2017-01-24 12:26:35,2017-02-09 06:02:13,Root Catalog/Root Catalog Migrated/Havaianas/Women,1,,,,,1,,0,,1,havaiwomen5.jpg,,PRODUCTS,women
+Reptonschool,Repton,2017-01-24 13:47:55,2019-10-16 10:39:18,Root Catalog/Root Catalog Migrated/Schools & Clubs/Reptonschool/Repton,0,,,,,1,,0,,1,Reptonbanner.png,,PRODUCTS,repton
+Schools & Clubs,DesertTrailRunners,2017-01-29 06:46:13,2019-10-07 08:38:26,Root Catalog/Root Catalog Migrated/Schools & Clubs/DesertTrailRunners,0,,,,,1,,0,,1,deserttrailbanner2.png,Desert Trail Runners,PRODUCTS,deserttrailrunners
+Schools & Clubs,Kings Dubai,2017-01-30 08:45:09,2019-10-07 08:38:26,Root Catalog/Root Catalog Migrated/Schools & Clubs/Kings Dubai,0,,,,,1,,0,,1,Kingsdubaibanner.png,Kings Dubai,PRODUCTS,kings-dubai
+Schools & Clubs,Muscat Arabian Foxes,2017-02-23 12:14:36,2019-10-07 08:38:26,Root Catalog/Root Catalog Migrated/Schools & Clubs/Muscat Arabian Foxes,0,,,,,1,,0,,1,mafhockeybanner.png,Muscat Arabian Foxes,PRODUCTS,muscat-arabian-foxes
+Schools & Clubs,Bradenton,2017-03-19 11:22:19,2019-10-07 08:38:26,Root Catalog/Root Catalog Migrated/Schools & Clubs/Bradenton,0,,,,,1,,0,,1,Bradenton_Banner.png,,PRODUCTS,bradenton
+Schools & Clubs,Gems Metropole,2017-06-21 06:59:57,2019-12-30 07:30:23,Root Catalog/Root Catalog Migrated/Schools & Clubs/Gems Metropole,0,,,,,1,,0,,1,Gems-metropole-banner.png,,PRODUCTS,gems-metropole
+Schools & Clubs,Wellington Silicon Oasis,2017-06-08 10:58:40,2019-11-17 10:13:08,Root Catalog/Root Catalog Migrated/Schools & Clubs/Wellington Silicon Oasis,0,,,,,1,,0,,1,WSO_banner.png,,PRODUCTS,wellington-silicon-oasis
+Schools & Clubs,bisak,2017-10-23 06:42:03,2019-10-07 08:38:26,Root Catalog/Root Catalog Migrated/Schools & Clubs/bisak,0,,,,,1,,0,,1,,,PRODUCTS,bisak
+Schools & Clubs,Wellington International,2017-08-11 06:10:11,2020-05-21 11:19:24,Root Catalog/Root Catalog Migrated/Schools & Clubs/Wellington International,0,,,,,0,,0,,1,,,PRODUCTS,wellington-international
+Leisurewear,Hoodies,2015-10-01 08:28:34,2018-01-30 12:22:14,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Leisurewear/Hoodies,1,,,,,1,,0,,1,,,PRODUCTS,hoodies
+Leisurewear,T-Shirts & Vests,2015-01-10 08:29:21,2018-01-20 17:20:02,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Leisurewear/T-Shirts & Vests,1,,,,,1,,0,,1,,,PRODUCTS,t-shirts-vests
+Leisurewear,Polo Shirts,2015-01-10 08:29:45,2018-01-21 14:23:07,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Leisurewear/Polo Shirts,1,,,,,1,,0,,1,,,PRODUCTS,polo-shirts
+Leisurewear,Shorts,2015-10-01 08:30:33,2016-08-17 09:43:04,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Leisurewear/Shorts,1,,,,,1,,0,,1,,,PRODUCTS,shorts
+Leisurewear,Trackpants,2015-10-01 08:31:06,2016-08-17 09:43:09,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Leisurewear/Trackpants,1,,,,,1,,0,,1,,,PRODUCTS,trackpants
+Leisurewear,Jackets,2015-10-01 08:31:24,2016-08-17 09:43:13,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Leisurewear/Jackets,1,,,,,1,,0,,1,,,PRODUCTS,jackets
+Leisurewear,Underskins & Caps,2015-10-01 08:32:08,2016-10-10 08:15:44,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Leisurewear/Underskins & Caps,1,,,,,1,,0,,1,,,PRODUCTS,underskins
+Rugby,Shirts,2015-11-25 11:38:50,2018-05-15 08:42:14,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Rugby/Shirts,1,,,,,1,,0,,1,,,PRODUCTS,shirts
+Rugby,Shorts,2015-11-25 11:39:07,2016-08-17 08:33:02,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Rugby/Shorts,1,,,,,1,,0,,1,,,PRODUCTS,shorts
+Rugby,Training Vests,2015-11-25 11:39:33,2019-10-16 08:01:43,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Rugby/Training Vests,1,,,,,1,,0,,1,,,PRODUCTS,training-vests
+Rugby,Socks,2015-11-25 11:40:01,2018-03-04 09:29:38,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Rugby/Socks,1,,,,,1,,0,,1,,,PRODUCTS,socks
+Cricket,Top,2015-11-25 11:41:08,2015-12-13 06:58:09,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Cricket/Top,1,,,,,1,,0,,1,,,PRODUCTS,top
+Cricket,Shorts,2015-11-25 11:41:25,2015-12-13 06:58:16,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Cricket/Shorts,1,,,,,1,,0,,1,,,PRODUCTS,shorts
+Cricket,Trousers,2015-11-25 11:41:44,2015-12-13 06:58:22,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Cricket/Trousers,1,,,,,1,,0,,1,,,PRODUCTS,trousers
+Cricket,Jackets,2015-11-25 11:42:00,2015-12-13 06:58:28,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Cricket/Jackets,1,,,,,1,,0,,1,,,PRODUCTS,jackets
+Cricket,Caps,2015-11-25 11:42:17,2015-12-13 06:58:36,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Cricket/Caps,1,,,,,1,,0,,1,,,PRODUCTS,caps
+Netball,Top & Skorts,2015-11-25 12:09:51,2016-08-17 09:44:59,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Netball/Top & Skorts,1,,,,,1,,0,,1,,,PRODUCTS,top
+Netball,Skorts,2015-11-25 12:10:08,2016-04-07 07:47:27,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Netball/Skorts,0,,,,,0,,0,,1,,,PRODUCTS,scorts
+Netball,Patches,2015-11-25 12:10:29,2016-08-17 09:45:04,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Netball/Patches,1,,,,,1,,0,,1,,,PRODUCTS,pathes
+Fitness,Yoga,2015-12-13 07:47:50,2016-08-21 05:29:47,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Fitness/Yoga,1,,,,,1,,0,,1,,,PRODUCTS,yoga
+Fitness,Workout,2015-12-13 07:48:15,2016-08-21 05:29:52,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Fitness/Workout,1,,,,,1,,0,,1,,,PRODUCTS,workout
+Hockey,Shirts & Skorts,2015-12-13 07:51:21,2016-08-17 09:44:39,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Hockey/Shirts & Skorts,1,,,,,1,,0,,1,,,PRODUCTS,shirts
+Hockey,Shorts,2015-12-13 07:51:50,2016-04-10 11:23:12,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Hockey/Shorts,1,,,,,0,,0,,1,,,PRODUCTS,shorts
+Hockey,Skorts / Skirts,2015-12-13 07:52:27,2016-04-11 13:17:32,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Hockey/Skorts / Skirts,0,,,,,0,,0,,1,,,PRODUCTS,skorts-skirts
+Hockey,Socks,2015-12-13 07:52:58,2018-03-04 09:29:38,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Hockey/Socks,1,,,,,0,,0,,1,,,PRODUCTS,socks
+Fitness,Cycling,2015-12-13 08:10:08,2018-02-01 12:23:36,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Fitness/Cycling,1,,,,,1,,0,,1,,,PRODUCTS,cycling
+Swimming,Boys,2016-01-14 05:32:33,2018-10-24 12:23:25,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Swimming/Boys,1,,,,,1,,0,,1,,,PRODUCTS,boys
+Swimming,Girls,2016-01-14 05:33:06,2016-08-17 09:45:31,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Swimming/Girls,1,,,,,1,,0,,1,,,PRODUCTS,girls
+Netball,Dresses,2016-04-07 07:56:08,2016-04-07 07:56:08,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Netball/Dresses,0,,,,,0,,0,,1,,,PRODUCTS,dresses
+Wellington International,Wellington,2016-05-01 11:50:43,2019-12-30 07:30:24,Root Catalog/Root Catalog Migrated/Schools & Clubs/Wellington International/Wellington,0,,,,,1,,0,,1,wellington-banner.png,Wellington,PRODUCTS,wellington
+Accessories,Bags,2016-08-18 06:42:39,2018-02-06 13:19:38,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Accessories/Bags,1,,,,,1,,0,,1,,,PRODUCTS,bags
+Accessories,Bottles,2016-08-18 07:36:47,2017-10-11 06:15:45,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Accessories/Bottles,1,,,,,1,,0,,1,,,PRODUCTS,bottles
+Accessories,Balls,2016-08-18 12:21:13,2017-10-11 06:15:51,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Accessories/Balls,1,,,,,1,,0,,1,,,PRODUCTS,balls
+Accessories,Other,2016-08-21 04:56:01,2017-10-11 06:15:57,Root Catalog/Root Catalog Migrated/Samurai Sportswear/Accessories/Other,1,,,,,1,,0,,1,,,PRODUCTS,other
+Fat Lad At The Back,Jersey,2016-11-29 11:34:01,2016-11-29 12:58:14,Root Catalog/Root Catalog Migrated/Cycling/Fat Lad At The Back/Jersey,1,,,,,1,,0,,1,,Jersey,PRODUCTS,fatladatthebackjersey
+Red White,Bib Shorts,2016-11-29 11:37:38,2016-11-29 12:58:05,Root Catalog/Root Catalog Migrated/Cycling/Red White/Bib Shorts,1,,,,,1,,0,,1,,,PRODUCTS,redwhitebibshorts
+Fat Lad At The Back,Caps,2016-11-29 11:40:51,2016-11-29 12:58:20,Root Catalog/Root Catalog Migrated/Cycling/Fat Lad At The Back/Caps,1,,,,,1,,0,,1,,,PRODUCTS,fatladatthebackcaps
+Fat Lad At The Back,Bib shorts,2016-11-29 11:41:39,2016-11-29 12:58:26,Root Catalog/Root Catalog Migrated/Cycling/Fat Lad At The Back/Bib shorts,1,,,,,1,,0,,1,,,PRODUCTS,fatladatthebackbibshorts
+Men,Best Seller,2017-01-24 13:37:24,2017-01-26 09:09:52,Root Catalog/Root Catalog Migrated/Havaianas/Men/Best Seller,1,,,,,1,,0,,1,,,PRODUCTS,best-seller
+Women,Best Seller,2017-01-24 13:37:58,2017-02-09 06:02:40,Root Catalog/Root Catalog Migrated/Havaianas/Women/Best Seller,1,,,,,1,,0,,1,havaianwomen2.jpg,,PRODUCTS,best-seller
+JESS,Jess_Primary,2017-09-05 12:16:47,2018-05-15 10:33:18,Root Catalog/Root Catalog Migrated/Schools & Clubs/JESS/Jess_Primary,0,,,,,1,,0,,1,Jess_banner_2.png,,PRODUCTS,jess-primary
+JESS,Jess_Secondary,2017-09-05 12:17:16,2019-12-30 07:30:22,Root Catalog/Root Catalog Migrated/Schools & Clubs/JESS/Jess_Secondary,0,,,,,1,,0,,1,jessbanner.png,,PRODUCTS,jess-secondary
+Wellington Silicon Oasis,WSO Girls,2017-11-10 07:00:45,2017-10-11 11:42:02,Root Catalog/Root Catalog Migrated/Schools & Clubs/Wellington Silicon Oasis/WSO Girls,0,,,,,1,,0,,1,wso_girls_Banner.png,,PRODUCTS,wso-girls
+Wellington Silicon Oasis,WSO Boys,2017-10-11 07:01:05,2017-10-11 11:38:59,Root Catalog/Root Catalog Migrated/Schools & Clubs/Wellington Silicon Oasis/WSO Boys,0,,,,,1,,0,,1,wso_boys_banner.png,,PRODUCTS,wso-boys
+Wellington Silicon Oasis,WSO Online Shop,2017-11-10 07:01:40,2019-11-17 10:13:08,Root Catalog/Root Catalog Migrated/Schools & Clubs/Wellington Silicon Oasis/WSO Online Shop,0,,,,,0,,0,,1,,,PRODUCTS,wso-online-shop
+Wellington International,Wellington Netball,2017-08-11 06:11:42,2019-11-10 09:48:49,Root Catalog/Root Catalog Migrated/Schools & Clubs/Wellington International/Wellington Netball,0,,,,,1,,0,,1,wellington-banner.png,,PRODUCTS,wellington-netball
+Default Category,Continental,2018-01-10 10:08:26,2018-01-10 10:08:26,Root Catalog/Root Catalog Migrated/Continental,0,,,,,1,,1,,0,,,PRODUCTS,continental
+Default Category,Maru,2018-01-17 12:07:46,2018-01-17 12:07:46,Root Catalog/Root Catalog Migrated/Maru,1,,,,,1,,1,,,,,,maru
+Schools & Clubs,Justplay,2018-01-24 08:29:29,2019-10-07 08:38:26,Root Catalog/Root Catalog Migrated/Schools & Clubs/Justplay,1,,,,,1,,0,,0,,,PRODUCTS,justplay
+JESS,jess_boys,2018-02-04 08:11:51,2020-02-24 11:19:39,Root Catalog/Root Catalog Migrated/Schools & Clubs/JESS/jess_boys,0,,,,,1,,0,,0,,,PRODUCTS,jess-boys
+JESS,jess_girls,2018-02-04 08:12:38,2020-02-24 11:35:54,Root Catalog/Root Catalog Migrated/Schools & Clubs/JESS/jess_girls,0,,,,,1,,0,,0,,,PRODUCTS,jess-girls
+Schools & Clubs,dubaiwasps,2018-02-15 06:10:55,2020-03-08 09:20:36,Root Catalog/Root Catalog Migrated/Schools & Clubs/dubaiwasps,0,,,,,1,,0,,0,wasps-banner.png,,PRODUCTS,dubaiwasps
+JESS,Camp Kenya,2018-03-11 07:53:26,2018-06-05 08:39:37,Root Catalog/Root Catalog Migrated/Schools & Clubs/JESS/Camp Kenya,0,,,,,1,,0,,0,,,PRODUCTS,camp-kenya
+GRDS,Gems Royal Dubai,2018-06-24 07:27:21,2019-11-27 09:39:08,Root Catalog/Root Catalog Migrated/Schools & Clubs/GRDS/Gems Royal Dubai,0,,,,,1,,0,,0,Gems_RoyalDubai_banner.png,,PRODUCTS,gems-royal-dubai
+Default Category,Presentations,2018-07-10 06:00:50,2018-07-11 12:34:33,Root Catalog/Root Catalog Migrated/Presentations,0,,,,,1,,0,,0,,,PRODUCTS,presentations
+Presentations,Football,2018-07-10 06:02:31,2018-07-12 10:05:48,Root Catalog/Root Catalog Migrated/Presentations/Football,0,,,,,1,,0,,0,,,PRODUCTS,football
+Presentations,Rugby,2018-07-10 06:08:58,2018-07-10 06:34:18,Root Catalog/Root Catalog Migrated/Presentations/Rugby,0,,,,,1,,0,,0,,,PRODUCTS,rugby
+Presentations,Basketball,2018-07-10 11:05:10,2018-07-10 11:05:10,Root Catalog/Root Catalog Migrated/Presentations/Basketball,0,,,,,1,,0,,0,,,PRODUCTS,basketball
+Presentations,Netball,2018-07-10 11:05:52,2018-07-10 11:05:52,Root Catalog/Root Catalog Migrated/Presentations/Netball,0,,,,,1,,0,,0,,,PRODUCTS,netball
+Presentations,athletics,2018-07-10 11:07:51,2018-07-10 11:07:51,Root Catalog/Root Catalog Migrated/Presentations/athletics,0,,,,,1,,0,,0,,,PRODUCTS,athletics
+Presentations,swimming,2018-07-10 11:09:37,2018-07-10 11:09:37,Root Catalog/Root Catalog Migrated/Presentations/swimming,0,,,,,1,,0,,0,,,PRODUCTS,swimming
+Default Category,Chillys,2018-08-27 09:01:08,2020-03-08 09:24:01,Root Catalog/Root Catalog Migrated/Chillys,1,,"Chillys Bottles Dubai, Bespoke water bottles , Design my own water bottles",,,1,,0,,1,,Chilly's Bottles,PRODUCTS,chillys
+GRDS,Gems Royal Dubai Dance,2018-09-16 09:05:01,2019-11-27 09:33:21,Root Catalog/Root Catalog Migrated/Schools & Clubs/GRDS/Gems Royal Dubai Dance,0,,,,,1,,0,,0,Gems_RoyalDubai_banner.png,,PRODUCTS,gems-royal-dubai-dance
+Schools & Clubs,GRDS,2018-09-16 09:12:31,2019-10-07 08:38:26,Root Catalog/Root Catalog Migrated/Schools & Clubs/GRDS,0,,,,,0,,0,,0,,,PRODUCTS,grds
+Schools & Clubs,Dhahran School,2018-09-19 08:30:30,2019-10-07 08:38:26,Root Catalog/Root Catalog Migrated/Schools & Clubs/Dhahran School,0,,,,,1,,0,,0,dhahran_school_banner.png,,PRODUCTS,dhahran-school
+Schools & Clubs,Ranches Primary School,2018-10-07 10:25:12,2019-10-07 08:38:26,Root Catalog/Root Catalog Migrated/Schools & Clubs/Ranches Primary School,0,,,,,1,,1,,0,,,PRODUCTS,ranches-primary-school
+Schools & Clubs,Gems First Point School,2018-10-10 10:22:05,2019-10-07 08:38:26,Root Catalog/Root Catalog Migrated/Schools & Clubs/Gems First Point School,0,,,,,1,,1,,0,,,PRODUCTS,gems-first-point-school
+Schools & Clubs,DIA Wolves,2018-12-09 05:22:29,2019-10-07 08:38:26,Root Catalog/Root Catalog Migrated/Schools & Clubs/DIA Wolves,0,,,,,1,,1,,0,,,PRODUCTS,dia-wolves
+Wellington International,Wellington Basketball,2019-01-03 06:02:11,2019-12-31 05:50:16,Root Catalog/Root Catalog Migrated/Schools & Clubs/Wellington International/Wellington Basketball,0,,,,,1,,0,,0,wellington-banner.png,,PRODUCTS,wellington-basketball
+Schools & Clubs,Wellington Academy Al Khail,2019-03-24 08:11:47,2019-10-07 08:38:26,Root Catalog/Root Catalog Migrated/Schools & Clubs/Wellington Academy Al Khail,0,,,,,1,,0,,0,wellingtonalkhail-banner.jpg,,PRODUCTS,wellington-academy-al-khail
+Schools & Clubs,Deira International School,2019-05-02 06:54:09,2019-12-30 07:30:24,Root Catalog/Root Catalog Migrated/Schools & Clubs/Deira International School,0,,,,,0,,0,,0,disbanner.png,,PRODUCTS,deira-international
+Deira International School,dis boys,2019-05-02 06:56:35,2020-01-08 12:47:44,Root Catalog/Root Catalog Migrated/Schools & Clubs/Deira International School/dis boys,0,,,,,1,,0,,0,,,PRODUCTS,dis-boys
+Deira International School,dis girls,2019-05-02 06:59:56,2020-01-08 12:48:21,Root Catalog/Root Catalog Migrated/Schools & Clubs/Deira International School/dis girls,0,,,,,1,,0,,0,,,PRODUCTS,dis-girls
+Schools & Clubs,My Sport,2019-05-27 11:25:17,2020-03-08 09:18:59,Root Catalog/Root Catalog Migrated/Schools & Clubs/My Sport,0,,,,,1,,1,,0,mysportacademy.png,,PRODUCTS,my-sport
+Schools & Clubs,GMP Performing Art,2019-06-11 05:35:39,2019-10-07 08:38:26,Root Catalog/Root Catalog Migrated/Schools & Clubs/GMP Performing Art,0,,,,,1,,0,,0,Gems-metropole-banner.png,,PRODUCTS,gmp-performing-art
+Schools & Clubs,nas dubai,2019-06-12 08:21:43,2019-10-07 08:38:26,Root Catalog/Root Catalog Migrated/Schools & Clubs/nas dubai,0,,,,,1,,0,,0,NAS-Banner-2.png,,PRODUCTS,nas-dubai
+nas dubai,nas_boys,2019-07-28 06:02:50,2019-10-13 11:09:19,Root Catalog/Root Catalog Migrated/Schools & Clubs/nas dubai/nas_boys,0,,,,,1,,0,,0,NAS-Banner-2.png,,PRODUCTS,nas-boys
+nas dubai,nas_girls,2019-07-28 06:03:37,2019-09-03 11:31:08,Root Catalog/Root Catalog Migrated/Schools & Clubs/nas dubai/nas_girls,0,,,,,1,,0,,0,NAS-Banner-2.png,,PRODUCTS,nas-girls
+Wellington International,Wellington Swimming,2019-09-09 12:36:34,2020-01-06 12:24:21,Root Catalog/Root Catalog Migrated/Schools & Clubs/Wellington International/Wellington Swimming,0,,,,,1,,0,,0,,,PRODUCTS,wellington-swimming
+Schools & Clubs,Reptonschool,2019-10-07 08:36:36,2020-02-24 10:30:36,Root Catalog/Root Catalog Migrated/Schools & Clubs/Reptonschool,0,,,,,1,,0,,0,,,PRODUCTS,reptonschool
+Reptonschool,ReptonRapids,2019-10-07 08:37:43,2019-11-05 08:13:15,Root Catalog/Root Catalog Migrated/Schools & Clubs/Reptonschool/ReptonRapids,0,,,,,1,,0,,0,,,PRODUCTS,reptonrapids
+Schools & Clubs,Riyadh_School,2019-10-09 10:17:22,2019-11-13 05:34:16,Root Catalog/Root Catalog Migrated/Schools & Clubs/Riyadh_School,0,,,,,1,,1,,0,Riyadh-School-Banner.png,,PRODUCTS,riyadh-school
+Riyadh_School,Riyadh_boys,2019-10-17 14:51:11,2019-10-30 06:08:10,Root Catalog/Root Catalog Migrated/Schools & Clubs/Riyadh_School/Riyadh_boys,0,,,,,1,,0,,0,,,PRODUCTS,riyadh-boys
+Riyadh_School,boys_elementary,2019-10-20 07:13:36,2019-10-30 12:15:13,Root Catalog/Root Catalog Migrated/Schools & Clubs/Riyadh_School/boys_elementary,0,,,,,1,,0,,0,Riyadh-School-Banner.png,,PRODUCTS,riyadh-boys-elementary
+Riyadh_School,boys_highschool,2019-10-20 07:19:51,2019-10-30 12:15:52,Root Catalog/Root Catalog Migrated/Schools & Clubs/Riyadh_School/boys_highschool,0,,,,,1,,0,,0,Riyadh-School-Banner.png,,PRODUCTS,riyadh-boys-highschool
+Riyadh_School,girls-kindergarten,2019-10-20 07:30:14,2019-10-30 13:26:07,Root Catalog/Root Catalog Migrated/Schools & Clubs/Riyadh_School/girls-kindergarten,1,,,,,1,,0,,0,Riyadh-School-Banner.png,,PRODUCTS,riyadh-girls-kindergarten
+Riyadh_School,girls_elementary,2019-10-20 07:34:17,2019-10-30 13:27:56,Root Catalog/Root Catalog Migrated/Schools & Clubs/Riyadh_School/girls_elementary,0,,,,,1,,0,,0,Riyadh-School-Banner.png,,PRODUCTS,riyadh-girls-elementary
+Riyadh_School,girls_highschool,2019-10-20 07:42:19,2019-10-30 11:39:53,Root Catalog/Root Catalog Migrated/Schools & Clubs/Riyadh_School/girls_highschool,0,,,,,1,,0,,0,Riyadh-School-Banner.png,,PRODUCTS,riyadh-girls-highschool
+Root Catalog,DIA,2019-11-05 14:36:30,2019-11-05 14:36:30,Root Catalog/DIA,1,,,,,1,,0,,0,,dia school,PRODUCTS,dia
+Schools & Clubs,DIA,2019-11-05 14:37:25,2019-11-10 05:25:19,Root Catalog/Root Catalog Migrated/Schools & Clubs/DIA,1,,,,,1,,0,,0,Beccles_Banner.png,dia school,PRODUCTS,dia-school
+Reptonschool,reptoncricket,2019-11-10 08:07:37,2019-11-12 09:41:11,Root Catalog/Root Catalog Migrated/Schools & Clubs/Reptonschool/reptoncricket,1,,,,,1,,0,,0,Reptonbanner.png,Repton-cricket,PRODUCTS,repton-cricket
+Schools & Clubs,Rashid School,2019-12-11 11:50:56,2020-01-22 09:37:54,Root Catalog/Root Catalog Migrated/Schools & Clubs/Rashid School,0,,,,,1,,0,,0,,,PRODUCTS,rashid-school
+Schools & Clubs,Latifa School,2019-12-11 11:51:41,2019-12-11 11:51:41,Root Catalog/Root Catalog Migrated/Schools & Clubs/Latifa School,0,,,,,1,,0,,0,,,PRODUCTS,latifa-school
+Reptonschool,Repton Rugby,2020-02-24 10:30:36,2020-02-24 10:30:36,Root Catalog/Root Catalog Migrated/Schools & Clubs/Reptonschool/Repton Rugby,1,,,,,1,,0,,0,,,PRODUCTS,repton-rugby
+Wellington International,Wellington Sports Leader,2020-05-21 11:19:24,2020-05-21 11:54:41,Root Catalog/Root Catalog Migrated/Schools & Clubs/Wellington International/Wellington Sports Leader,0,,,,,1,,0,,0,,,PRODUCTS,sports-leader
