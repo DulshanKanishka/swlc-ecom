@@ -19,7 +19,7 @@
 ?>
 <?php if ($_postCollection->count()) { ?>
 <div class="block latest-post-container">
-	<p class="pre-text"><?php echo __('J20-sports 2020');?></p>
+	<p class="pre-text"><?php echo __('swlc 2020');?></p>
 	<div class="title-home">
 		<?php echo $block->escapeHtml($block->getTitle()) ?>
 	</div>
@@ -42,7 +42,7 @@
 							</a>
 						<?php } ?>
 					</div>
-					
+
 					<div class="info-blog">
 						<div class="date-post">
 									<?php
@@ -54,10 +54,10 @@
 									<div class="month"><?php echo $month; ?></div>
 						</div>
 						<div class="date-post-title">
-								
-								
+
+
 								<h2 class="postTitle">
-									<a class="post-item-link" href="<?php echo $_postUrl ?>"> 
+									<a class="post-item-link" href="<?php echo $_postUrl ?>">
 										<?php echo $_postName; ?>
 									</a>
 								</h2>
@@ -67,17 +67,17 @@
 	                                    <i class="fa fa-user"></i>
 	                                    <span class="user-wr">Magentech</span>
 	                                </li>
-	                             
+
                                  <li class="post-cat">
                                  	 <i class="fa fa-folder"></i>
                                 <?php if ($_categoriesCount = $_post->getCategoriesCount()) { ?>
-                              
+
                                     <?php $n = 0; foreach($_post->getParentCategories() as $ct) {  $n++; if($n==1) {?>
 
                                         <a title="<?php echo $block->escapeHtml($ct->getTitle()) ?>" href="<?php echo $ct->getCategoryUrl() ?>"><?php echo $block->escapeHtml($ct->getTitle()) ?></a>
 
                                     <?php } }  ?>
-                                
+
                                 <?php } ?>
                                 </li>
                                 </ul>
@@ -88,16 +88,16 @@
 								?>
 							</div>
 						</div>
-						
-						
+
+
 					</div>
 				</div>
 
 			<?php } ?>
 		</div>
 	</div>
-    
-	
+
+
 	<script type="text/javascript">
 		require([
 			'jquery',
@@ -121,15 +121,15 @@
 						items:3
 					},
 				},
-				
+
 				autoplay:false,
 				loop:true,
-				nav : false, 
+				nav : false,
 				dots: false,
 				autoplayHoverPause: true,
 				margin:30
-			});	  
-		});	
+			});
+		});
 	</script>
 </div>
 <?php } ?>

@@ -518,7 +518,7 @@ class PrintProcess extends AbstractData
         } else{
             if ($this->helperData->isEnablePageNumber($sid)) {
                 $mpdf->setFooter('<div style="width: 100%;padding: 20px;font-style: normal;position: initial">
-            <h2 style="color: black;font-weight: 500;font-style: normal">Thank You J20 Sports Team &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <h2 style="color: black;font-weight: 500;font-style: normal">Thank You Swlc Team &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <span style="float: right !important;color:black;font-style: normal;font-weight: 500"> {PAGENO}/{nb} &nbsp;&nbsp;&nbsp;
@@ -703,7 +703,7 @@ class PrintProcess extends AbstractData
         } else{
             if ($this->helperData->isEnablePageNumber($storeId)) {
                 $mpdf->setFooter('<div style="width: 100%;padding: 20px;font-style: normal;position: initial">
-            <h2 style="color: black;font-style: normal;font-weight: 500">Thank You J20 Sports Team &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <h2 style="color: black;font-style: normal;font-weight: 500">Thank You Swlc Team &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <span style="float: right !important;color:black;font-style: normal;font-weight: 500"> {PAGENO}/{nb} &nbsp;&nbsp;&nbsp;

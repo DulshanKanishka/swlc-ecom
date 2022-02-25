@@ -10,8 +10,6 @@
         <!-- ADD JQUERY -->
 		<meta name="x_ua_compatible" content="IE=edge"/>
         <!-- ADD CSS  -->
-<!--        <css src="css/j20-m.css" />-->
         <css src="css/j20-l.css" media="screen and (min-width: 768px)"/>
-<!--        <css src="css/j20print.css" media="print" />-->
     </head>
 </page>
