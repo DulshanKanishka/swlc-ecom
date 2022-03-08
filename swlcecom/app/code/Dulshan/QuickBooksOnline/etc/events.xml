@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_order_shipment_save_after">
+        <observer name="quickbook_inventory_source_deduction_processor" instance="Dulshan\QuickBooksOnline\Observer\SourceDeductionProcessor"/>
+    </event>
+<!--    <event name="sales_order_shipment_save_before">-->
+<!--        <observer name="shipment_save_before" instance="Dulshan\QuickBooksOnline\Observer\Shipmentsavebefore"/>-->
+<!--    </event>-->
+    <event name="sales_order_creditmemo_save_after">
+        <observer name="quickbook_inventory_source_add_processor" instance="Dulshan\QuickBooksOnline\Observer\SourceAddProcessor" />
+    </event>
+<!--    <event name="sales_order_creditmemo_save_before">-->
+<!--        <observer name="credit_memo_save_before" instance="Dulshan\QuickBooksOnline\Observer\Credimemosavebefore" />-->
+<!--    </event>-->
+<!--    <event name="sales_order_invoice_save_before">-->
+<!--        <observer name="qbonline_qtyOrder" instance="Dulshan\QuickBooksOnline\Observer\UpdateQty"/>-->
+<!--    </event>-->
+    <event name="catalog_product_save_before">
+        <observer name="qbonline_qtyOrder" instance="Dulshan\QuickBooksOnline\Observer\BeforeProductSave"/>
+    </event>
+</config>

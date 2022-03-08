@@ -17,7 +17,7 @@ use Magento\Framework\App\Action\Action;
 ?>
 <?php
 $_productCollection = $block->getLoadedProductCollection();
-$blockStore = $this->getLayout()->createBlock('NeoSolax\Custom\Block\Product\ListProduct');
+$blockStore = $this->getLayout()->createBlock('Dulshan\Custom\Block\Product\ListProduct');
 $_helper = $this->helper('Magento\Catalog\Helper\Output');
 $_config = $this->helper('Sm\Aloza\Helper\Data');
 $homeStyle = $_config->getThemeLayout('home_style');

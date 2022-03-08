@@ -6,6 +6,6 @@
 
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::THEME,
-    'frontend/NeoSolax/j20',
+    'frontend/Dulshan/swlc',
     __DIR__
 );

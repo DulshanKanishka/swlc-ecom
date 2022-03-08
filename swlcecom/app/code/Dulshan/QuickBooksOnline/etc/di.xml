@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magenest\QuickBooksOnline\Observer\Item\UpdateInventory" type="Dulshan\QuickBooksOnline\Observer\Item\UpdateInventory" />
+<!--    <preference for="Magenest\QuickBooksOnline\Observer\Item\Update" type="Dulshan\QuickBooksOnline\Observer\Item\Update" />-->
+    <preference for="Magenest\QuickBooksOnline\Observer\Invoice\Create" type="Dulshan\QuickBooksOnline\Observer\Invoice\Create" />
+    <preference for="Magenest\QuickBooksOnline\Model\Synchronization\Item" type="Dulshan\QuickBooksOnline\Model\Synchronization\Item" />
+    <preference for="Magenest\QuickBooksOnline\Model\Synchronization\Order" type="Dulshan\QuickBooksOnline\Model\Synchronization\Order" />
+    <preference for="Magenest\QuickBooksOnline\Model\Synchronization\Creditmemo" type="Dulshan\QuickBooksOnline\Model\Synchronization\Creditmemo" />
+    <preference for="Magenest\QuickBooksOnline\Model\Synchronization\Invoice" type="Dulshan\QuickBooksOnline\Model\Synchronization\Invoice" />
+    <preference for="Magenest\QuickBooksOnline\Model\Synchronization\Customer" type="Dulshan\QuickBooksOnline\Model\Synchronization\Customer" />
+    <preference for="Magento\InventorySales\Model\ReturnProcessor\ProcessRefundItems" type="Dulshan\QuickBooksOnline\Model\ReturnProcessor\ProcessRefundItem" />
+    <preference for="Magento\Sales\Model\Order\Item" type="Dulshan\QuickBooksOnline\Model\Order\Item" />
+    <preference for="Magenest\QuickBooksOnline\Model\Client" type="Dulshan\QuickBooksOnline\Model\Client" />
+    <preference for="Magento\InventorySales\Model\ReturnProcessor\DeductSourceItemQuantityOnRefund" type="Dulshan\QuickBooksOnline\Model\ReturnProcessor\DeductSourceItemQuantityOnRefund" />
+    <preference for="Magento\InventorySales\Model\ReturnProcessor\GetSourceSelectionResultFromCreditMemoItems" type="Dulshan\QuickBooksOnline\Model\ReturnProcessor\GetSourceSelectionResultFromCreditMemoItems" />
+    <preference for="Magento\Shipping\Block\Adminhtml\Create\Items" type="Dulshan\QuickBooksOnline\Block\Adminhtml\Create\Items" />
+    <preference for="Magento\Sales\Block\Adminhtml\Order\Creditmemo\Create\Items" type="Dulshan\QuickBooksOnline\Block\Adminhtml\Order\Creditmemo\Create\Items" />
+    <preference for="Magento\Catalog\Model\ResourceModel\Product\Action" type="Dulshan\QuickBooksOnline\Model\ResourceModel\Product\Action" />
+    <preference for="Magento\InventoryShipping\Observer\SourceDeductionProcessor" type="Dulshan\QuickBooksOnline\Observer\SourceDeductionProcessorMagento" />
+    <type name="Magento\SalesInventory\Model\Order\ReturnProcessor">
+        <plugin name="process_return_product_qty_on_credit_memo" disabled="true" />
+    </type>
+    <type name="Magento\SalesInventory\Model\Order\ReturnProcessor">
+        <plugin name="Dulshan_process_return_product_qty_on_credit_memo" type="Dulshan\QuickBooksOnline\Plugin\SalesInventory\ProcessReturnQtyOnCreditMemoPlugin" sortOrder="1" />
+    </type>
+
+</config>

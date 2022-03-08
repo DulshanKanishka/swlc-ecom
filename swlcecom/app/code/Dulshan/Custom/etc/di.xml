@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Mageplaza\MassOrderActions\Controller\Adminhtml\Order\MassShipment" type="Dulshan\Custom\Controller\Adminhtml\Order\MassShipment" />
+    <preference for="Sm\MegaMenu\Block\Adminhtml\MenuItems\Edit\Tab\Form" type="Dulshan\Custom\Block\Adminhtml\MenuItems\Edit\Tab\Form" />
+    <preference for="Magento\Framework\DataObject" type="Dulshan\Custom\DataObject" />
+    <preference for="Magento\InventorySourceSelectionApi\Model\GetInventoryRequestFromOrder" type="Dulshan\Custom\Model\GetInventoryRequestFromOrder" />
+    <preference for="Magento\Catalog\Block\Product\ListProduct" type="Dulshan\Custom\Block\Product\ListProduct" />
+    <preference for="Bss\AutoCancelOrder\Model\Config\StatusCollection" type="Dulshan\Custom\Model\Config\StatusCollection" />
+    <preference for="Mageplaza\PdfInvoice\Model\Template\TransportBuilder" type="Dulshan\Custom\Model\Mail\Template\TransportBuilder" />
+    <preference for="Mageplaza\PdfInvoice\Model\Template\SenderBuilder" type="Dulshan\Custom\Model\Mail\Template\SenderBuilder" />
+    <preference for="Vertex\Tax\Model\FlexField\Extractor\EavAttributeExtractor" type="Dulshan\Custom\Model\FlexField\Extractor\EavAttributeExtractor" />
+    <preference for="Magento\InventoryCatalogAdminUi\Model\GetSourceItemsDataBySku" type="Dulshan\Custom\Model\GetSourceItemsDataBySku" />
+    <preference for="Magento\Sales\Ui\Component\Listing\Column\Price" type="Dulshan\Custom\Ui\Component\Listing\Column\Price" />
+
+    <preference for="WebPanda\ConfigurablePriceRange\Block\Product\Renderer\Configurable" type="Dulshan\Custom\Block\Swatch\Product\Render\Configurable" />
+
+    <preference for="Magento\Swatches\Block\Product\Renderer\Listing\Configurable" type="Dulshan\Custom\Block\Swatch\Product\Render\Listing\Configurable" />
+    <preference for="Sm\ListingTabs\Block\Product\Renderer\Listing\Configurable" type="Dulshan\Custom\Block\Swatch\Product\Render\Listing\Configurable" />
+    <preference for="Sm\FilterProducts\Block\Product\Renderer\Listing\Configurable" type="Dulshan\Custom\Block\Swatch\Product\Render\Listing\Configurable" />
+
+    <preference for="Magento\ConfigurableProduct\Helper\Data" type="Dulshan\Custom\Helper\Data" />
+
+    <preference for="Smile\ElasticsuiteSwatches\Block\Navigation\Renderer\Swatches\RenderLayered" type="Dulshan\Custom\Block\Navigation\Renderer\Swatches\RenderLayered" />
+
+    <preference for="Magento\Checkout\Block\Checkout\DirectoryDataProcessor" type="Dulshan\Custom\Block\Checkout\DirectoryDataProcessor" />
+
+    <preference for="Magento\Sales\Controller\Adminhtml\Order\Invoice\Save" type="Dulshan\Custom\Controller\Adminhtml\Invoice\Save" />
+
+    <type name="Magento\Catalog\Controller\Category\View">
+        <plugin name="Dulshan_Category_View" type="Dulshan\Custom\Plugin\Category\View"></plugin>
+    </type>
+
+
+    <!-- Layer related configurations -->
+
+    <virtualType name="Magento\CatalogSearch\Model\Layer\Category\Context" type="Magento\Catalog\Model\Layer\Category\Context">
+        <arguments>
+            <argument name="collectionProvider" xsi:type="object">Smile\ElasticsuiteCatalog\Model\Layer\Category\ItemCollectionProvider</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Smile\ElasticsuiteCatalog\Model\Layer\Category\ItemCollectionProvider" type="Magento\CatalogSearch\Model\Layer\Category\ItemCollectionProvider">
+        <arguments>
+            <argument name="collectionFactory" xsi:type="object">Magento\CatalogSearch\Model\ResourceModel\Fulltext\CollectionFactory</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Magento\CatalogSearch\Model\Layer\Search\Context" type="Magento\Catalog\Model\Layer\Search\Context">
+        <arguments>
+            <argument name="collectionProvider" xsi:type="object">Magento\CatalogSearch\Model\Layer\Search\ItemCollectionProvider</argument>
+            <argument name="stateKey" xsi:type="object">Magento\CatalogSearch\Model\Layer\Search\StateKey</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="phone_number" xsi:type="string">sales_order.phone_number</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <preference for="WebPanda\ConfigurablePriceRange\Block\Product\Renderer\Configurable"
+                type="Dulshan\Custom\Block\Product\View\Type\Configurable"/>
+
+</config>
